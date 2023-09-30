@@ -12,5 +12,9 @@ name = "a"
 path = "src/problem1399a.rs"
 
 [[bin]]
+name = "b"
+path = "src/problem1399b.rs"
+
+[[bin]]
 name = "c"
 path = "src/problem1399c.rs"
