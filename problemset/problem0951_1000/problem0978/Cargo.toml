@@ -10,3 +10,7 @@ edition = "2021"
 [[bin]]
 name = "a"
 path = "src/problem0978a.rs"
+
+[[bin]]
+name = "c"
+path = "src/problem0978c.rs"
