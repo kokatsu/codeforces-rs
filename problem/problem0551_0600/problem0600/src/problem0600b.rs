@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let input: Vec<usize> = read_vec();
@@ -10,8 +10,7 @@ fn main() {
 
     a.sort();
 
-    let res: String =
-        b
+    let res: String = b
         .iter()
         .fold(String::new(), |res, &x| {
             res + " " + &a.partition_point(|&v| v <= x).to_string()
