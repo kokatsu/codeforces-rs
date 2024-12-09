@@ -1,22 +1,18 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
 
-    let mut counts: Vec<u64> = vec![0; n+1];
+    let mut counts: Vec<u64> = vec![0; n + 1];
     for i in 2..=n {
         if counts[i] == 0 {
-            for j in (i*2..=n).step_by(i) {
+            for j in (i * 2..=n).step_by(i) {
                 counts[j] += 1;
             }
         }
     }
 
-    let res: usize =
-        counts
-        .iter()
-        .filter(|&&x| x == 2)
-        .count();
+    let res: usize = counts.iter().filter(|&&x| x == 2).count();
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
