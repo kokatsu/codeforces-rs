@@ -1,9 +1,9 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let w: i64 = read();
 
-    let res: &str = if w % 2 == 0 && w > 2 {"YES"} else {"NO"};
+    let res: &str = if w % 2 == 0 && w > 2 { "YES" } else { "NO" };
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
