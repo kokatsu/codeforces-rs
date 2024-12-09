@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let q: usize = read();
@@ -8,8 +8,7 @@ fn main() {
     for _ in 0..q {
         let a: Vec<u64> = read_vec();
 
-        let res: u64 =
-            vec![(0, 1, 2), (0, 2, 1), (1, 2, 0)]
+        let res: u64 = vec![(0, 1, 2), (0, 2, 1), (1, 2, 0)]
             .iter()
             .fold(0, |res, (i, j, k)| {
                 let mut x: u64 = a[*i];
@@ -19,10 +18,9 @@ fn main() {
                 }
                 let z: u64 = a[*k];
                 if x - y <= z {
-                    res.max(x+(z+y-x)/2)
-                }
-                else {
-                    res.max(y+z)
+                    res.max(x + (z + y - x) / 2)
+                } else {
+                    res.max(y + z)
                 }
             });
 
