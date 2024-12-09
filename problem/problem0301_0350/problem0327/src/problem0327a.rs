@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
@@ -8,13 +8,12 @@ fn main() {
     for i in 0..n {
         for j in i..n {
             let num = (0..n).fold(0, |num, k| {
-                                if i <= k && k <= j {
-                                    num + 1 - a[k]
-                                }
-                                else {
-                                    num + a[k]
-                                }
-                            });
+                if i <= k && k <= j {
+                    num + 1 - a[k]
+                } else {
+                    num + a[k]
+                }
+            });
 
             res = res.max(num);
         }
