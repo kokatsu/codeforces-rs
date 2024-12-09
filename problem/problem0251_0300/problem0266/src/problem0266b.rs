@@ -1,12 +1,11 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let input: Vec<usize> = read_vec();
     let n: usize = input[0];
     let t: usize = input[1];
 
-    let mut s: Vec<char> = read_string().chars()
-                                        .collect();
+    let mut s: Vec<char> = read_string().chars().collect();
 
     for _ in 0..t {
         let mut swapped: bool = false;
@@ -14,9 +13,8 @@ fn main() {
         for i in (1..n).rev() {
             if swapped {
                 swapped = false;
-            }
-            else if s[i-1] == 'B' && s[i] == 'G' {
-                s.swap(i-1, i);
+            } else if s[i - 1] == 'B' && s[i] == 'G' {
+                s.swap(i - 1, i);
                 swapped = true;
             }
         }
