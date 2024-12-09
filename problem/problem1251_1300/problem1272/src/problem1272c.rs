@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -17,16 +17,13 @@ fn main() {
         can[x] = true;
     }
 
-    let (num, len): (u64, u64) = s
-        .iter()
-        .fold((0_u64, 0_u64), |(num, len), &x| {
-            if can[x] {
-                (num, len+1)
-            }
-            else {
-                (num+len*(len+1)/2, 0)
-            }
-        });
+    let (num, len): (u64, u64) = s.iter().fold((0_u64, 0_u64), |(num, len), &x| {
+        if can[x] {
+            (num, len + 1)
+        } else {
+            (num + len * (len + 1) / 2, 0)
+        }
+    });
 
     let res: u64 = num + len * (len + 1) / 2;
 
