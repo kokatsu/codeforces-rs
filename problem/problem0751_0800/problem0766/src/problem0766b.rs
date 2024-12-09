@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
@@ -6,24 +6,15 @@ fn main() {
 
     a.sort();
 
-    let is_ok: bool =
-        (0..n-2)
-        .fold(false, |is_ok, i| {
-            if a[i] + a[i+1] > a[i+2] {
-                true
-            }
-            else {
-                is_ok
-            }
-        });
-
-    let res: &str =
-        if is_ok {
-            "YES"
+    let is_ok: bool = (0..n - 2).fold(false, |is_ok, i| {
+        if a[i] + a[i + 1] > a[i + 2] {
+            true
+        } else {
+            is_ok
         }
-        else {
-            "NO"
-        };
+    });
+
+    let res: &str = if is_ok { "YES" } else { "NO" };
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();

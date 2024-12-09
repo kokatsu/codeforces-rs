@@ -1,16 +1,14 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let a: String = read_string();
     let b: String = read_string();
 
-    let res: i64 =
-        if a == b {
-            -1
-        }
-        else {
-            a.len().max(b.len()) as i64
-        };
+    let res: i64 = if a == b {
+        -1
+    } else {
+        a.len().max(b.len()) as i64
+    };
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
