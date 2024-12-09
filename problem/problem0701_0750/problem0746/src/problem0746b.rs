@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
@@ -9,19 +9,15 @@ fn main() {
     let mut t: Vec<char> = vec![s[0]; n];
     for i in 0..m {
         if n % 2 == 0 {
-            t[m-i-1] = s[i*2];
-            t[m+i] = s[i*2+1];
-        }
-        else {
-            t[m-i-1] = s[i*2+1];
-            t[m+i+1] = s[(i+1)*2];
+            t[m - i - 1] = s[i * 2];
+            t[m + i] = s[i * 2 + 1];
+        } else {
+            t[m - i - 1] = s[i * 2 + 1];
+            t[m + i + 1] = s[(i + 1) * 2];
         }
     }
 
-    let res: String =
-        t
-        .iter()
-        .fold(String::new(), |res, x| res + &x.to_string());
+    let res: String = t.iter().fold(String::new(), |res, x| res + &x.to_string());
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
