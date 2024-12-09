@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let input: Vec<u64> = read_vec();
@@ -8,18 +8,17 @@ fn main() {
 
     let a: Vec<u64> = read_vec();
 
-    let res: u64 =
-        a
+    let res: u64 = a
         .iter()
         .filter(|x| x <= &&b)
         .fold((0, 0), |(res, section), &x| {
             if section + x <= d {
-                (res, section+x)
+                (res, section + x)
+            } else {
+                (res + 1, 0)
             }
-            else {
-                (res+1, 0)
-            }
-        }).0;
+        })
+        .0;
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
