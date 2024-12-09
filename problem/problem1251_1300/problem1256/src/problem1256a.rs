@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let q: usize = read();
@@ -12,15 +12,9 @@ fn main() {
         let n: i64 = input[2];
         let s: i64 = input[3];
 
-        let m: i64 = a.min(s/n);
+        let m: i64 = a.min(s / n);
 
-        let res: &str =
-            if s - n * m <= b {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if s - n * m <= b { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }
