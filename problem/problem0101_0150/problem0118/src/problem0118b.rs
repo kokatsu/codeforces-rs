@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn convert_char(n: u32, x: u32, y: u32) -> char {
     let u: u32 = n - x.abs_diff(n);
@@ -6,7 +6,7 @@ fn convert_char(n: u32, x: u32, y: u32) -> char {
     if u + v < n {
         return ' ';
     }
-    char::from_u32(u+v-n+('0' as u32)).unwrap()
+    char::from_u32(u + v - n + ('0' as u32)).unwrap()
 }
 
 fn main() {
@@ -16,14 +16,11 @@ fn main() {
 
     let n: usize = t * 2;
     for i in 0..=n {
-        let a: Vec<char> =
-            (0..=n)
+        let a: Vec<char> = (0..=n)
             .map(|j| convert_char(t as u32, i as u32, j as u32))
             .collect();
 
-        let line: String =
-            (1..=n)
-            .fold(a[0].to_string(), |line, i| line + " " + &a[i].to_string());
+        let line: String = (1..=n).fold(a[0].to_string(), |line, i| line + " " + &a[i].to_string());
 
         writeln!(out, "{}", line.trim_end()).unwrap();
     }
