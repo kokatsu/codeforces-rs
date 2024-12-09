@@ -1,15 +1,9 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: u32 = read();
 
-    let res: u64 =
-        if n % 2 == 0 {
-            2u64.pow(n/2)
-        }
-        else {
-            0
-        };
+    let res: u64 = if n % 2 == 0 { 2u64.pow(n / 2) } else { 0 };
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
