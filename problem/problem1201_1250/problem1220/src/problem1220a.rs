@@ -1,34 +1,26 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let _n: usize = read();
     let s: String = read_string();
 
-    let (zero, one): (usize, usize) =
-        s
-        .chars()
-        .fold((0, 0), |(zero, one), x| {
-            if x == 'z' {
-                (zero+1, one)
-            }
-            else if x == 'n' {
-                (zero, one+1)
-            }
-            else {
-                (zero, one)
-            }
-        });
+    let (zero, one): (usize, usize) = s.chars().fold((0, 0), |(zero, one), x| {
+        if x == 'z' {
+            (zero + 1, one)
+        } else if x == 'n' {
+            (zero, one + 1)
+        } else {
+            (zero, one)
+        }
+    });
 
-    let res: String =
-        (0..zero+one)
-        .fold(String::new(), |res, i| {
-            if i < one {
-                res + &1.to_string() + " "
-            }
-            else {
-                res + &0.to_string() + " "
-            }
-        });
+    let res: String = (0..zero + one).fold(String::new(), |res, i| {
+        if i < one {
+            res + &1.to_string() + " "
+        } else {
+            res + &0.to_string() + " "
+        }
+    });
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
