@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: i64 = read();
@@ -12,13 +12,16 @@ fn main() {
 
         let l: usize = s.len();
 
-        let res: String =
-            if l > limit {
-                format!("{}{}{}", s.chars().nth(0).unwrap(), l-2, s.chars().nth(l-1).unwrap())
-            }
-            else {
-                s
-            };
+        let res: String = if l > limit {
+            format!(
+                "{}{}{}",
+                s.chars().nth(0).unwrap(),
+                l - 2,
+                s.chars().nth(l - 1).unwrap()
+            )
+        } else {
+            s
+        };
 
         writeln!(out, "{}", &res).unwrap();
     }
