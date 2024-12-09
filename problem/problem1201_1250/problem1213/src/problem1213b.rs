@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -13,10 +13,9 @@ fn main() {
             .into_iter()
             .rev()
             .fold((0, u64::MAX), |(res, min), x| {
-                if x > min  {
-                    (res+1, min)
-                }
-                else {
+                if x > min {
+                    (res + 1, min)
+                } else {
                     (res, x)
                 }
             })
