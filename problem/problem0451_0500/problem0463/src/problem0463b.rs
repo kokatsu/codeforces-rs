@@ -1,12 +1,13 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
     let h: Vec<i64> = read_vec();
 
-    let res: i64 =
-        (0..n-1)
-        .fold((-h[0], -h[0]), |(res, sum), i| (res.min(sum+h[i]-h[i+1]), sum+h[i]-h[i+1]))
+    let res: i64 = (0..n - 1)
+        .fold((-h[0], -h[0]), |(res, sum), i| {
+            (res.min(sum + h[i] - h[i + 1]), sum + h[i] - h[i + 1])
+        })
         .0
         .abs();
 
