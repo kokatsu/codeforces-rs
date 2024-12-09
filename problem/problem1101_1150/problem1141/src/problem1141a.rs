@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn f(x: i64, y: i64, z: i64, res: &mut i64) {
     if y == z {
@@ -8,10 +8,10 @@ fn f(x: i64, y: i64, z: i64, res: &mut i64) {
     }
 
     if y * 2 <= z {
-        f(x+1, y*2, z, res);
+        f(x + 1, y * 2, z, res);
     }
     if y * 3 <= z {
-        f(x+1, y*3, z, res);
+        f(x + 1, y * 3, z, res);
     }
 }
 
