@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let input: Vec<usize> = read_vec();
@@ -17,14 +17,12 @@ fn main() {
 
             if (i + j) % 2 == 0 {
                 line[j] = 'B';
-            }
-            else {
+            } else {
                 line[j] = 'W';
             }
         }
 
-        let res: String =
-            line
+        let res: String = line
             .iter()
             .fold(String::new(), |res, x| res + &x.to_string());
 
