@@ -1,44 +1,33 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
     let a: Vec<usize> = read_vec();
 
-    let num: usize =
-        a
+    let num: usize = a
         .iter()
         .fold((0, 0, 0), |(num, u, v), x| {
             if *x == 25 {
-                (num+1, u+1, v)
-            }
-            else if *x == 50 {
+                (num + 1, u + 1, v)
+            } else if *x == 50 {
                 if u > 0 {
-                    (num+1, u-1, v+1)
-                }
-                else {
+                    (num + 1, u - 1, v + 1)
+                } else {
                     (num, u, v)
                 }
-            }
-            else {
+            } else {
                 if u > 0 && v > 0 {
-                    (num+1, u-1, v-1)
-                }
-                else if u > 2 {
-                    (num+1, u-3, v)
-                }
-                else {
+                    (num + 1, u - 1, v - 1)
+                } else if u > 2 {
+                    (num + 1, u - 3, v)
+                } else {
                     (num, u, v)
                 }
             }
-        }).0;
+        })
+        .0;
 
-    let res: &str =
-        if num == n {
-            "YES"
-        }
-        else {
-            "NO"
-        };
+    let res: &str = if num == n { "YES" } else { "NO" };
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
