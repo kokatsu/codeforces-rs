@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn remove_zeros(x: u64) -> u64 {
     let mut base: u64 = 1;
@@ -22,7 +22,7 @@ fn main() {
 
     let x: u64 = remove_zeros(a);
     let y: u64 = remove_zeros(b);
-    let z: u64 = remove_zeros(a+b);
+    let z: u64 = remove_zeros(a + b);
 
     let res: &str = if x + y == z { "YES" } else { "NO" };
 
