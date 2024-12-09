@@ -1,23 +1,22 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
     let a: Vec<u64> = read_vec();
 
-    let index: usize =
-        (0..n)
+    let index: usize = (0..n)
         .fold((0, u64::MAX), |(index, diff), i| {
-            let d: u64 = a[i].abs_diff(a[(i+1)%n]);
+            let d: u64 = a[i].abs_diff(a[(i + 1) % n]);
             if d < diff {
                 (i, d)
-            }
-            else {
+            } else {
                 (index, diff)
             }
-        }).0;
+        })
+        .0;
 
     let mut out = BufWriter::new(stdout().lock());
-    writeln!(out, "{} {}", index+1, (index+1)%n+1).unwrap();
+    writeln!(out, "{} {}", index + 1, (index + 1) % n + 1).unwrap();
 }
 
 #[allow(dead_code)]
