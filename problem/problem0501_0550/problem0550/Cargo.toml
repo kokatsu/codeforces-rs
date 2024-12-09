@@ -8,5 +8,5 @@ edition = "2021"
 [dependencies]
 
 [[bin]]
-name = "c"
+name = "p0550c"
 path = "src/problem0550c.rs"
