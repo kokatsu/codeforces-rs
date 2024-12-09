@@ -1,23 +1,20 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let input: Vec<i64> = read_vec();
     let n: i64 = input[0];
     let k: i64 = input[1];
 
-    let res: i64 =
-        (0..n)
-        .fold(i64::MIN, |res, _| {
-            let input: Vec<i64> = read_vec();
-            let f: i64 = input[0];
-            let t: i64 = input[1];
-            if t <= k {
-                res.max(f)
-            }
-            else {
-                res.max(f-t+k)
-            }
-        });
+    let res: i64 = (0..n).fold(i64::MIN, |res, _| {
+        let input: Vec<i64> = read_vec();
+        let f: i64 = input[0];
+        let t: i64 = input[1];
+        if t <= k {
+            res.max(f)
+        } else {
+            res.max(f - t + k)
+        }
+    });
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
