@@ -1,13 +1,10 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
     let s: String = read_string();
 
-    let mut t: Vec<&str> =
-        (0..n-1)
-        .map(|i| &s[i..i+2])
-        .collect();
+    let mut t: Vec<&str> = (0..n - 1).map(|i| &s[i..i + 2]).collect();
 
     t.sort();
 
@@ -33,7 +30,7 @@ fn run_length_encoding<T: std::cmp::PartialEq + Copy>(x: Vec<T>) -> Vec<(T, i64)
             j += 1usize;
         }
 
-        ret.push((x[i], (j-i) as i64));
+        ret.push((x[i], (j - i) as i64));
         i = j;
     }
 

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let input: Vec<usize> = read_vec();
@@ -9,24 +9,19 @@ fn main() {
 
     a.sort();
 
-    let res: i64 =
-        if k == n {
-            a[k-1]
-        }
-        else if k == 0 {
-            if a[0] == 1 {
-                -1
-            }
-            else {
-                1
-            }
-        }
-        else if a[k-1] == a[k] {
+    let res: i64 = if k == n {
+        a[k - 1]
+    } else if k == 0 {
+        if a[0] == 1 {
             -1
+        } else {
+            1
         }
-        else {
-            a[k-1]
-        };
+    } else if a[k - 1] == a[k] {
+        -1
+    } else {
+        a[k - 1]
+    };
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
