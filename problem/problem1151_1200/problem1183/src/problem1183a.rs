@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -6,7 +6,7 @@ fn main() {
     let mut a: u64 = read();
 
     loop {
-        let d: u64 = (0..4).fold((0, a), |(d, r), _| (d+r%10, r/10)).0;
+        let d: u64 = (0..4).fold((0, a), |(d, r), _| (d + r % 10, r / 10)).0;
 
         if d % 4 == 0 {
             writeln!(out, "{}", a).unwrap();
