@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
@@ -7,16 +7,16 @@ fn main() {
     let mut out = BufWriter::new(stdout().lock());
 
     for i in 0..n {
-        let (mn, mx): (i64, i64) =
-            if i == 0 {
-                (x[i+1]-x[i], x[n-1]-x[i])
-            }
-            else if i == n - 1 {
-                (x[i]-x[i-1], x[i]-x[0])
-            }
-            else {
-                ((x[i]-x[i-1]).min(x[i+1]-x[i]), (x[i]-x[0]).max(x[n-1]-x[i]))
-            };
+        let (mn, mx): (i64, i64) = if i == 0 {
+            (x[i + 1] - x[i], x[n - 1] - x[i])
+        } else if i == n - 1 {
+            (x[i] - x[i - 1], x[i] - x[0])
+        } else {
+            (
+                (x[i] - x[i - 1]).min(x[i + 1] - x[i]),
+                (x[i] - x[0]).max(x[n - 1] - x[i]),
+            )
+        };
 
         writeln!(out, "{} {}", mn, mx).unwrap();
     }
