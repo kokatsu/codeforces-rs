@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let _n: usize = read();
@@ -8,10 +8,7 @@ fn main() {
 
     let g: Vec<(u64, i64)> = run_length_encoding(a);
 
-    let res: i64 =
-        g
-        .iter()
-        .fold(0, |res, (_, x)| res.max(*x));
+    let res: i64 = g.iter().fold(0, |res, (_, x)| res.max(*x));
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
@@ -30,7 +27,7 @@ fn run_length_encoding<T: std::cmp::PartialEq + Copy>(x: Vec<T>) -> Vec<(T, i64)
             j += 1usize;
         }
 
-        ret.push((x[i], (j-i) as i64));
+        ret.push((x[i], (j - i) as i64));
         i = j;
     }
 
