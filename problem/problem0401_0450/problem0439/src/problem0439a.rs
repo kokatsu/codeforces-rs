@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,13 +11,7 @@ fn main() {
     let sum: i64 = t.iter().sum();
     let rem: i64 = d - sum - (n - 1) * 10;
 
-    let res: i64 =
-        if rem >= 0 {
-            (n - 1) * 2 + rem / 5
-        }
-        else {
-            -1
-        };
+    let res: i64 = if rem >= 0 { (n - 1) * 2 + rem / 5 } else { -1 };
 
     writeln!(out, "{}", res).unwrap();
 }
