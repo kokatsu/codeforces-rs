@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn dfs(num: u64, sum: u64, cnt: u64, ret: &mut Vec<u64>) {
     for i in 0..10 {
@@ -9,10 +9,10 @@ fn dfs(num: u64, sum: u64, cnt: u64, ret: &mut Vec<u64>) {
             break;
         }
         if sum + i == 10 {
-            ret.push(num*10+i);
+            ret.push(num * 10 + i);
         }
         if cnt < 7 {
-            dfs(num*10+i, sum+i, cnt+1, ret);
+            dfs(num * 10 + i, sum + i, cnt + 1, ret);
         }
     }
 }
@@ -26,7 +26,7 @@ fn main() {
 
     list.sort();
 
-    let res: u64 = list[k-1];
+    let res: u64 = list[k - 1];
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
