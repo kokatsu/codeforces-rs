@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn is_lucky_digit(x: i64) -> bool {
     x == 4 || x == 7
@@ -7,12 +7,13 @@ fn is_lucky_digit(x: i64) -> bool {
 fn main() {
     let n: String = read_string();
 
-    let l: i64 = n.chars()
-                    .filter(|&x| is_lucky_digit(x.to_string().parse::<i64>().unwrap()))
-                    .collect::<Vec<_>>()
-                    .len() as i64;
+    let l: i64 = n
+        .chars()
+        .filter(|&x| is_lucky_digit(x.to_string().parse::<i64>().unwrap()))
+        .collect::<Vec<_>>()
+        .len() as i64;
 
-    let res: &str = if is_lucky_digit(l) {"YES"} else {"NO"};
+    let res: &str = if is_lucky_digit(l) { "YES" } else { "NO" };
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
