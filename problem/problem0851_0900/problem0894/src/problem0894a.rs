@@ -1,20 +1,19 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: String = read_string();
 
     let l: usize = n.len();
 
-    let mut dp: Vec<Vec<i64>> = vec![vec![0; 3]; l+1];
+    let mut dp: Vec<Vec<i64>> = vec![vec![0; 3]; l + 1];
     for (i, c) in n.chars().enumerate() {
-        dp[i+1] = dp[i].clone();
+        dp[i + 1] = dp[i].clone();
 
         if c == 'Q' {
-            dp[i+1][0] += 1;
-            dp[i+1][2] += dp[i][1];
-        }
-        else if c == 'A' {
-            dp[i+1][1] += dp[i][0];
+            dp[i + 1][0] += 1;
+            dp[i + 1][2] += dp[i][1];
+        } else if c == 'A' {
+            dp[i + 1][1] += dp[i][0];
         }
     }
 
