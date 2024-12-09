@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::cmp::Ordering;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,8 +9,8 @@ fn main() {
         (input[0], input[1])
     };
 
-    let (first, draw, second): (u8, u8, u8) = (1..=6)
-        .fold((0, 0, 0), |(first, draw, second), i| {
+    let (first, draw, second): (u8, u8, u8) =
+        (1..=6).fold((0, 0, 0), |(first, draw, second), i| {
             let x: u8 = a.abs_diff(i);
             let y: u8 = b.abs_diff(i);
             match x.cmp(&y) {
