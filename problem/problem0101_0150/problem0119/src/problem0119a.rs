@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let input: Vec<u64> = read_vec();
@@ -8,13 +8,7 @@ fn main() {
 
     let mut cnt: u64 = 0;
     while n > 0 {
-        let g: u64 =
-            if cnt % 2 == 0 {
-                gcd(n, a)
-            }
-            else {
-                gcd(n, b)
-            };
+        let g: u64 = if cnt % 2 == 0 { gcd(n, a) } else { gcd(n, b) };
 
         n -= g;
         cnt += 1;
