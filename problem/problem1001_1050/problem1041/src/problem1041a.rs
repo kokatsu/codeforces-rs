@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -8,7 +8,9 @@ fn main() {
 
     let (min, max): (usize, usize) = a
         .into_iter()
-        .fold((usize::MAX, usize::MIN), |(min, max), x| (min.min(x), max.max(x)));
+        .fold((usize::MAX, usize::MIN), |(min, max), x| {
+            (min.min(x), max.max(x))
+        });
 
     let res: usize = max - min + 1 - n;
 
