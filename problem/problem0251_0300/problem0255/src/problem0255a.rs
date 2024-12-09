@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
@@ -8,21 +8,18 @@ fn main() {
 
     let mut counts: Vec<u64> = vec![0; m];
     for i in 0..n {
-        counts[i%m] += a[i];
+        counts[i % m] += a[i];
     }
 
     let max: u64 = *counts.iter().max().unwrap();
 
-    let res: &str =
-        if counts[0] == max {
-            "chest"
-        }
-        else if counts[1] == max {
-            "biceps"
-        }
-        else {
-            "back"
-        };
+    let res: &str = if counts[0] == max {
+        "chest"
+    } else if counts[1] == max {
+        "biceps"
+    } else {
+        "back"
+    };
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
