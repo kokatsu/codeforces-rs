@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: u64 = read();
@@ -6,29 +6,21 @@ fn main() {
 
     let s: u64 = a.iter().sum();
 
-    let m: u64 =
-        if n % s == 0 {
-            s
-        }
-        else {
-            n % s
-        };
+    let m: u64 = if n % s == 0 { s } else { n % s };
 
-    let res: usize =
-        a
+    let res: usize = a
         .iter()
         .enumerate()
         .fold((0, m), |(res, rem), (i, &x)| {
             if res > 0 {
                 (res, rem)
+            } else if rem <= x {
+                (i + 1, 0)
+            } else {
+                (res, rem - x)
             }
-            else if rem <= x {
-                (i+1, 0)
-            }
-            else {
-                (res, rem-x)
-            }
-        }).0;
+        })
+        .0;
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
