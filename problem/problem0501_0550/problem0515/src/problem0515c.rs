@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -16,7 +16,7 @@ fn main() {
                 6 => vec!['3', '5'],
                 8 => vec!['2', '2', '2', '7'],
                 9 => vec!['2', '3', '3', '7'],
-                _ => vec![]
+                _ => vec![],
             }
         });
         a /= 10;
