@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let input: Vec<i64> = read_vec();
@@ -6,8 +6,8 @@ fn main() {
     let m: i64 = input[1];
     let a: i64 = input[2];
 
-    let x = (n + a - 1) / a;
-    let y = (m + a - 1) / a;
+    let x: i64 = (n + a - 1) / a;
+    let y: i64 = (m + a - 1) / a;
 
     let res: i64 = x * y;
 
