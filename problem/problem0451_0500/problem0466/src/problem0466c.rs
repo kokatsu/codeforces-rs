@@ -1,11 +1,10 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
     let a: Vec<i64> = read_vec();
 
-    let cumsum: Vec<i64> =
-        a
+    let cumsum: Vec<i64> = a
         .iter()
         .scan(0, |cumsum, x| {
             *cumsum += x;
@@ -13,36 +12,32 @@ fn main() {
         })
         .collect();
 
-    let res: i64 =
-        if cumsum[n-1] % 3 == 0 && n >= 3 {
-            let counts: Vec<i64> =
-                cumsum
-                .iter()
-                .map(|&x| x == cumsum[n-1] / 3)
-                .collect::<Vec<bool>>()
-                .iter()
-                .scan(0, |cum, x| {
-                    if *x {
-                        *cum += 1;
-                    }
-                    Some(*cum)
-                })
-                .collect();
-            (2..n)
+    let res: i64 = if cumsum[n - 1] % 3 == 0 && n >= 3 {
+        let counts: Vec<i64> = cumsum
+            .iter()
+            .map(|&x| x == cumsum[n - 1] / 3)
+            .collect::<Vec<bool>>()
+            .iter()
+            .scan(0, |cum, x| {
+                if *x {
+                    *cum += 1;
+                }
+                Some(*cum)
+            })
+            .collect();
+        (2..n)
             .rev()
             .fold((0, 0), |(res, cum), i| {
-                if cum + a[i] == cumsum[n-1] / 3 {
-                    (res+counts[i-2], cum+a[i])
-                }
-                else {
-                    (res, cum+a[i])
+                if cum + a[i] == cumsum[n - 1] / 3 {
+                    (res + counts[i - 2], cum + a[i])
+                } else {
+                    (res, cum + a[i])
                 }
             })
             .0
-        }
-        else {
-            0
-        };
+    } else {
+        0
+    };
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
