@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
@@ -6,8 +6,7 @@ fn main() {
 
     a.sort();
 
-    let res: u64 = (0..n/2)
-        .fold(0, |res, i| res + a[i*2+1] - a[i*2]);
+    let res: u64 = (0..n / 2).fold(0, |res, i| res + a[i * 2 + 1] - a[i * 2]);
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
