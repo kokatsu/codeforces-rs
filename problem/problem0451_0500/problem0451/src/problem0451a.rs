@@ -1,17 +1,15 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let input: Vec<i64> = read_vec();
     let n: i64 = input[0];
     let m: i64 = input[1];
 
-    let res: &str =
-        if n.min(m) % 2 == 1 {
-            "Akshat"
-        }
-        else {
-            "Malvika"
-        };
+    let res: &str = if n.min(m) % 2 == 1 {
+        "Akshat"
+    } else {
+        "Malvika"
+    };
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();

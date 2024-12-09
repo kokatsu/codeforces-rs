@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
@@ -6,10 +6,10 @@ fn main() {
 
     let mut l: usize = 1;
     let mut r: usize = 1;
-    for i in 0..n-1 {
-        if a[i] > a[i+1] {
+    for i in 0..n - 1 {
+        if a[i] > a[i + 1] {
             let mut j: usize = i + 1;
-            while j < n - 1 && a[j] > a[j+1] {
+            while j < n - 1 && a[j] > a[j + 1] {
                 j += 1;
             }
 
@@ -21,15 +21,14 @@ fn main() {
         }
     }
 
-    let is_ok: bool = (0..n-1).fold(true, |is_ok, i| is_ok && a[i] < a[i+1]);
+    let is_ok: bool = (0..n - 1).fold(true, |is_ok, i| is_ok && a[i] < a[i + 1]);
 
     let mut out = BufWriter::new(stdout().lock());
 
     if is_ok {
         writeln!(out, "yes").unwrap();
         writeln!(out, "{} {}", l, r).unwrap();
-    }
-    else {
+    } else {
         writeln!(out, "no").unwrap();
     }
 }
