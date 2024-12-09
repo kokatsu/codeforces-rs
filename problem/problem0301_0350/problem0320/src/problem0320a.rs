@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: String = read_string();
@@ -8,22 +8,19 @@ fn main() {
     let mut is_ok: bool = true;
     let mut pos: usize = 0usize;
     while pos < l {
-        if pos + 3usize <= l && &n[pos..pos+3usize] == "144" {
+        if pos + 3usize <= l && &n[pos..pos + 3usize] == "144" {
             pos += 3usize;
-        }
-        else if pos + 2usize <= l && &n[pos..pos+2usize] == "14" {
+        } else if pos + 2usize <= l && &n[pos..pos + 2usize] == "14" {
             pos += 2usize;
-        }
-        else if &n[pos..pos+1usize] == "1" {
+        } else if &n[pos..pos + 1usize] == "1" {
             pos += 1usize;
-        }
-        else {
+        } else {
             is_ok = false;
             break;
         }
     }
 
-    let res: &str = if is_ok {"YES"} else {"NO"};
+    let res: &str = if is_ok { "YES" } else { "NO" };
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
