@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -14,11 +14,11 @@ fn main() {
         };
 
         if x > 0 {
-            a[x-1] += y - 1;
+            a[x - 1] += y - 1;
         }
 
         if x < n - 1 {
-            a[x+1] += a[x] - y;
+            a[x + 1] += a[x] - y;
         }
 
         a[x] = 0;
