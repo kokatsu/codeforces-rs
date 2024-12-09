@@ -1,13 +1,17 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let d: Vec<u64> = read_vec();
 
-    let res: u64 =
-        *vec![(d[0]+d[1])*2, (d[0]+d[2])*2, (d[1]+d[2])*2, d.iter().sum::<u64>()]
-        .iter()
-        .min()
-        .unwrap();
+    let res: u64 = *vec![
+        (d[0] + d[1]) * 2,
+        (d[0] + d[2]) * 2,
+        (d[1] + d[2]) * 2,
+        d.iter().sum::<u64>(),
+    ]
+    .iter()
+    .min()
+    .unwrap();
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
