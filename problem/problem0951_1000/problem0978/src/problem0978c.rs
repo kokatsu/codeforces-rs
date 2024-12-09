@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -8,8 +8,7 @@ fn main() {
 
     let a: Vec<u64> = read_vec();
 
-    let cumsum: Vec<u64> =
-        a
+    let cumsum: Vec<u64> = a
         .iter()
         .scan(0, |cumsum, x| {
             *cumsum += x;
@@ -22,16 +21,13 @@ fn main() {
     for y in b.into_iter() {
         let l: usize = cumsum.partition_point(|&x| x <= y);
 
-        let (dormitory, room): (usize, u64) =
-            if l == 0 {
-                (l+1, y)
-            }
-            else if y == cumsum[l-1] {
-                (l, a[l-1])
-            }
-            else {
-                (l+1, a[l]+y-cumsum[l])
-            };
+        let (dormitory, room): (usize, u64) = if l == 0 {
+            (l + 1, y)
+        } else if y == cumsum[l - 1] {
+            (l, a[l - 1])
+        } else {
+            (l + 1, a[l] + y - cumsum[l])
+        };
 
         writeln!(out, "{} {}", dormitory, room).unwrap();
     }

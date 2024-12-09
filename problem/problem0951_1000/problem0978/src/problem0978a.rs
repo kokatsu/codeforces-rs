@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let _n: usize = read();
@@ -16,10 +16,11 @@ fn main() {
     }
 
     let l: usize = uniques.len();
-    let elements: String =
-        (0..l-1)
+    let elements: String = (0..l - 1)
         .rev()
-        .fold(uniques[l-1].to_string(), |elements, i| elements + " " + &uniques[i].to_string());
+        .fold(uniques[l - 1].to_string(), |elements, i| {
+            elements + " " + &uniques[i].to_string()
+        });
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}\n{}", l, elements).unwrap();
