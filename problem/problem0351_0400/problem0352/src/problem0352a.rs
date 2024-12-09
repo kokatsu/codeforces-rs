@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,20 +9,17 @@ fn main() {
     let fives: usize = a.into_iter().filter(|&x| x == 5_u8).count();
     let zeros: usize = n - fives;
 
-    let res: String =
-        if zeros > 0 {
-            let s: String = "5".to_string().repeat(fives/9*9);
-            let zero: String = "0".to_string();
-            if s.is_empty() {
-                zero
-            }
-            else {
-                s + &zero.repeat(zeros)
-            }
+    let res: String = if zeros > 0 {
+        let s: String = "5".to_string().repeat(fives / 9 * 9);
+        let zero: String = "0".to_string();
+        if s.is_empty() {
+            zero
+        } else {
+            s + &zero.repeat(zeros)
         }
-        else {
-            "-1".to_string()
-        };
+    } else {
+        "-1".to_string()
+    };
 
     writeln!(out, "{}", res).unwrap();
 }
