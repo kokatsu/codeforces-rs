@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let input: Vec<i64> = read_vec();
@@ -9,7 +9,7 @@ fn main() {
 
     let n: i64 = *vec![k2, k5, k6].iter().min().unwrap();
 
-    let res: i64 = n * 256 + k3.min(k2-n) * 32;
+    let res: i64 = n * 256 + k3.min(k2 - n) * 32;
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();

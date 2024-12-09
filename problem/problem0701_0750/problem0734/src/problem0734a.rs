@@ -1,31 +1,20 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let _n: usize = read();
     let s: String = read_string();
 
-    let count: i64 =
-        s
+    let count: i64 = s
         .chars()
-        .fold(0, |count, x| {
-            if x == 'A' {
-                count + 1
-            }
-            else {
-                count - 1
-            }
-        });
+        .fold(0, |count, x| if x == 'A' { count + 1 } else { count - 1 });
 
-    let res: &str =
-        if count > 0 {
-            "Anton"
-        }
-        else if count < 0 {
-            "Danik"
-        }
-        else {
-            "Friendship"
-        };
+    let res: &str = if count > 0 {
+        "Anton"
+    } else if count < 0 {
+        "Danik"
+    } else {
+        "Friendship"
+    };
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
