@@ -1,31 +1,21 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let _n: usize = read();
     let a: Vec<i64> = read_vec();
 
     let (num, zero, minus): (i64, bool, bool) =
-        a
-        .iter()
-        .fold((0, false, false), |(num, zero, minus), &x| {
+        a.iter().fold((0, false, false), |(num, zero, minus), &x| {
             if x > 0 {
-                (num+x-1, zero, minus)
-            }
-            else if x < 0 {
-                (num-x-1, zero, !minus)
-            }
-            else {
-                (num+1, true, minus)
+                (num + x - 1, zero, minus)
+            } else if x < 0 {
+                (num - x - 1, zero, !minus)
+            } else {
+                (num + 1, true, minus)
             }
         });
 
-    let res: i64 =
-        if zero || !minus {
-            num
-        }
-        else {
-            num + 2
-        };
+    let res: i64 = if zero || !minus { num } else { num + 2 };
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
