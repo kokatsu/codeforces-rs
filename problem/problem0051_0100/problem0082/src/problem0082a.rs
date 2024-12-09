@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut n: usize = read();
@@ -11,7 +11,7 @@ fn main() {
         d *= 2;
     }
 
-    let res: &str = people[(n-1)/d];
+    let res: &str = people[(n - 1) / d];
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
