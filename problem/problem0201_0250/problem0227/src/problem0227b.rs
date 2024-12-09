@@ -1,12 +1,11 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashMap;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: u64 = read();
     let a: Vec<u64> = read_vec();
 
-    let map: HashMap<u64, u64> =
-        a
+    let map: HashMap<u64, u64> = a
         .iter()
         .enumerate()
         .fold(HashMap::new(), |mut map, (i, x)| {
@@ -17,13 +16,10 @@ fn main() {
     let _m: u64 = read();
     let b: Vec<u64> = read_vec();
 
-    let (l, r): (u64, u64) =
-        b
-        .iter()
-        .fold((0, 0), |(l, r), x| {
-            let y: u64 = *map.get(&x).unwrap();
-            (l+y+1, r+n-y)
-        });
+    let (l, r): (u64, u64) = b.iter().fold((0, 0), |(l, r), x| {
+        let y: u64 = *map.get(&x).unwrap();
+        (l + y + 1, r + n - y)
+    });
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{} {}", l, r).unwrap();
