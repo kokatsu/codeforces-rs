@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
@@ -11,17 +11,9 @@ fn main() {
 
     a.sort();
 
-    let res: u64 =
-        a
+    let res: u64 = a
         .iter()
-        .fold(0, |res, (x, y)| {
-            if res <= *y {
-                *y
-            }
-            else {
-                *x
-            }
-        });
+        .fold(0, |res, (x, y)| if res <= *y { *y } else { *x });
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();

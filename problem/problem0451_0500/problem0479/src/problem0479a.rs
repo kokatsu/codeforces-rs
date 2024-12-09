@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let a: u64 = read();
@@ -10,7 +10,10 @@ fn main() {
     let x: u64 = a * b;
     let y: u64 = b * c;
 
-    let res: u64 = *vec![u+c, u*c, a+v, a*v, x+c, x*c, a+y, a*y].iter().max().unwrap();
+    let res: u64 = *vec![u + c, u * c, a + v, a * v, x + c, x * c, a + y, a * y]
+        .iter()
+        .max()
+        .unwrap();
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
