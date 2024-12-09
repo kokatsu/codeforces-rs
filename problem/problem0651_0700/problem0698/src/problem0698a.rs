@@ -1,19 +1,19 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
     let a: Vec<usize> = read_vec();
 
-    let mut dp: Vec<Vec<usize>> = vec![vec![0; 3]; n+1];
+    let mut dp: Vec<Vec<usize>> = vec![vec![0; 3]; n + 1];
     for i in 0..n {
-        dp[i+1][0] = *dp[i].iter().max().unwrap();
+        dp[i + 1][0] = *dp[i].iter().max().unwrap();
 
         if a[i] & 1 == 1 {
-            dp[i+1][1] = dp[i][0].max(dp[i][2]) + 1;
+            dp[i + 1][1] = dp[i][0].max(dp[i][2]) + 1;
         }
 
         if (a[i] >> 1) & 1 == 1 {
-            dp[i+1][2] = dp[i][0].max(dp[i][1]) + 1;
+            dp[i + 1][2] = dp[i][0].max(dp[i][1]) + 1;
         }
     }
 
