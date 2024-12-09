@@ -1,13 +1,13 @@
-use std::io::{stdout, Write, BufWriter};
-use std::collections::BinaryHeap;
 use std::cmp::Reverse;
+use std::collections::BinaryHeap;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let input: Vec<usize> = read_vec();
     let n: usize = input[0];
     let m: usize = input[1];
 
-    let mut graph: Vec<Vec<(i64, usize)>> = vec![Vec::new(); n+1];
+    let mut graph: Vec<Vec<(i64, usize)>> = vec![Vec::new(); n + 1];
     for _ in 0..m {
         let edge: Vec<usize> = read_vec();
         let a: usize = edge[0];
@@ -20,12 +20,12 @@ fn main() {
 
     let max: i64 = std::i64::MAX / 2;
 
-    let mut dists = vec![max; n+1];
+    let mut dists = vec![max; n + 1];
     dists[1] = 0;
 
-    let mut prevs = vec![0; n+1];
+    let mut prevs = vec![0; n + 1];
 
-    let mut heap: BinaryHeap::<(Reverse<i64>, usize)> = BinaryHeap::new();
+    let mut heap: BinaryHeap<(Reverse<i64>, usize)> = BinaryHeap::new();
     heap.push((Reverse(0), 1));
     while let Some(x) = heap.pop() {
         let l: i64 = (x.0).0;
@@ -54,8 +54,7 @@ fn main() {
         now = prevs[now];
     }
 
-    let res: String =
-        path
+    let res: String = path
         .iter()
         .rev()
         .fold(1.to_string(), |res, p| res + " " + &p.to_string());
