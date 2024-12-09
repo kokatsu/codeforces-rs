@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -27,8 +27,7 @@ fn main() {
     }
 
     for i in 0..n {
-        let res: String =
-            grid[i]
+        let res: String = grid[i]
             .iter()
             .fold(String::new(), |res, g| res + &g.to_string());
 
