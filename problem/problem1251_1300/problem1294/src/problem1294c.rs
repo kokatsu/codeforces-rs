@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -16,7 +16,7 @@ fn main() {
                 break;
             }
 
-            for j in i+1..=n {
+            for j in i + 1..=n {
                 let k: i64 = n / (i * j);
                 if k <= j {
                     break;
