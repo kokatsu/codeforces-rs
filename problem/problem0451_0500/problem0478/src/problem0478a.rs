@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let c: Vec<i64> = read_vec();
@@ -6,13 +6,7 @@ fn main() {
     let sum: i64 = c.iter().sum();
     let (div, rem): (i64, i64) = (sum / 5, sum % 5);
 
-    let res: i64 =
-        if div > 0 && rem == 0 {
-            div
-        }
-        else {
-            -1
-        };
+    let res: i64 = if div > 0 && rem == 0 { div } else { -1 };
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();
