@@ -1,0 +1,5 @@
+[workspace]
+members = [
+  "problem/problem*/problem*",
+]
+resolver = "2"
