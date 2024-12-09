@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
@@ -13,17 +13,9 @@ fn main() {
     let l: usize = 1 << n;
     let mut res: &str = "NO";
     for i in 0..l {
-        let b: u64 = (0..n)
-            .fold(0, |b, j| {
-                if (i >> j) % 2 == 1 {
-                    b + a[j]
-                }
-                else {
-                    b
-                }
-            });
+        let b: u64 = (0..n).fold(0, |b, j| if (i >> j) % 2 == 1 { b + a[j] } else { b });
 
-        if b * 2 == s || b.abs_diff(s-b) % 360 == 0 {
+        if b * 2 == s || b.abs_diff(s - b) % 360 == 0 {
             res = "YES";
         }
     }
