@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,7 +11,7 @@ fn main() {
             break;
         }
 
-        fib.push(fib[i-1]+fib[i]);
+        fib.push(fib[i - 1] + fib[i]);
     }
 
     let l: usize = fib.len();
