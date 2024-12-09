@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashMap;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -14,14 +14,16 @@ fn main() {
         scores[i] = input[1].parse().ok().unwrap();
     }
 
-    let map1: HashMap<String, i64> = (0..n)
-        .fold(HashMap::new(), |mut map1, i| {
-            *map1.entry(names[i].clone()).or_insert(0) += scores[i];
-            map1
-        });
+    let map1: HashMap<String, i64> = (0..n).fold(HashMap::new(), |mut map1, i| {
+        *map1.entry(names[i].clone()).or_insert(0) += scores[i];
+        map1
+    });
 
     let max_score: i64 = *map1.iter().map(|(_, score)| score).max().unwrap();
-    let map2: HashMap<String, i64> = map1.into_iter().filter(|(_, score)| score == &max_score).collect();
+    let map2: HashMap<String, i64> = map1
+        .into_iter()
+        .filter(|(_, score)| score == &max_score)
+        .collect();
 
     let mut map3: HashMap<String, i64> = HashMap::new();
     for i in 0..n {
