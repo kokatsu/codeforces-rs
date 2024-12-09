@@ -1,11 +1,10 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
     let t: Vec<char> = read_string().chars().collect();
 
-    let res: String =
-        (0..10)
+    let res: String = (0..10)
         .scan(0, |cum, i| {
             *cum += i;
             Some(*cum)
