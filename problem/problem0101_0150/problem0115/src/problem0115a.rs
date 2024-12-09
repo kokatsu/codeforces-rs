@@ -1,13 +1,12 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn dfs(x: usize, y: &Vec<i64>, z: &mut Vec<i64>) {
     let pos: i64 = y[x];
     if pos == -1 {
         z[x] = 1;
-    }
-    else if z[x] == !0 {
-        dfs((pos-1) as usize, y, z);
-        z[x] = z[(pos-1) as usize] + 1;
+    } else if z[x] == !0 {
+        dfs((pos - 1) as usize, y, z);
+        z[x] = z[(pos - 1) as usize] + 1;
     }
 }
 
