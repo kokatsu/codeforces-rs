@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let input: Vec<i64> = read_vec();
@@ -7,8 +7,8 @@ fn main() {
     let x2: i64 = input[2];
     let y2: i64 = input[3];
 
-    let dx: i64 = (x1-x2).abs();
-    let dy: i64 = (y1-y2).abs();
+    let dx: i64 = (x1 - x2).abs();
+    let dy: i64 = (y1 - y2).abs();
 
     let mut out = BufWriter::new(stdout().lock());
 
@@ -18,8 +18,8 @@ fn main() {
     }
 
     let (x3, y3, x4, y4): (i64, i64, i64, i64) = match (dx == 0, dy == 0) {
-        (true, false) => (x1+dy, y1, x2+dy, y2),
-        (false, true) => (x1, y1+dx, x2, y2+dx),
+        (true, false) => (x1 + dy, y1, x2 + dy, y2),
+        (false, true) => (x1, y1 + dx, x2, y2 + dx),
         _ => (x1, y2, x2, y1),
     };
 
