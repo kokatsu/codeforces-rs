@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
@@ -12,8 +12,7 @@ fn main() {
             s[0] = '+';
             s[1] = '+';
             is_ok = true;
-        }
-        else if !is_ok && s[3] == 'O' && s[4] == 'O' {
+        } else if !is_ok && s[3] == 'O' && s[4] == 'O' {
             s[3] = '+';
             s[4] = '+';
             is_ok = true;
@@ -27,8 +26,7 @@ fn main() {
     if is_ok {
         writeln!(out, "YES").unwrap();
         writeln!(out, "{}", &seats.join("\n")).unwrap();
-    }
-    else {
+    } else {
         writeln!(out, "NO").unwrap();
     }
 }
