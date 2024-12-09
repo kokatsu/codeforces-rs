@@ -8,9 +8,9 @@ edition = "2021"
 [dependencies]
 
 [[bin]]
-name = "a"
+name = "p0479a"
 path = "src/problem0479a.rs"
 
 [[bin]]
-name = "c"
+name = "p0479c"
 path = "src/problem0479c.rs"
