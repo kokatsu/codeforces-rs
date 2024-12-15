@@ -1,10 +1,10 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn solve(s: &[char], a: char, b: char) -> usize {
     let l: usize = s.len();
 
     if let Some(y) = s.iter().position(|&c| c == b) {
-        if let Some(x) = s[y+1..l].iter().position(|&c| c == a) {
+        if let Some(x) = s[y + 1..l].iter().position(|&c| c == a) {
             return x + y;
         }
     }
