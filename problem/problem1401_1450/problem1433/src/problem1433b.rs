@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,7 +11,7 @@ fn main() {
 
         let b: Vec<usize> = (0..n).filter(|&i| a[i] == 1).collect();
 
-        let res: usize = (1..b.len()).map(|i| b[i] - b[i-1] - 1).sum();
+        let res: usize = (1..b.len()).map(|i| b[i] - b[i - 1] - 1).sum();
 
         writeln!(out, "{}", res).unwrap();
     }

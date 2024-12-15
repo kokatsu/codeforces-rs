@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,25 +11,20 @@ fn main() {
 
         let max: u64 = *a.iter().max().unwrap();
 
-        let indexes: Vec<usize> =
-            a
+        let indexes: Vec<usize> = a
             .iter()
             .enumerate()
             .filter(|(_1, &x)| x == max)
             .map(|(i, _)| i)
             .collect();
 
-        let res: i64 =
-            indexes
-            .iter()
-            .fold(-1, |res, &i| {
-                if (i > 0 && a[i-1] < max) || (i < n - 1 && a[i+1] < max) {
-                    i as i64 + 1
-                }
-                else {
-                    res
-                }
-            });
+        let res: i64 = indexes.iter().fold(-1, |res, &i| {
+            if (i > 0 && a[i - 1] < max) || (i < n - 1 && a[i + 1] < max) {
+                i as i64 + 1
+            } else {
+                res
+            }
+        });
 
         writeln!(out, "{}", res).unwrap();
     }
