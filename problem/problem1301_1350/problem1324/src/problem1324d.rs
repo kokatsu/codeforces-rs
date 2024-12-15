@@ -1,12 +1,11 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let n: usize = read();
     let a: Vec<i64> = read_vec();
     let b: Vec<i64> = read_vec();
 
-    let mut x: Vec<i64> =
-        a
+    let mut x: Vec<i64> = a
         .into_iter()
         .zip(b.into_iter())
         .map(|(u, v)| u - v)
@@ -14,11 +13,9 @@ fn main() {
 
     x.sort();
 
-    let res: i64 =
-        (0..n-1)
-        .fold(0, |res, i| {
-            res + (n - x[i+1..n].partition_point(|&v| v <= -x[i]) - i - 1) as i64
-        });
+    let res: i64 = (0..n - 1).fold(0, |res, i| {
+        res + (n - x[i + 1..n].partition_point(|&v| v <= -x[i]) - i - 1) as i64
+    });
 
     let mut out = BufWriter::new(stdout().lock());
     writeln!(out, "{}", res).unwrap();

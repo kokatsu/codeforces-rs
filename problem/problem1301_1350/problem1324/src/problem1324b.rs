@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashSet;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -12,17 +12,14 @@ fn main() {
 
         let mut set: HashSet<usize> = HashSet::new();
 
-        let res: &str =
-            (1..n)
-            .fold("NO", |res, i| {
-                if set.contains(&a[i]) {
-                    "YES"
-                }
-                else {
-                    set.insert(a[i-1]);
-                    res
-                }
-            });
+        let res: &str = (1..n).fold("NO", |res, i| {
+            if set.contains(&a[i]) {
+                "YES"
+            } else {
+                set.insert(a[i - 1]);
+                res
+            }
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

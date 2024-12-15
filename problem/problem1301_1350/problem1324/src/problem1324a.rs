@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,13 +9,11 @@ fn main() {
         let _n: usize = read();
         let a: Vec<u64> = read_vec();
 
-        let res: &str =
-            if a.iter().all(|x| x % 2 == a[0] % 2) {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if a.iter().all(|x| x % 2 == a[0] % 2) {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
