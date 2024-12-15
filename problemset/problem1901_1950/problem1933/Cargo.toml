@@ -9,9 +9,9 @@ edition = "2021"
 
 
 [[bin]]
-name = "a"
+name = "p1933a"
 path = "src/problem1933a.rs"
 
 [[bin]]
-name = "b"
+name = "p1933b"
 path = "src/problem1933b.rs"
