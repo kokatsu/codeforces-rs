@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,23 +10,21 @@ fn main() {
         let n: u64 = input[0];
         let k: u64 = input[1];
 
-        let res: u64 =
-            if n % 2 == 0 {
-                n + k * 2
+        let res: u64 = if n % 2 == 0 {
+            n + k * 2
+        } else {
+            let mut d: u64 = 3;
+            while d * d <= n {
+                if n % d == 0 {
+                    break;
+                }
+                d += 2;
             }
-            else {
-                let mut d: u64 = 3;
-                while d * d <= n {
-                    if n % d == 0 {
-                        break;
-                    }
-                    d += 2;
-                }
-                if n % d != 0 {
-                    d = n;
-                }
-                n + d + (k - 1) * 2
-            };
+            if n % d != 0 {
+                d = n;
+            }
+            n + d + (k - 1) * 2
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
