@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -8,20 +8,10 @@ fn main() {
     for _ in 0..t {
         let s: Vec<char> = read_string().chars().collect();
 
-        let zero: usize =
-            s
-            .iter()
-            .filter(|x| x == &&'0')
-            .count();
+        let zero: usize = s.iter().filter(|x| x == &&'0').count();
         let one: usize = s.len() - zero;
 
-        let res: usize =
-            if zero == one {
-                zero - 1
-            }
-            else {
-                zero.min(one)
-            };
+        let res: usize = if zero == one { zero - 1 } else { zero.min(one) };
 
         writeln!(out, "{}", res).unwrap();
     }

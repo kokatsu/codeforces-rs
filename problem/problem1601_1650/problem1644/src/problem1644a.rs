@@ -1,28 +1,24 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
 
-    let rgb: Vec<char> = vec!{'r', 'g', 'b'};
+    let rgb: Vec<char> = vec!['r', 'g', 'b'];
 
     let mut out = BufWriter::new(stdout().lock());
 
     for _ in 0..t {
         let s: String = read_string();
 
-        let res: &str =
-            rgb
-            .iter()
-            .fold("YES", |res, x| {
-                let l: usize = s.find(*x).unwrap();
-                let u: usize = s.find(x.to_ascii_uppercase()).unwrap();
-                if l < u {
-                    res
-                }
-                else {
-                    "NO"
-                }
-            });
+        let res: &str = rgb.iter().fold("YES", |res, x| {
+            let l: usize = s.find(*x).unwrap();
+            let u: usize = s.find(x.to_ascii_uppercase()).unwrap();
+            if l < u {
+                res
+            } else {
+                "NO"
+            }
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -13,13 +13,11 @@ fn main() {
 
         let m: u64 = r / a * a - 1;
 
-        let res: u64 =
-            if l <= m && m <= r {
-                (r/a+r%a).max(m/a+m%a)
-            }
-            else {
-                r / a + r % a
-            };
+        let res: u64 = if l <= m && m <= r {
+            (r / a + r % a).max(m / a + m % a)
+        } else {
+            r / a + r % a
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

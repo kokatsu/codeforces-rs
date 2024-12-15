@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,13 +9,11 @@ fn main() {
         let n: usize = read();
         let s: Vec<char> = read_string().chars().collect();
 
-        let res: &str =
-            if n == 1 || (n == 2 && s[0] != s[1]) {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if n == 1 || (n == 2 && s[0] != s[1]) {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

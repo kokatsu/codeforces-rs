@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -13,25 +13,16 @@ fn main() {
         let a: Vec<usize> = read_vec();
         let b: Vec<usize> = read_vec();
 
-        let mut c: Vec<(usize, usize)> =
-            a
+        let mut c: Vec<(usize, usize)> = a
             .into_iter()
             .zip(b.into_iter())
             .collect::<Vec<(usize, usize)>>();
 
         c.sort_by(|a, b| a.0.cmp(&b.0));
 
-        let res: usize =
-            c
+        let res: usize = c
             .iter()
-            .fold(k, |res, x| {
-                if res >= x.0 {
-                    res + x.1
-                }
-                else {
-                    res
-                }
-            });
+            .fold(k, |res, x| if res >= x.0 { res + x.1 } else { res });
 
         writeln!(out, "{}", res).unwrap();
     }

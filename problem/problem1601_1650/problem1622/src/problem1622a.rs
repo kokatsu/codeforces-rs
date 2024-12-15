@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,19 +10,15 @@ fn main() {
 
         l.sort();
 
-        let res: &str =
-            if l[0] + l[1] == l[2] {
-                "YES"
-            }
-            else if l[0] == l[1] && l[2] % 2 == 0 {
-                "YES"
-            }
-            else if l[0] % 2 == 0 && l[1] == l[2] {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if l[0] + l[1] == l[2] {
+            "YES"
+        } else if l[0] == l[1] && l[2] % 2 == 0 {
+            "YES"
+        } else if l[0] % 2 == 0 && l[1] == l[2] {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

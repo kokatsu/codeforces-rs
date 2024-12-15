@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashSet;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -13,12 +13,12 @@ fn main() {
 
         let s: i64 = (n as f64).sqrt().floor() as i64;
         for i in 1..=s {
-            set.insert(i*i);
+            set.insert(i * i);
         }
 
         let c: i64 = (n as f64).cbrt().floor() as i64;
         for i in 1..=c {
-            set.insert(i*i*i);
+            set.insert(i * i * i);
         }
 
         let res: usize = set.len();

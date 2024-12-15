@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,19 +11,15 @@ fn main() {
         let b: i64 = input[1];
         let c: i64 = input[2];
 
-        let res: &str =
-            if (b * 2 - c) % a == 0 && a <= b * 2 - c {
-                "YES"
-            }
-            else if (b * 2 - a) % c == 0 && c <= b * 2 - a {
-                "YES"
-            }
-            else if (c - a) % 2 == 0 && ((a + c) / 2) % b == 0 && b <= (a + c) / 2 {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if (b * 2 - c) % a == 0 && a <= b * 2 - c {
+            "YES"
+        } else if (b * 2 - a) % c == 0 && c <= b * 2 - a {
+            "YES"
+        } else if (c - a) % 2 == 0 && ((a + c) / 2) % b == 0 && b <= (a + c) / 2 {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

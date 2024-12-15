@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: i64 = read();
@@ -8,7 +8,11 @@ fn main() {
     for _ in 0..t {
         let n: i64 = read();
 
-        let res: i64 = if n % 7 == 0 {n} else {(n / 10 * 10 + 7) / 7 * 7};
+        let res: i64 = if n % 7 == 0 {
+            n
+        } else {
+            (n / 10 * 10 + 7) / 7 * 7
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

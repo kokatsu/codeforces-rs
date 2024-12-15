@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -8,11 +8,12 @@ fn main() {
     for _ in 0..t {
         let (n, _m, r, c): (usize, usize, usize, usize) = {
             let input: Vec<usize> = read_vec();
-            (input[0], input[1], input[2]-1, input[3]-1)
+            (input[0], input[1], input[2] - 1, input[3] - 1)
         };
 
-        let (is_black, row_col_black, contain_black): (bool, bool, bool) = (0..n)
-            .fold((false, false, false), |(is_black, row_col_black, contain_black), i| {
+        let (is_black, row_col_black, contain_black): (bool, bool, bool) = (0..n).fold(
+            (false, false, false),
+            |(is_black, row_col_black, contain_black), i| {
                 let row: Vec<char> = read_string().chars().collect();
                 match (i == r, row[c] == 'B', row.into_iter().any(|x| x == 'B')) {
                     (true, true, _) => (true, row_col_black, contain_black),
@@ -20,21 +21,18 @@ fn main() {
                     (false, false, true) => (is_black, row_col_black, true),
                     _ => (is_black, row_col_black, contain_black),
                 }
-            });
+            },
+        );
 
-        let res: i64 =
-            if is_black {
-                0
-            }
-            else if row_col_black {
-                1
-            }
-            else if contain_black {
-                2
-            }
-            else {
-                -1
-            };
+        let res: i64 = if is_black {
+            0
+        } else if row_col_black {
+            1
+        } else if contain_black {
+            2
+        } else {
+            -1
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

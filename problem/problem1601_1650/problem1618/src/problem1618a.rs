@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: i64 = read();
@@ -8,7 +8,7 @@ fn main() {
     for _ in 0..t {
         let a: Vec<i64> = read_vec();
 
-        writeln!(out, "{} {} {}", a[0], a[1], a[6]-a[0]-a[1]).unwrap();
+        writeln!(out, "{} {} {}", a[0], a[1], a[6] - a[0] - a[1]).unwrap();
     }
 }
 

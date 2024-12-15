@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashMap;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -10,27 +10,16 @@ fn main() {
         let _n: usize = read();
         let a: Vec<i8> = read_vec();
 
-        let map: HashMap<i8, i8> = a
-            .iter()
-            .fold(HashMap::new(), |mut map, x| {
-                *map.entry(x.abs()).or_insert(0) += 1;
-                map
-            });
+        let map: HashMap<i8, i8> = a.iter().fold(HashMap::new(), |mut map, x| {
+            *map.entry(x.abs()).or_insert(0) += 1;
+            map
+        });
 
-        let vec: Vec<(i8, i8)> = map
-            .into_iter()
-            .collect::<Vec<_>>();
+        let vec: Vec<(i8, i8)> = map.into_iter().collect::<Vec<_>>();
 
         let res: i8 = vec
             .iter()
-            .map(|x| {
-                if x.0 == 0 {
-                    1
-                }
-                else {
-                    x.1.min(2)
-                }
-            })
+            .map(|x| if x.0 == 0 { 1 } else { x.1.min(2) })
             .sum();
 
         writeln!(out, "{}", res).unwrap();
