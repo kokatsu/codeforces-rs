@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn is_power_of_two(x: u64) -> bool {
     (x & (x - 1)) == 0
