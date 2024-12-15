@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -15,9 +15,8 @@ fn main() {
             .fold(("YES", 0), |(res, rem), (i, x)| {
                 let j: u64 = i as u64;
                 if x + rem >= j {
-                    (res, x+rem-j)
-                }
-                else {
+                    (res, x + rem - j)
+                } else {
                     ("NO", 0)
                 }
             })
