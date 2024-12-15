@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,16 +11,13 @@ fn main() {
 
         let s: i64 = a.iter().sum();
 
-        let res: i64 =
-            if s > n {
-                s - n
-            }
-            else if s < n {
-                1
-            }
-            else {
-                0
-            };
+        let res: i64 = if s > n {
+            s - n
+        } else if s < n {
+            1
+        } else {
+            0
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -16,25 +16,19 @@ fn main() {
             continue;
         }
 
-        let pos: usize =
-            (1..n)
+        let pos: usize = (1..n)
             .fold((0, i64::MAX), |(pos, diff), i| {
-                if h[i] - h[i-1] < diff {
-                    (i, h[i]-h[i-1])
-                }
-                else {
+                if h[i] - h[i - 1] < diff {
+                    (i, h[i] - h[i - 1])
+                } else {
                     (pos, diff)
                 }
             })
             .0;
 
-        let s: String =
-            (pos+1..n)
-            .fold(h[pos].to_string(), |s, i| s + " " + &h[i].to_string());
+        let s: String = (pos + 1..n).fold(h[pos].to_string(), |s, i| s + " " + &h[i].to_string());
 
-        let res: String =
-            (0..pos)
-            .fold(s, |res, i| res + " " + &h[i].to_string());
+        let res: String = (0..pos).fold(s, |res, i| res + " " + &h[i].to_string());
 
         writeln!(out, "{}", res).unwrap();
     }
