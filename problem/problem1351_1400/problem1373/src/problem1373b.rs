@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: i64 = read();
@@ -9,13 +9,10 @@ fn main() {
         let s: String = read_string();
 
         let l: usize = s.len();
-        let m: usize = s.chars()
-                        .filter(|&x| x == '0')
-                        .collect::<Vec<_>>()
-                        .len();
-        let n: usize = m.min(l-m);
+        let m: usize = s.chars().filter(|&x| x == '0').collect::<Vec<_>>().len();
+        let n: usize = m.min(l - m);
 
-        let res: &str = if n % 2 == 1 {"DA"} else {"NET"};
+        let res: &str = if n % 2 == 1 { "DA" } else { "NET" };
 
         writeln!(out, "{}", res).unwrap();
     }
