@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -8,30 +8,22 @@ fn main() {
     for _ in 0..t {
         let s: String = read_string();
 
-        let res: String =
-            s
-            .chars()
-            .enumerate()
-            .fold(String::new(), |res, (i, c)| {
-                let d: char =
-                    if i % 2 == 0 {
-                        if c == 'a' {
-                            'b'
-                        }
-                        else {
-                            'a'
-                        }
-                    }
-                    else {
-                        if c == 'z' {
-                            'y'
-                        }
-                        else {
-                            'z'
-                        }
-                    };
-                res + &d.to_string()
-            });
+        let res: String = s.chars().enumerate().fold(String::new(), |res, (i, c)| {
+            let d: char = if i % 2 == 0 {
+                if c == 'a' {
+                    'b'
+                } else {
+                    'a'
+                }
+            } else {
+                if c == 'z' {
+                    'y'
+                } else {
+                    'z'
+                }
+            };
+            res + &d.to_string()
+        });
 
         writeln!(out, "{}", res).unwrap();
     }
