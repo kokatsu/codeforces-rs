@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn is_square(x: u64) -> bool {
     let r: u64 = (x as f64).sqrt().floor() as u64;
