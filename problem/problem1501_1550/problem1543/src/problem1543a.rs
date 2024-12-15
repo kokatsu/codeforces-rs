@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -18,7 +18,7 @@ fn main() {
         let diff: u64 = x.abs_diff(y);
         let rem: u64 = x % diff;
 
-        writeln!(out, "{} {}", diff, rem.min(diff-rem)).unwrap();
+        writeln!(out, "{} {}", diff, rem.min(diff - rem)).unwrap();
     }
 }
 
