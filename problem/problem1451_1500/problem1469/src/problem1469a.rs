@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,13 +10,11 @@ fn main() {
 
         let l: usize = s.len();
 
-        let res: &str =
-            if s[0] != ')' && s[l-1] != '(' && l % 2 == 0 {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if s[0] != ')' && s[l - 1] != '(' && l % 2 == 0 {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

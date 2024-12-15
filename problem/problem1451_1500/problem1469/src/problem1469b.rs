@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -12,15 +12,15 @@ fn main() {
         let _m: usize = read();
         let b: Vec<i64> = read_vec();
 
-        let u: i64 =
-            r
+        let u: i64 = r
             .iter()
-            .fold((0, 0), |(max, sum), x| (max.max(sum+x), sum+x)).0;
+            .fold((0, 0), |(max, sum), x| (max.max(sum + x), sum + x))
+            .0;
 
-        let v: i64 =
-            b
+        let v: i64 = b
             .iter()
-            .fold((0, 0), |(max, sum), x| (max.max(sum+x), sum+x)).0;
+            .fold((0, 0), |(max, sum), x| (max.max(sum + x), sum + x))
+            .0;
 
         let res: i64 = u + v;
 
