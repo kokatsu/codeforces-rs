@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,13 +10,7 @@ fn main() {
         let n: usize = input[0];
         let k: usize = input[1];
 
-        let res: usize =
-            if n >= k {
-                (n - k) % 2
-            }
-            else {
-                k - n
-            };
+        let res: usize = if n >= k { (n - k) % 2 } else { k - n };
 
         writeln!(out, "{}", res).unwrap();
     }
