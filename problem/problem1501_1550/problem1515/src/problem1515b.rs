@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn is_square(x: u64) -> bool {
     let r: u64 = (x as f64).sqrt().floor() as u64;
@@ -6,7 +6,7 @@ fn is_square(x: u64) -> bool {
 }
 
 fn can_create(x: u64, y: u64) -> bool {
-    x % y == 0 && is_square(x/y)
+    x % y == 0 && is_square(x / y)
 }
 
 fn main() {
@@ -17,13 +17,11 @@ fn main() {
     for _ in 0..t {
         let n: u64 = read();
 
-        let res: &str =
-            if can_create(n, 2) || can_create(n, 4) {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if can_create(n, 2) || can_create(n, 4) {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
