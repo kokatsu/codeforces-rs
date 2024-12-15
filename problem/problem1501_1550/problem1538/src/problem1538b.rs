@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,17 +11,12 @@ fn main() {
 
         let s: i64 = a.iter().sum();
 
-        let res: i64 =
-            if s % n == 0 {
-                let m: i64 = s / n;
-                a
-                .iter()
-                .filter(|&&x| x > m)
-                .count() as i64
-            }
-            else {
-                -1
-            };
+        let res: i64 = if s % n == 0 {
+            let m: i64 = s / n;
+            a.iter().filter(|&&x| x > m).count() as i64
+        } else {
+            -1
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

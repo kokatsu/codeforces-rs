@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,27 +9,24 @@ fn main() {
         let n: i64 = read();
         let a: Vec<i64> = read_vec();
 
-        let min_index: i64 =
-            a
+        let min_index: i64 = a
             .iter()
             .enumerate()
             .min_by(|(_, &x), (_, y)| x.cmp(y))
             .map(|(index, _)| index)
             .unwrap() as i64;
 
-        let max_index: i64 =
-            a
+        let max_index: i64 = a
             .iter()
             .enumerate()
             .max_by(|(_, &x), (_, y)| x.cmp(y))
             .map(|(index, _)| index)
             .unwrap() as i64;
 
-        let res: i64 =
-            (min_index.max(max_index)+1)
-            .min((n-min_index).max(n-max_index))
-            .min(min_index+n-max_index+1)
-            .min(max_index+n-min_index+1);
+        let res: i64 = (min_index.max(max_index) + 1)
+            .min((n - min_index).max(n - max_index))
+            .min(min_index + n - max_index + 1)
+            .min(max_index + n - min_index + 1);
 
         writeln!(out, "{}", res).unwrap();
     }

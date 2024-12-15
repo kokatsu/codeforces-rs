@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -15,20 +15,15 @@ fn main() {
 
         a.sort();
 
-        let res: u64 =
-            a
-            .iter()
-            .enumerate()
-            .fold(0, |res, (i, x)| {
-                let lower: usize = a.partition_point(|&v| v < l - x);
-                let upper: usize = a.partition_point(|&v| v <= r - x);
-                if lower <= i && i < upper {
-                    res + upper as u64 - lower as u64 - 1
-                }
-                else {
-                    res + upper as u64 - lower as u64
-                }
-            }) / 2;
+        let res: u64 = a.iter().enumerate().fold(0, |res, (i, x)| {
+            let lower: usize = a.partition_point(|&v| v < l - x);
+            let upper: usize = a.partition_point(|&v| v <= r - x);
+            if lower <= i && i < upper {
+                res + upper as u64 - lower as u64 - 1
+            } else {
+                res + upper as u64 - lower as u64
+            }
+        }) / 2;
 
         writeln!(out, "{}", res).unwrap();
     }
