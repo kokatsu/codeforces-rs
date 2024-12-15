@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,22 +11,17 @@ fn main() {
 
         let s: String = read_string();
 
-        let (u, d, r, l): (i64, i64, i64, i64) = s
-            .chars()
-            .fold((0, 0, 0, 0), |(u, d, r, l), c| {
-                if c == 'U' {
-                    (u+1, d, r, l)
-                }
-                else if c == 'D' {
-                    (u, d-1, r, l)
-                }
-                else if c == 'R' {
-                    (u, d, r+1, l)
-                }
-                else {
-                    (u, d, r, l-1)
-                }
-            });
+        let (u, d, r, l): (i64, i64, i64, i64) = s.chars().fold((0, 0, 0, 0), |(u, d, r, l), c| {
+            if c == 'U' {
+                (u + 1, d, r, l)
+            } else if c == 'D' {
+                (u, d - 1, r, l)
+            } else if c == 'R' {
+                (u, d, r + 1, l)
+            } else {
+                (u, d, r, l - 1)
+            }
+        });
 
         let okx: bool = if px >= 0 { r >= px } else { l <= px };
         let oky: bool = if py >= 0 { u >= py } else { d <= py };
