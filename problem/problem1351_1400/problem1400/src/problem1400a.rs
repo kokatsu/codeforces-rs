@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,13 +9,10 @@ fn main() {
         let n: usize = read();
         let s: Vec<char> = read_string().chars().collect();
 
-        let res: String =
-            (0..n)
-            .fold(String::new(), |res, _| res + &s[n-1].to_string());
+        let res: String = (0..n).fold(String::new(), |res, _| res + &s[n - 1].to_string());
 
         writeln!(out, "{}", res).unwrap();
     }
-
 }
 
 #[allow(dead_code)]
