@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,16 +10,10 @@ fn main() {
     for _ in 0..t {
         let s: Vec<char> = read_string().chars().collect();
 
-        let res: i64 = s.iter()
-                        .zip(x.iter())
-                        .fold(0, |res, (a, b)| {
-                            if a == b {
-                                res
-                            }
-                            else {
-                                res + 1
-                            }
-                        });
+        let res: i64 = s
+            .iter()
+            .zip(x.iter())
+            .fold(0, |res, (a, b)| if a == b { res } else { res + 1 });
 
         writeln!(out, "{}", res).unwrap();
     }

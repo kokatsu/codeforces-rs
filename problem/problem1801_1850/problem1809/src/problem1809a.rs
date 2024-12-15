@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -12,16 +12,13 @@ fn main() {
             v
         };
 
-        let res: i64 =
-            if s[0] == s[3] {
-                -1
-            }
-            else if s[0] == s[2] || s[1] == s[3] {
-                6
-            }
-            else {
-                4
-            };
+        let res: i64 = if s[0] == s[3] {
+            -1
+        } else if s[0] == s[2] || s[1] == s[3] {
+            6
+        } else {
+            4
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

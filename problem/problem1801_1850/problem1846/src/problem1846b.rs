@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -20,16 +20,25 @@ fn main() {
                     index = i;
                 }
 
-                if [field[0][j], field[1][j], field[2][j]].iter().all(|&x| x == *s) {
+                if [field[0][j], field[1][j], field[2][j]]
+                    .iter()
+                    .all(|&x| x == *s)
+                {
                     index = i;
                 }
             }
 
-            if [field[0][0], field[1][1], field[2][2]].iter().all(|&x| x == *s) {
+            if [field[0][0], field[1][1], field[2][2]]
+                .iter()
+                .all(|&x| x == *s)
+            {
                 index = i;
             }
 
-            if [field[0][2], field[1][1], field[2][0]].iter().all(|&x| x == *s) {
+            if [field[0][2], field[1][1], field[2][0]]
+                .iter()
+                .all(|&x| x == *s)
+            {
                 index = i;
             }
         }

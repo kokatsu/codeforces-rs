@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -22,8 +22,7 @@ fn main() {
             d[c[i].1] = b[i];
         }
 
-        let res: String = (1..n)
-            .fold(d[0].to_string(), |res, i| res + " " + &d[i].to_string());
+        let res: String = (1..n).fold(d[0].to_string(), |res, i| res + " " + &d[i].to_string());
 
         writeln!(out, "{}", res).unwrap();
     }

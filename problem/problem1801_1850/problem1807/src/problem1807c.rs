@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,34 +9,25 @@ fn main() {
         let _n: usize = read();
         let s: String = read_string();
 
-        let (even, odd): (Vec<i64>, Vec<i64>) =
-            s
-            .chars()
-            .enumerate()
-            .fold((vec![0; 26], vec![0; 26]), |(mut even, mut odd), (i, x)| {
+        let (even, odd): (Vec<i64>, Vec<i64>) = s.chars().enumerate().fold(
+            (vec![0; 26], vec![0; 26]),
+            |(mut even, mut odd), (i, x)| {
                 if i % 2 == 0 {
-                    even[((x as u8)-('a' as u8)) as usize] += 1;
-                }
-                else {
-                    odd[((x as u8)-('a' as u8)) as usize] += 1;
+                    even[((x as u8) - ('a' as u8)) as usize] += 1;
+                } else {
+                    odd[((x as u8) - ('a' as u8)) as usize] += 1;
                 }
                 (even, odd)
-            });
+            },
+        );
 
-        let num: usize =
-            even
+        let num: usize = even
             .iter()
             .zip(odd.iter())
             .filter(|(x, y)| x > &&0 && y > &&0)
             .count();
 
-        let res: &str =
-            if num == 0 {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if num == 0 { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }

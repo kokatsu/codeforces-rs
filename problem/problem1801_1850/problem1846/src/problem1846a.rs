@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -8,19 +8,16 @@ fn main() {
     for _ in 0..t {
         let n: usize = read();
 
-        let res: usize =
-            (0..n)
-            .fold(0, |res, _| {
-                let input: Vec<usize> = read_vec();
-                let a: usize = input[0];
-                let b: usize = input[1];
-                if a > b {
-                    res + 1
-                }
-                else {
-                    res
-                }
-            });
+        let res: usize = (0..n).fold(0, |res, _| {
+            let input: Vec<usize> = read_vec();
+            let a: usize = input[0];
+            let b: usize = input[1];
+            if a > b {
+                res + 1
+            } else {
+                res
+            }
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

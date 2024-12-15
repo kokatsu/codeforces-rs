@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -13,13 +13,11 @@ fn main() {
 
         let h: i32 = d - b;
 
-        let res: i32 =
-            if h >= 0 && a + h >= c{
-                h * 2 + a - c
-            }
-            else {
-                -1
-            };
+        let res: i32 = if h >= 0 && a + h >= c {
+            h * 2 + a - c
+        } else {
+            -1
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

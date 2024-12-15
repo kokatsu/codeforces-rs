@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashSet;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,12 +10,10 @@ fn main() {
         let n: usize = read();
         let s: Vec<char> = read_string().chars().collect();
 
-        let set: HashSet<String> =
-            (0..n-1)
-            .fold(HashSet::new(), |mut set, i| {
-                set.insert(s[i..i+2].iter().collect::<String>());
-                set
-            });
+        let set: HashSet<String> = (0..n - 1).fold(HashSet::new(), |mut set, i| {
+            set.insert(s[i..i + 2].iter().collect::<String>());
+            set
+        });
 
         let res: usize = set.len();
 

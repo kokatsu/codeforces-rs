@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,7 +11,7 @@ fn main() {
 
         a.sort();
 
-        let res: usize = a[n-n/2..n].iter().sum::<usize>() - a[0..n/2].iter().sum::<usize>();
+        let res: usize = a[n - n / 2..n].iter().sum::<usize>() - a[0..n / 2].iter().sum::<usize>();
 
         writeln!(out, "{}", res).unwrap();
     }

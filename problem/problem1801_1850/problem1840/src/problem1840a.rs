@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,20 +9,18 @@ fn main() {
         let _n: usize = read();
         let a: String = read_string();
 
-        let res: String =
-            a
+        let res: String = a
             .chars()
             .fold((String::new(), ' '), |(res, c), x| {
                 if x == c {
                     (res, ' ')
-                }
-                else if c == ' ' {
-                    (res+&x.to_string(), x)
-                }
-                else {
+                } else if c == ' ' {
+                    (res + &x.to_string(), x)
+                } else {
                     (res, c)
                 }
-            }).0;
+            })
+            .0;
 
         writeln!(out, "{}", res).unwrap();
     }

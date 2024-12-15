@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashSet;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -10,7 +10,7 @@ fn main() {
         let s: Vec<char> = read_string().chars().collect();
 
         let l: usize = s.len();
-        let set: HashSet<char> = s[0..l/2].iter().cloned().collect();
+        let set: HashSet<char> = s[0..l / 2].iter().cloned().collect();
 
         let res: &str = if set.len() > 1 { "YES" } else { "NO" };
 

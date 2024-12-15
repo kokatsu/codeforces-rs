@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -17,10 +17,9 @@ fn main() {
         let mut num: usize = 1;
         let mut cnt: usize = 1;
         for i in 1..n {
-            if a[i] - a[i-1] > k {
+            if a[i] - a[i - 1] > k {
                 cnt = 1;
-            }
-            else {
+            } else {
                 cnt += 1;
                 num = num.max(cnt);
             }

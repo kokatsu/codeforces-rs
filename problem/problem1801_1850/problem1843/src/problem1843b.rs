@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,25 +9,20 @@ fn main() {
         let _n: usize = read();
         let a: Vec<i64> = read_vec();
 
-        let sum: i64 =
-            a
-            .iter()
-            .fold(0, |sum, x| sum + x.abs());
+        let sum: i64 = a.iter().fold(0, |sum, x| sum + x.abs());
 
-        let cnt: i64 =
-            a
+        let cnt: i64 = a
             .iter()
             .fold((0, false), |(cnt, is_replace), &x| {
                 if x < 0 && !is_replace {
-                    (cnt+1, true)
-                }
-                else if x > 0 {
+                    (cnt + 1, true)
+                } else if x > 0 {
                     (cnt, false)
-                }
-                else {
+                } else {
                     (cnt, is_replace)
                 }
-            }).0;
+            })
+            .0;
 
         writeln!(out, "{} {}", sum, cnt).unwrap();
     }

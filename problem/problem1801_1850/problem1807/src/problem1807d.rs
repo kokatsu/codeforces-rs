@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -12,13 +12,12 @@ fn main() {
 
         let a: Vec<u64> = read_vec();
 
-        let mut b: Vec<u64> = vec![0; n+1];
+        let mut b: Vec<u64> = vec![0; n + 1];
         for i in 0..n {
-            b[i+1] = a[i];
+            b[i + 1] = a[i];
         }
 
-        let c: Vec<u64> =
-            b
+        let c: Vec<u64> = b
             .iter()
             .scan(0, |c, x| {
                 *c += x % 2;
@@ -32,16 +31,10 @@ fn main() {
             let r: usize = query[1];
             let k: u64 = query[2] as u64 % 2;
 
-            let x: u64 = (c[r] - c[l-1]) % 2;
+            let x: u64 = (c[r] - c[l - 1]) % 2;
             let y: u64 = (k * (r - l + 1) as u64) % 2;
 
-            let res: &str =
-                if (c[n] - x + y) % 2 == 1 {
-                    "YES"
-                }
-                else {
-                    "NO"
-                };
+            let res: &str = if (c[n] - x + y) % 2 == 1 { "YES" } else { "NO" };
 
             writeln!(out, "{}", res).unwrap();
         }

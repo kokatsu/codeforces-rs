@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -15,13 +15,11 @@ fn main() {
         let v: Vec<usize> = s.chars().map(|c| c as usize - '0' as usize).collect();
         let p: Option<usize> = v.iter().position(|&x| x < d);
 
-        let res: String =
-            if p == None {
-                s + &d.to_string()
-            }
-            else {
-                s[0..p.unwrap()].to_string() + &d.to_string() + &s[p.unwrap()..n]
-            };
+        let res: String = if p == None {
+            s + &d.to_string()
+        } else {
+            s[0..p.unwrap()].to_string() + &d.to_string() + &s[p.unwrap()..n]
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

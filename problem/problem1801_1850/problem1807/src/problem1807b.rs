@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,23 +9,15 @@ fn main() {
         let _n: usize = read();
         let a: Vec<i64> = read_vec();
 
-        let (mihai, bianca): (i64, i64) = a.iter()
-                                            .fold((0, 0), |(mihai, bianca), x| {
-                                                if x % 2 == 0 {
-                                                    (mihai+x, bianca)
-                                                }
-                                                else {
-                                                    (mihai, bianca+x)
-                                                }
-                                            });
-
-        let res: &str =
-            if mihai > bianca {
-                "YES"
+        let (mihai, bianca): (i64, i64) = a.iter().fold((0, 0), |(mihai, bianca), x| {
+            if x % 2 == 0 {
+                (mihai + x, bianca)
+            } else {
+                (mihai, bianca + x)
             }
-            else {
-                "NO"
-            };
+        });
+
+        let res: &str = if mihai > bianca { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -8,7 +8,7 @@ fn main() {
     for _ in 0..t {
         let n: usize = read();
 
-        let mut minutes: Vec<i64> = vec![i64::MAX/2; 4];
+        let mut minutes: Vec<i64> = vec![i64::MAX / 2; 4];
         for _ in 0..n {
             let input: Vec<String> = read_vec();
             let m: i64 = input[0].parse().ok().unwrap();
@@ -17,15 +17,9 @@ fn main() {
             minutes[s] = minutes[s].min(m);
         }
 
-        let num: i64 = minutes[3].min(minutes[1]+minutes[2]);
+        let num: i64 = minutes[3].min(minutes[1] + minutes[2]);
 
-        let res: i64 =
-            if num < i64::MAX / 2 {
-                num
-            }
-            else {
-                -1
-            };
+        let res: i64 = if num < i64::MAX / 2 { num } else { -1 };
 
         writeln!(out, "{}", res).unwrap();
     }

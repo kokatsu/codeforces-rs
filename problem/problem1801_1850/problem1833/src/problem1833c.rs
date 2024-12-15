@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,24 +9,21 @@ fn main() {
         let _n: usize = read();
         let a: Vec<u64> = read_vec();
 
-        let (odd_min, even_min): (u64, u64) = a
-            .iter()
-            .fold((u64::MAX, u64::MAX), |(odd_min, even_min), &x| {
-                if x % 2 == 1 {
-                    (odd_min.min(x), even_min)
-                }
-                else {
-                    (odd_min, even_min.min(x))
-                }
-            });
+        let (odd_min, even_min): (u64, u64) =
+            a.iter()
+                .fold((u64::MAX, u64::MAX), |(odd_min, even_min), &x| {
+                    if x % 2 == 1 {
+                        (odd_min.min(x), even_min)
+                    } else {
+                        (odd_min, even_min.min(x))
+                    }
+                });
 
-        let res: &str =
-            if odd_min == u64::MAX || even_min == u64::MAX || odd_min < even_min {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if odd_min == u64::MAX || even_min == u64::MAX || odd_min < even_min {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

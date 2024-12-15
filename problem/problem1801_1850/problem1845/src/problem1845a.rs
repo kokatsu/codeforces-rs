@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 use std::iter::repeat;
 
 fn main() {
@@ -10,35 +10,31 @@ fn main() {
         let input: Vec<usize> = read_vec();
         let (mut n, k, x): (usize, usize, usize) = (input[0], input[1], input[2]);
 
-        let a: Vec<usize> =
-            if x == 1 {
-                let mut b: Vec<usize> = Vec::new();
-                if k >= 2 {
-                    b = repeat(2).take(n/2).collect::<Vec<usize>>();
-                    n -= n / 2 * 2;
-                }
-                if n == 1 && k >= 3 {
-                    b[0] += 1;
-                    n -= 1;
-                }
-                b
+        let a: Vec<usize> = if x == 1 {
+            let mut b: Vec<usize> = Vec::new();
+            if k >= 2 {
+                b = repeat(2).take(n / 2).collect::<Vec<usize>>();
+                n -= n / 2 * 2;
             }
-            else {
-                let b: Vec<usize> = repeat(1).take(n).collect::<Vec<usize>>();
-                n = 0;
-                b
-            };
+            if n == 1 && k >= 3 {
+                b[0] += 1;
+                n -= 1;
+            }
+            b
+        } else {
+            let b: Vec<usize> = repeat(1).take(n).collect::<Vec<usize>>();
+            n = 0;
+            b
+        };
 
-        let res: String =
-            if n == 0 {
-                (1..a.len())
-                    .fold("YES\n".to_string() + &a.len().to_string() + "\n" + &a[0].to_string(), |res, i| {
-                        res + " " + &a[i].to_string()
-                    })
-            }
-            else {
-                "NO".to_string()
-            };
+        let res: String = if n == 0 {
+            (1..a.len()).fold(
+                "YES\n".to_string() + &a.len().to_string() + "\n" + &a[0].to_string(),
+                |res, i| res + " " + &a[i].to_string(),
+            )
+        } else {
+            "NO".to_string()
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

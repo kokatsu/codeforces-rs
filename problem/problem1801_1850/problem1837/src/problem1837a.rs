@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,9 +11,8 @@ fn main() {
         let k: u64 = input[1];
 
         if x % k == 0 {
-            writeln!(out, "2\n{} 1", x-1).unwrap();
-        }
-        else {
+            writeln!(out, "2\n{} 1", x - 1).unwrap();
+        } else {
             writeln!(out, "1\n{}", x).unwrap();
         }
     }

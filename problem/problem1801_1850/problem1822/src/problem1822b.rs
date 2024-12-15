@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -15,11 +15,9 @@ fn main() {
         for x in a.into_iter() {
             if x > 0 {
                 pos.push(x);
-            }
-            else if x < 0 {
+            } else if x < 0 {
                 neg.push(x);
-            }
-            else {
+            } else {
                 has0 = true;
             }
         }
@@ -27,16 +25,22 @@ fn main() {
         pos.sort_by(|x, y| x.cmp(y).reverse());
         neg.sort();
 
-        let p: i64 = if pos.len() > 1 { pos[0] * pos[1] } else { i64::MIN };
-        let q: i64 = if neg.len() > 1 { neg[0] * neg[1] } else { i64::MIN };
+        let p: i64 = if pos.len() > 1 {
+            pos[0] * pos[1]
+        } else {
+            i64::MIN
+        };
+        let q: i64 = if neg.len() > 1 {
+            neg[0] * neg[1]
+        } else {
+            i64::MIN
+        };
         let r: i64 = if has0 { 0 } else { i64::MIN };
-        let s: i64 =
-            if !pos.is_empty() && !neg.is_empty() {
-                pos.iter().last().unwrap() * neg.iter().last().unwrap()
-            }
-            else {
-                i64::MIN
-            };
+        let s: i64 = if !pos.is_empty() && !neg.is_empty() {
+            pos.iter().last().unwrap() * neg.iter().last().unwrap()
+        } else {
+            i64::MIN
+        };
 
         let res: i64 = p.max(q).max(r).max(s);
 

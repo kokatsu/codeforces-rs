@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -14,16 +14,13 @@ fn main() {
         let h: usize = n / 2;
         let q: usize = if h % 2 == 0 { h } else { h - 1 };
 
-        let res: usize =
-            if m > q {
-                m - q
-            }
-            else if m % 2 == 0 {
-                0
-            }
-            else {
-                1
-            };
+        let res: usize = if m > q {
+            m - q
+        } else if m % 2 == 0 {
+            0
+        } else {
+            1
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,7 +11,7 @@ fn main() {
 
         let a: Vec<i64> = {
             let mut b = read_vec();
-            b.push(q+1);
+            b.push(q + 1);
             b
         };
 
@@ -20,9 +20,8 @@ fn main() {
         for x in a.into_iter() {
             if x <= q {
                 d += 1
-            }
-            else {
-                let p = 0.max(d-k+1);
+            } else {
+                let p = 0.max(d - k + 1);
                 res += p * (p + 1) / 2;
                 d = 0;
             }
