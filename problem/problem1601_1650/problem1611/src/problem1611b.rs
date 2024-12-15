@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,7 +10,7 @@ fn main() {
         let a: u64 = input[0];
         let b: u64 = input[1];
 
-        let res: u64 = a.min(b).min((a+b)/4);
+        let res: u64 = a.min(b).min((a + b) / 4);
 
         writeln!(out, "{}", res).unwrap();
     }
