@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn even(x: i64) -> i64 {
     match x % 2 {
@@ -29,10 +29,23 @@ fn main() {
         let n: usize = read();
 
         if n % 2 == 0 {
-            writeln!(out, "{}", evens[0..n].iter().fold(String::new(), |x, &y| x + &y.to_string() + " ")).unwrap();
-        }
-        else {
-            writeln!(out, "{}", odds[0..n].iter().fold(String::new(), |x, &y| x + &y.to_string() + " ")).unwrap();
+            writeln!(
+                out,
+                "{}",
+                evens[0..n]
+                    .iter()
+                    .fold(String::new(), |x, &y| x + &y.to_string() + " ")
+            )
+            .unwrap();
+        } else {
+            writeln!(
+                out,
+                "{}",
+                odds[0..n]
+                    .iter()
+                    .fold(String::new(), |x, &y| x + &y.to_string() + " ")
+            )
+            .unwrap();
         }
     }
 }

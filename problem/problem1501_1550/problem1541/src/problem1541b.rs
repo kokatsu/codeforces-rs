@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,16 +9,16 @@ fn main() {
         let n: usize = read();
         let a: Vec<usize> = read_vec();
 
-        let mut b: Vec<i64> = vec![i64::MIN/2; n*2+1];
+        let mut b: Vec<i64> = vec![i64::MIN / 2; n * 2 + 1];
         for (i, x) in a.iter().enumerate() {
             b[*x] = i as i64 + 1;
         }
 
         let mut res: i64 = 0;
-        for i in 2..=n*2 {
+        for i in 2..=n * 2 {
             let mut j: usize = 1;
             while j * j < i {
-                if i % j == 0 && b[i/j] + b[j] == i as i64 {
+                if i % j == 0 && b[i / j] + b[j] == i as i64 {
                     res += 1;
                 }
                 j += 1;
