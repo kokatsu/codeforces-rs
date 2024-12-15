@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashSet;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -18,30 +18,25 @@ fn main() {
             continue;
         }
 
-        let mut s: String = a
-            .iter()
-            .fold(String::new(), |s, x| {
-                if s.is_empty() {
-                    x.to_string()
-                }
-                else {
-                    s + " " + &x.to_string()
-                }
-            });
+        let mut s: String = a.iter().fold(String::new(), |s, x| {
+            if s.is_empty() {
+                x.to_string()
+            } else {
+                s + " " + &x.to_string()
+            }
+        });
 
         for _ in l..k {
             s += " 1"
         }
 
-        let res: String = (0..n)
-            .fold((n*k).to_string() + "\n", |res, i| {
-                if i == 0 {
-                    res + &s.clone()
-                }
-                else {
-                    res + " " + &s.clone()
-                }
-            });
+        let res: String = (0..n).fold((n * k).to_string() + "\n", |res, i| {
+            if i == 0 {
+                res + &s.clone()
+            } else {
+                res + " " + &s.clone()
+            }
+        });
 
         writeln!(out, "{}", res).unwrap();
     }
