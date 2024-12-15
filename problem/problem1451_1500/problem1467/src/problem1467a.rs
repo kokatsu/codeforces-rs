@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -8,13 +8,11 @@ fn main() {
     for _ in 0..t {
         let n: usize = read();
 
-        let res : String =
-            if n == 1 {
-                "9".to_string()
-            }
-            else {
-                (0..n-2).fold("98".to_string(), |res, i| res + &((9+i)%10).to_string())
-            };
+        let res: String = if n == 1 {
+            "9".to_string()
+        } else {
+            (0..n - 2).fold("98".to_string(), |res, i| res + &((9 + i) % 10).to_string())
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
