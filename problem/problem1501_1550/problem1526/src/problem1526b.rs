@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -8,13 +8,7 @@ fn main() {
     for _ in 0..t {
         let x: u64 = read();
 
-        let res: &str =
-            if (x % 11) * 111 <= x {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if (x % 11) * 111 <= x { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }
