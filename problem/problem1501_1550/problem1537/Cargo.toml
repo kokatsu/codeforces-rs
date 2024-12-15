@@ -8,13 +8,13 @@ edition = "2021"
 [dependencies]
 
 [[bin]]
-name = "a"
+name = "p1537a"
 path = "src/problem1537a.rs"
 
 [[bin]]
-name = "b"
+name = "p1537b"
 path = "src/problem1537b.rs"
 
 [[bin]]
-name = "c"
+name = "p1537c"
 path = "src/problem1537c.rs"
