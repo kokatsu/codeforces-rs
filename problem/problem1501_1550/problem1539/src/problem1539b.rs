@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -14,7 +14,7 @@ fn main() {
         let mut t: Vec<u64> = vec![0; n + 1];
         for (i, c) in s.chars().enumerate() {
             let d: u64 = (c as u8 - 'a' as u8 + 1) as u64;
-            t[i+1] = t[i] + d;
+            t[i + 1] = t[i] + d;
         }
         t
     };
