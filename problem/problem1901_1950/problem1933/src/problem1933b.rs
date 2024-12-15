@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,11 +9,11 @@ fn main() {
         let _n: usize = read();
         let a: Vec<usize> = read_vec();
 
-        let (sum, exist_one): (usize, bool) = a
-            .iter()
-            .fold((0, false), |(sum, exist_one), x| (sum+x, exist_one|(x%3==1)));
+        let (sum, exist_one): (usize, bool) = a.iter().fold((0, false), |(sum, exist_one), x| {
+            (sum + x, exist_one | (x % 3 == 1))
+        });
 
-        let res: usize = match (sum%3, exist_one) {
+        let res: usize = match (sum % 3, exist_one) {
             (0, _) => 0,
             (2, _) | (1, true) => 1,
             _ => 2,

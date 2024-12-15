@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,16 +9,13 @@ fn main() {
         let input: Vec<i64> = read_vec();
         let (a, b, c): (i64, i64, i64) = (input[0], input[1], input[2]);
 
-        let res: &str =
-            if a < b && b < c {
-                "STAIR"
-            }
-            else if a < b && b > c {
-                "PEAK"
-            }
-            else {
-                "NONE"
-            };
+        let res: &str = if a < b && b < c {
+            "STAIR"
+        } else if a < b && b > c {
+            "PEAK"
+        } else {
+            "NONE"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

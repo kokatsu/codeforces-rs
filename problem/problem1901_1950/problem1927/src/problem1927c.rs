@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -16,34 +16,25 @@ fn main() {
 
         for x in a.into_iter() {
             if x - 1 < k {
-                c[x-1] |= 1;
+                c[x - 1] |= 1;
             }
         }
 
         for x in b.into_iter() {
             if x - 1 < k {
-                c[x-1] |= 2;
+                c[x - 1] |= 2;
             }
         }
 
-        let (u, v, ok): (usize, usize, bool) = c
-            .iter()
-            .fold((0, 0, true), |(u, v, ok), x| {
-                match x {
-                    0 => (u, v, false),
-                    1 => (u+1, v, ok),
-                    2 => (u, v+1, ok),
-                    _ => (u, v, ok),
-                }
+        let (u, v, ok): (usize, usize, bool) =
+            c.iter().fold((0, 0, true), |(u, v, ok), x| match x {
+                0 => (u, v, false),
+                1 => (u + 1, v, ok),
+                2 => (u, v + 1, ok),
+                _ => (u, v, ok),
             });
 
-        let res: &str =
-            if u.max(v) <= k / 2 && ok {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if u.max(v) <= k / 2 && ok { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }

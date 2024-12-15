@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -8,14 +8,12 @@ fn main() {
     for _ in 0..t {
         let mut n: u32 = read();
 
-        let res: String = (0..3)
-            .rev()
-            .fold(String::new(), |res, i| {
-                let m: u8 = (n-i).min(26) as u8 - 1;
-                let c: char = (('a' as u8) + m) as char;
-                n -= m as u32 + 1;
-                c.to_string() + &res
-            });
+        let res: String = (0..3).rev().fold(String::new(), |res, i| {
+            let m: u8 = (n - i).min(26) as u8 - 1;
+            let c: char = (('a' as u8) + m) as char;
+            n -= m as u32 + 1;
+            c.to_string() + &res
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

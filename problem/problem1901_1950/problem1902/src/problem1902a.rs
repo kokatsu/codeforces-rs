@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,13 +9,11 @@ fn main() {
         let _n: usize = read();
         let s: String = read_string();
 
-        let res: &str =
-            if s.chars().any(|x| x == '0') {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if s.chars().any(|x| x == '0') {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

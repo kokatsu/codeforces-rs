@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -6,12 +6,11 @@ fn main() {
     let t: usize = read();
 
     for _ in 0..t {
-        let (x_min, x_max): (i64, i64) = (0..4)
-            .fold((i64::MAX, i64::MIN), |(x_min, x_max), _| {
-                let input: Vec<i64> = read_vec();
-                let (x, _y): (i64, i64) = (input[0], input[1]);
-                (x_min.min(x), x_max.max(x))
-            });
+        let (x_min, x_max): (i64, i64) = (0..4).fold((i64::MAX, i64::MIN), |(x_min, x_max), _| {
+            let input: Vec<i64> = read_vec();
+            let (x, _y): (i64, i64) = (input[0], input[1]);
+            (x_min.min(x), x_max.max(x))
+        });
 
         let res: i64 = (x_max - x_min).pow(2);
 

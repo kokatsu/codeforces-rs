@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,12 +11,11 @@ fn main() {
 
     let (mut ll, mut lo): (usize, usize) = (0, 0);
     let mut res: i32 = -1;
-    for &c in s[0..n-1].iter() {
+    for &c in s[0..n - 1].iter() {
         if c == 'L' {
             ll += 1;
             rl -= 1;
-        }
-        else {
+        } else {
             lo += 1;
             ro -= 1;
         }

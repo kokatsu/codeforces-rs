@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn count_char(x: &[char], y: char) -> usize {
     x.iter().filter(|&&u| u == y).count()

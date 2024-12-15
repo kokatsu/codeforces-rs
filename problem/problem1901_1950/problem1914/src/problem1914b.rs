@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -12,8 +12,7 @@ fn main() {
         let mut a: Vec<usize> = (1..=n).rev().collect();
         a[0..=k].sort();
 
-        let res: String = (1..n)
-            .fold(a[0].to_string(), |res, i| res + " " + &a[i].to_string());
+        let res: String = (1..n).fold(a[0].to_string(), |res, i| res + " " + &a[i].to_string());
 
         writeln!(out, "{}", res).unwrap();
     }

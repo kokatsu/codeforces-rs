@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 use std::iter::repeat;
 
 fn main() {
@@ -12,22 +12,19 @@ fn main() {
             (input[0], input[1])
         };
 
-        let res: String =
-            if n == k {
-                repeat("1".to_string())
-                    .take(n)
-                    .collect::<Vec<String>>()
-                    .join(" ")
-            }
-            else if k == 1 {
-                (1..=n)
-                    .map(|x| x.to_string())
-                    .collect::<Vec<String>>()
-                    .join(" ")
-            }
-            else {
-                "-1".to_string()
-            };
+        let res: String = if n == k {
+            repeat("1".to_string())
+                .take(n)
+                .collect::<Vec<String>>()
+                .join(" ")
+        } else if k == 1 {
+            (1..=n)
+                .map(|x| x.to_string())
+                .collect::<Vec<String>>()
+                .join(" ")
+        } else {
+            "-1".to_string()
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -12,13 +12,11 @@ fn main() {
         };
 
         let (d, r): (i64, i64) = (b / 3, b % 3);
-        let res: i64 =
-            if r == 0 || r + c >= 3 {
-                a + d + (c + r + 2) / 3
-            }
-            else {
-                -1
-            };
+        let res: i64 = if r == 0 || r + c >= 3 {
+            a + d + (c + r + 2) / 3
+        } else {
+            -1
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

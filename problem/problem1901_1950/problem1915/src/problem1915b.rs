@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -6,22 +6,22 @@ fn main() {
     let mut out = BufWriter::new(stdout().lock());
 
     for _ in 0..t {
-        let (a, b, _c): (usize, usize, usize) = (0..3)
-            .fold((0, 0, 0), |(a, b, c), _| {
-                let input: String = read_string();
-                (a+get_char_count(&input, 'A'), b+get_char_count(&input, 'B'), c+get_char_count(&input, 'C'))
-            });
+        let (a, b, _c): (usize, usize, usize) = (0..3).fold((0, 0, 0), |(a, b, c), _| {
+            let input: String = read_string();
+            (
+                a + get_char_count(&input, 'A'),
+                b + get_char_count(&input, 'B'),
+                c + get_char_count(&input, 'C'),
+            )
+        });
 
-        let res: char =
-            if a == 2 {
-                'A'
-            }
-            else if b == 2 {
-                'B'
-            }
-            else {
-                'C'
-            };
+        let res: char = if a == 2 {
+            'A'
+        } else if b == 2 {
+            'B'
+        } else {
+            'C'
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

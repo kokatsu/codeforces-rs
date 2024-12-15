@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -12,13 +12,7 @@ fn main() {
         let s: u64 = a.iter().sum();
         let r: u64 = (s as f64).sqrt().floor() as u64;
 
-        let res: &str =
-            if r * r == s {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if r * r == s { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }

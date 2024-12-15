@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -15,23 +15,18 @@ fn main() {
                 if c.is_lowercase() {
                     if c == 'b' {
                         (v, lower + 1, upper)
-                    }
-                    else if lower > 0 {
+                    } else if lower > 0 {
                         (v, lower - 1, upper)
-                    }
-                    else {
+                    } else {
                         v.push(c);
                         (v, lower, upper)
                     }
-                }
-                else {
+                } else {
                     if c == 'B' {
                         (v, lower, upper + 1)
-                    }
-                    else if upper > 0 {
-                        (v,  lower, upper - 1)
-                    }
-                    else {
+                    } else if upper > 0 {
+                        (v, lower, upper - 1)
+                    } else {
                         v.push(c);
                         (v, lower, upper)
                     }

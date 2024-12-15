@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -13,9 +13,7 @@ fn main() {
 
         let index: usize = (n - 1) / 2;
 
-        let res: usize = (index..n)
-            .filter(|&i| a[i] == a[index])
-            .count();
+        let res: usize = (index..n).filter(|&i| a[i] == a[index]).count();
 
         writeln!(out, "{}", res).unwrap();
     }

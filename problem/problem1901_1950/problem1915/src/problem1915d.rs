@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -17,24 +17,22 @@ fn main() {
                     break;
                 }
 
-                exists_dot[index-1] = true;
+                exists_dot[index - 1] = true;
                 index -= 2;
-            }
-            else {
+            } else {
                 if index == 2 {
                     break;
                 }
 
-                exists_dot[index-2] = true;
+                exists_dot[index - 2] = true;
                 index -= 3;
             }
         }
 
-        let res: String = (0..n)
-            .fold(String::new(), |res, i| {
-                let dot: &str = if exists_dot[i] { "." } else { "" };
-                res + dot + &words[i].to_string()
-            });
+        let res: String = (0..n).fold(String::new(), |res, i| {
+            let dot: &str = if exists_dot[i] { "." } else { "" };
+            res + dot + &words[i].to_string()
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

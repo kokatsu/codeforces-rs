@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashSet;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,15 +9,13 @@ fn main() {
     for _ in 0..t {
         let n: usize = read();
 
-        let set: HashSet<String> =
-            (0..n)
-            .fold(HashSet::new(), |mut set, _| {
-                let s: String = read_string();
-                if s.contains("1") {
-                    set.insert(s);
-                }
-                set
-            });
+        let set: HashSet<String> = (0..n).fold(HashSet::new(), |mut set, _| {
+            let s: String = read_string();
+            if s.contains("1") {
+                set.insert(s);
+            }
+            set
+        });
 
         let res: &str = if set.len() == 1 { "SQUARE" } else { "TRIANGLE" };
 

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -7,18 +7,18 @@ fn main() {
 
     for _ in 0..t {
         let input: Vec<i64> = read_vec();
-        let (_n, f, a, b): (usize, i64, i64, i64) = (input[0] as usize, input[1], input[2], input[3]);
+        let (_n, f, a, b): (usize, i64, i64, i64) =
+            (input[0] as usize, input[1], input[2], input[3]);
         let m: Vec<i64> = read_vec();
 
         let res: &str = m
             .iter()
             .fold(("YES", f, 0), |(res, rem, pre), &x| {
-                let min = b.min((x-pre)*a);
+                let min = b.min((x - pre) * a);
                 if rem > min {
-                    (res, rem-min, x)
-                }
-                else {
-                    ("NO", rem-min, x)
+                    (res, rem - min, x)
+                } else {
+                    ("NO", rem - min, x)
                 }
             })
             .0;

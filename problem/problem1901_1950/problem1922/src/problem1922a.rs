@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,15 +11,13 @@ fn main() {
         let b: Vec<char> = read_string().chars().collect();
         let c: Vec<char> = read_string().chars().collect();
 
-        let res: &str = (0..n)
-            .fold("NO", |res, i| {
-                if a[i] != c[i] && b[i] != c[i] {
-                    "YES"
-                }
-                else {
-                    res
-                }
-            });
+        let res: &str = (0..n).fold("NO", |res, i| {
+            if a[i] != c[i] && b[i] != c[i] {
+                "YES"
+            } else {
+                res
+            }
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

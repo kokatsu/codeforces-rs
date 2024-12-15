@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashSet;
+use std::io::{stdout, BufWriter, Write};
 
 fn kronecker(x: i32) -> i32 {
     match x % 8 {
@@ -43,10 +43,7 @@ fn main() {
             setq.insert(coord(a, b, xq, yq, i));
         }
 
-        let res: usize = setq
-            .iter()
-            .filter(|&x| setk.contains(&x))
-            .count();
+        let res: usize = setq.iter().filter(|&x| setk.contains(&x)).count();
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -14,11 +14,9 @@ fn main() {
 
         c.sort();
 
-        let res: usize =  b
+        let res: usize = b
             .iter()
-            .fold(0, |res, &x| {
-                res + c.partition_point(|&u| u <= k - x)
-            });
+            .fold(0, |res, &x| res + c.partition_point(|&u| u <= k - x));
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -12,7 +12,7 @@ fn main() {
         };
         let a: Vec<u64> = read_vec();
 
-        let is_ok: bool = k >= 2 || (0..n-1).all(|i| a[i] <= a[i+1]);
+        let is_ok: bool = k >= 2 || (0..n - 1).all(|i| a[i] <= a[i + 1]);
 
         let res: &str = if is_ok { "YES" } else { "NO" };
 

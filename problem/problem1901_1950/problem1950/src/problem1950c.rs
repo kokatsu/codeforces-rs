@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -15,9 +15,9 @@ fn main() {
 
         let res: String = match h {
             0 => format!("12:{} AM", m),
-            12 => format!{"12:{} PM", m},
+            12 => format! {"12:{} PM", m},
             h if h < 12 => format!("{:02}:{} AM", h, m),
-            _ => format!("{:02}:{} PM", h-12, m),
+            _ => format!("{:02}:{} PM", h - 12, m),
         };
 
         writeln!(out, "{}", res).unwrap();

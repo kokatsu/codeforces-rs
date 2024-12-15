@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,15 +9,13 @@ fn main() {
         let n: usize = read();
         let s: String = read_string();
 
-        let res: usize = (0..n)
-            .fold(0, |res, i| {
-                if (i >= 2 && &s[i-2..=i] == "map") || (i + 2 < n && &s[i..=i+2] == "pie") {
-                    res + 1
-                }
-                else {
-                    res
-                }
-            });
+        let res: usize = (0..n).fold(0, |res, i| {
+            if (i >= 2 && &s[i - 2..=i] == "map") || (i + 2 < n && &s[i..=i + 2] == "pie") {
+                res + 1
+            } else {
+                res
+            }
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,7 +9,7 @@ fn main() {
         let input: Vec<u64> = read_vec();
         let (a, b): (u64, u64) = (input[0], input[1]);
 
-        let res: &str = if (a + b) % 2 == 1 { "Alice" } else { "Bob "};
+        let res: &str = if (a + b) % 2 == 1 { "Alice" } else { "Bob " };
 
         writeln!(out, "{}", res).unwrap();
     }

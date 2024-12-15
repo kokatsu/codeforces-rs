@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -13,13 +13,7 @@ fn main() {
 
         let lcm: u64 = a / gcd(a, b) * b;
 
-        let res: u64 =
-            if lcm == b {
-                b / a * lcm
-            }
-            else {
-                lcm
-            };
+        let res: u64 = if lcm == b { b / a * lcm } else { lcm };
 
         writeln!(out, "{}", res).unwrap();
     }

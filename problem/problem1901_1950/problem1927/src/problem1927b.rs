@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,18 +9,14 @@ fn main() {
         let n: usize = read();
         let a: Vec<usize> = read_vec();
 
-        let mut letters: Vec<Vec<char>> = vec![Vec::<char>::new(); n+1];
-        letters[0] = ('a'..='z')
-            .map(|c| c as char)
-            .collect::<Vec<char>>();
+        let mut letters: Vec<Vec<char>> = vec![Vec::<char>::new(); n + 1];
+        letters[0] = ('a'..='z').map(|c| c as char).collect::<Vec<char>>();
 
-        let res: String = a
-            .iter()
-            .fold(String::new(), |res, x| {
-                let c: char = letters[*x].pop().unwrap();
-                letters[x+1].push(c);
-                res + &c.to_string()
-            });
+        let res: String = a.iter().fold(String::new(), |res, x| {
+            let c: char = letters[*x].pop().unwrap();
+            letters[x + 1].push(c);
+            res + &c.to_string()
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

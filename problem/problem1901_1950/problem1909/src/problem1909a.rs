@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -18,20 +18,22 @@ fn main() {
 
             if x > 0 {
                 v[1] = 1;
-            }
-            else if x < 0 {
+            } else if x < 0 {
                 v[0] = 1;
             }
 
             if y > 0 {
                 v[3] = 1;
-            }
-            else if y < 0 {
+            } else if y < 0 {
                 v[2] = 1;
             }
         }
 
-        let res: &str = if v.iter().sum::<i8>() < 4 { "YES" } else { "NO" };
+        let res: &str = if v.iter().sum::<i8>() < 4 {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

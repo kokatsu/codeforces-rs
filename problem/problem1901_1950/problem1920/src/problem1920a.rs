@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -7,24 +7,29 @@ fn main() {
 
     for _ in 0..t {
         let n: usize = read();
-        let (min, max, neq): (u64, u64, Vec<u64>) = (0..n)
-            .fold((0, u64::MAX, Vec::<u64>::new()), |(min, max, mut neq), _| {
+        let (min, max, neq): (u64, u64, Vec<u64>) = (0..n).fold(
+            (0, u64::MAX, Vec::<u64>::new()),
+            |(min, max, mut neq), _| {
                 let input: Vec<u64> = read_vec();
                 let (a, x): (u64, u64) = (input[0], input[1]);
                 match a {
                     1 => (min.max(x), max, neq),
                     2 => (min, max.min(x), neq),
-                    _ => { neq.push(x); (min, max, neq) }
+                    _ => {
+                        neq.push(x);
+                        (min, max, neq)
+                    }
                 }
-            });
+            },
+        );
 
-        let count: u64 = neq
-            .into_iter()
-            .filter(|&x| min <= x && x <= max)
-            .count()
-            as u64;
+        let count: u64 = neq.into_iter().filter(|&x| min <= x && x <= max).count() as u64;
 
-        let res: u64 = if max >= min + count { max - min - count + 1 } else { 0 };
+        let res: u64 = if max >= min + count {
+            max - min - count + 1
+        } else {
+            0
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

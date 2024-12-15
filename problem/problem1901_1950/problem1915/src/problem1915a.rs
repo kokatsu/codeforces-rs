@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,16 +9,13 @@ fn main() {
         let input: Vec<u64> = read_vec();
         let (a, b, c): (u64, u64, u64) = (input[0], input[1], input[2]);
 
-        let res: u64 =
-            if a == b {
-                c
-            }
-            else if b == c {
-                a
-            }
-            else {
-                b
-            };
+        let res: u64 = if a == b {
+            c
+        } else if b == c {
+            a
+        } else {
+            b
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

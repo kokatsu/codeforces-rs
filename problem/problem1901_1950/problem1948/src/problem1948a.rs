@@ -1,22 +1,22 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
 
-    let s: String = (0..100).map(|i| if i % 4 < 2 { 'A' } else { 'Z' }).collect::<String>();
+    let s: String = (0..100)
+        .map(|i| if i % 4 < 2 { 'A' } else { 'Z' })
+        .collect::<String>();
 
     let t: usize = read();
 
     for _ in 0..t {
         let n: usize = read();
 
-        let res: String =
-            if n % 2 == 0 {
-                "YES".to_string() + "\n" + &s[0..n]
-            }
-            else {
-                "NO".to_string()
-            };
+        let res: String = if n % 2 == 0 {
+            "YES".to_string() + "\n" + &s[0..n]
+        } else {
+            "NO".to_string()
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

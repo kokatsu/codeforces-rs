@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -14,10 +14,7 @@ fn main() {
             counts[l as usize] -= 1;
         }
 
-        let res: usize = counts
-            .into_iter()
-            .filter(|&c| c <= 0)
-            .count();
+        let res: usize = counts.into_iter().filter(|&c| c <= 0).count();
 
         writeln!(out, "{}", res).unwrap();
     }

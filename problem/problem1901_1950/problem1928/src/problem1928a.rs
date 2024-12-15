@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn check(x: u32, y: u32) -> bool {
     if x % 2 == 0 {

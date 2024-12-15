@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,10 +9,7 @@ fn main() {
         let n: usize = read();
         let s: String = read_string();
 
-        let plus: usize = s
-            .chars()
-            .filter(|&c| c == '+')
-            .count();
+        let plus: usize = s.chars().filter(|&c| c == '+').count();
         let minus: usize = n - plus;
 
         let res: usize = plus.abs_diff(minus);

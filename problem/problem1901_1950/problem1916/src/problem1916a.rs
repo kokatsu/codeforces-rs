@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,24 +11,21 @@ fn main() {
 
         let b: Vec<u64> = read_vec();
 
-        let (rem, is_ok): (u64, bool) = b
-            .iter()
-            .fold((2023, true), |(rem, is_ok), x| {
-                if rem % x == 0 {
-                    (rem/x, is_ok)
-                }
-                else {
-                    (1, false)
-                }
-            });
-
-        let res: String =
-            if is_ok {
-                (0..k-1).fold("YES\n".to_string()+&rem.to_string(), |s, _| (s + " " + &1.to_string()))
+        let (rem, is_ok): (u64, bool) = b.iter().fold((2023, true), |(rem, is_ok), x| {
+            if rem % x == 0 {
+                (rem / x, is_ok)
+            } else {
+                (1, false)
             }
-            else {
-                "NO".to_string()
-            };
+        });
+
+        let res: String = if is_ok {
+            (0..k - 1).fold("YES\n".to_string() + &rem.to_string(), |s, _| {
+                s + " " + &1.to_string()
+            })
+        } else {
+            "NO".to_string()
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

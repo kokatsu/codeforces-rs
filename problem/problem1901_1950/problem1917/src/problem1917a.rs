@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,27 +9,18 @@ fn main() {
         let n: usize = read();
         let a: Vec<i64> = read_vec();
 
-        let f: i64 = a
-            .iter()
-            .fold(1, |f, &x| {
-                match x {
-                    0 => 0,
-                    x if x > 0 => f,
-                    _ => -f,
-                }
-            });
+        let f: i64 = a.iter().fold(1, |f, &x| match x {
+            0 => 0,
+            x if x > 0 => f,
+            _ => -f,
+        });
 
-        let res: String =
-            if f > 0 {
-                let z: usize = (0..n)
-                    .filter(|&i| a[i] != 0)
-                    .next()
-                    .unwrap() + 1;
-                1.to_string() + "\n" + &z.to_string() + " " + &0.to_string()
-            }
-            else {
-                0.to_string()
-            };
+        let res: String = if f > 0 {
+            let z: usize = (0..n).filter(|&i| a[i] != 0).next().unwrap() + 1;
+            1.to_string() + "\n" + &z.to_string() + " " + &0.to_string()
+        } else {
+            0.to_string()
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -18,8 +18,7 @@ fn main() {
                 let next: i64 = num + m - x;
                 if next >= 0 {
                     (res, next)
-                }
-                else {
+                } else {
                     ("NO", next)
                 }
             })
