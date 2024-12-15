@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -8,7 +8,7 @@ fn main() {
     for _ in 0..t {
         let n: usize = read();
 
-        let res: String = "1".to_string() + &"0".to_string().repeat(n-1);
+        let res: String = "1".to_string() + &"0".to_string().repeat(n - 1);
 
         writeln!(out, "{}", res).unwrap();
     }

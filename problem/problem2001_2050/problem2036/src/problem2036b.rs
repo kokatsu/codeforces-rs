@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashMap;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -12,15 +12,14 @@ fn main() {
             (input[0], input[1])
         };
 
-        let map: HashMap<u32, u32> = (0..k)
-            .fold(HashMap::new(), |mut map, _| {
-                let (b, c): (u32, u32) = {
-                    let input: Vec<u32> = read_vec();
-                    (input[0], input[1])
-                };
-                *map.entry(b).or_insert(0) += c;
-                map
-            });
+        let map: HashMap<u32, u32> = (0..k).fold(HashMap::new(), |mut map, _| {
+            let (b, c): (u32, u32) = {
+                let input: Vec<u32> = read_vec();
+                (input[0], input[1])
+            };
+            *map.entry(b).or_insert(0) += c;
+            map
+        });
 
         let mut vec: Vec<u32> = map.into_values().collect();
 

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -10,7 +10,8 @@ fn main() {
 
         let res: String = (0..n)
             .map(|_| {
-                read_string().chars()
+                read_string()
+                    .chars()
                     .enumerate()
                     .find(|&x| x.1 == '#')
                     .map(|x| x.0 + 1)

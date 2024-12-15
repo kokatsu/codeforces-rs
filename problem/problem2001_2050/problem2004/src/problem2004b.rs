@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -18,13 +18,11 @@ fn main() {
 
         let (l, r): (u8, u8) = (la.max(lb), ra.min(rb));
 
-        let res: u8 =
-            if l > r {
-                1
-            }
-            else {
-                r - l + (la != lb) as u8 + (ra != rb) as u8
-            };
+        let res: u8 = if l > r {
+            1
+        } else {
+            r - l + (la != lb) as u8 + (ra != rb) as u8
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

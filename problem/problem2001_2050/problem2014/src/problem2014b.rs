@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,13 +11,11 @@ fn main() {
             (input[0], input[1])
         };
 
-        let is_ok: bool =
-            if n % 2 == 0 {
-                k % 4 <= 1
-            }
-            else {
-                (k - 1) % 4 >= 2
-            };
+        let is_ok: bool = if n % 2 == 0 {
+            k % 4 <= 1
+        } else {
+            (k - 1) % 4 >= 2
+        };
 
         let res: &str = if is_ok { "YES" } else { "NO" };
 

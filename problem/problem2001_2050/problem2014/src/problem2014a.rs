@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -18,11 +18,9 @@ fn main() {
             .fold((0, 0), |(res, gold), &x| {
                 if x >= k {
                     (res, gold + x)
-                }
-                else if x == 0 && gold > 0 {
+                } else if x == 0 && gold > 0 {
                     (res + 1, gold - 1)
-                }
-                else {
+                } else {
                     (res, gold)
                 }
             })

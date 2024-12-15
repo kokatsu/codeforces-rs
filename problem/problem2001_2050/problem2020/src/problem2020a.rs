@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -14,8 +14,7 @@ fn main() {
         let mut res: u64 = 0;
         if k == 1 {
             res = n;
-        }
-        else {
+        } else {
             let mut b: u64 = k;
             while n > 0 {
                 let m: u64 = n % b;

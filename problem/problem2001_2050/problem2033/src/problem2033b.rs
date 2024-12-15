@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -18,10 +18,7 @@ fn main() {
             }
         }
 
-        let res: i64 = d
-            .iter()
-            .map(|x| x.abs())
-            .sum();
+        let res: i64 = d.iter().map(|x| x.abs()).sum();
 
         writeln!(out, "{}", res).unwrap();
     }

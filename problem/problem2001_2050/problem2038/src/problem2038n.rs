@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
-use std::cmp::Ordering::{Less, Greater};
+use std::cmp::Ordering::{Greater, Less};
+use std::io::{stdout, BufWriter, Write};
 
 fn compare(x: char, y: char) -> char {
     match x.cmp(&y) {

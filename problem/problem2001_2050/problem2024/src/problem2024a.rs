@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,13 +11,11 @@ fn main() {
             (input[0], input[1])
         };
 
-        let res: u32 =
-            if a >= b {
-                a
-            }
-            else {
-                (a * 2).checked_sub(b).unwrap_or(0)
-            };
+        let res: u32 = if a >= b {
+            a
+        } else {
+            (a * 2).checked_sub(b).unwrap_or(0)
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

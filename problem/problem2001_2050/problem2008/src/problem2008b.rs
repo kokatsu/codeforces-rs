@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -14,12 +14,12 @@ fn main() {
         let is_beautiful: bool = match r * r == n {
             true => {
                 let top: bool = s[0..r].iter().all(|&c| c == '1');
-                let bottom: bool = s[r*(r-1)..n].iter().all(|&c| c == '1');
+                let bottom: bool = s[r * (r - 1)..n].iter().all(|&c| c == '1');
                 let left: bool = s.iter().step_by(r).all(|&c| c == '1');
-                let right: bool = s[r-1..n].iter().step_by(r).all(|&c| c == '1');
+                let right: bool = s[r - 1..n].iter().step_by(r).all(|&c| c == '1');
                 let inside: bool = s.iter().filter(|&&c| c == '1').count() == (r - 1) * 4;
                 top && bottom && left && right && inside
-            },
+            }
             _ => false,
         };
 

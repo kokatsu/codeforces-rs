@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -8,13 +8,7 @@ fn main() {
     for _ in 0..t {
         let n: usize = read();
 
-        let res: &str =
-            if n % 2 == 0 {
-                "Sakurako"
-            }
-            else {
-                "Kosuke"
-            };
+        let res: &str = if n % 2 == 0 { "Sakurako" } else { "Kosuke" };
 
         writeln!(out, "{}", res).unwrap();
     }

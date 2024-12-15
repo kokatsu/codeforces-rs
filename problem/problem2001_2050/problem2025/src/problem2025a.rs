@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -13,13 +13,11 @@ fn main() {
         let v: usize = t.len();
         let m: usize = u.min(v);
 
-        let n: usize = (0..m)
-            .find(|&i| s[i] != t[i])
-            .unwrap_or(m);
+        let n: usize = (0..m).find(|&i| s[i] != t[i]).unwrap_or(m);
 
         let w = if n == 0 { n } else { n - 1 };
 
-        let res: usize = u + v - w ;
+        let res: usize = u + v - w;
 
         writeln!(out, "{}", res).unwrap();
     }

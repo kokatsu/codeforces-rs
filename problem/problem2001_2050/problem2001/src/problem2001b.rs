@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -8,25 +8,18 @@ fn main() {
     for _ in 0..t {
         let n: usize = read();
 
-        let res: String =
-            if n % 2 == 0 {
-                "-1".to_string()
-            }
-            else {
-                let h: usize = n / 2;
-                (0..n).map(|i| {
-                    let m: usize =
-                        if i <= h {
-                            i * 2 + 1
-                        }
-                        else {
-                            (i - h) * 2
-                        };
+        let res: String = if n % 2 == 0 {
+            "-1".to_string()
+        } else {
+            let h: usize = n / 2;
+            (0..n)
+                .map(|i| {
+                    let m: usize = if i <= h { i * 2 + 1 } else { (i - h) * 2 };
                     m.to_string()
                 })
                 .collect::<Vec<_>>()
                 .join(" ")
-            };
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

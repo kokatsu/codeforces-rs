@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -13,19 +13,11 @@ fn main() {
 
         let a: Vec<u32> = read_vec();
 
-        let (s, m): (u32, u32) = a
-            .iter()
-            .fold((0, 0), |(s, m), x| (s + x, m + x % 2));
+        let (s, m): (u32, u32) = a.iter().fold((0, 0), |(s, m), x| (s + x, m + x % 2));
 
         let d: u32 = r * 2;
 
-        let res: u32 =
-            if d - s >= m {
-                s
-            }
-            else {
-                d - m
-            };
+        let res: u32 = if d - s >= m { s } else { d - m };
 
         writeln!(out, "{}", res).unwrap();
     }
