@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -20,26 +20,21 @@ fn main() {
         let q1: u32 = p1 - m;
         let q2: u32 = p2 - m;
 
-        let res: &str =
-            if q1 > 6 {
+        let res: &str = if q1 > 6 {
+            ">"
+        } else if q2 > 6 {
+            "<"
+        } else {
+            let y1: u64 = x1 * 10_u64.pow(q1);
+            let y2: u64 = x2 * 10_u64.pow(q2);
+            if y1 > y2 {
                 ">"
-            }
-            else if q2 > 6 {
+            } else if y1 < y2 {
                 "<"
+            } else {
+                "="
             }
-            else {
-                let y1: u64 = x1 * 10_u64.pow(q1);
-                let y2: u64 = x2 * 10_u64.pow(q2);
-                if y1 > y2 {
-                    ">"
-                }
-                else if y1 < y2 {
-                    "<"
-                }
-                else {
-                    "="
-                }
-            };
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
