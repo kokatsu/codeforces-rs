@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -12,27 +12,17 @@ fn main() {
 
         let a: Vec<usize> = read_vec();
 
-        let res: i64 =
-            if a.iter().all(|&v| v % x == 0) {
-                -1
-            }
-            else if a.iter().sum::<usize>() % x != 0 {
-                n as i64
-            }
-            else {
-                let l: usize =
-                    (0..n)
-                    .find(|&i| a[i] % x != 0)
-                    .unwrap();
+        let res: i64 = if a.iter().all(|&v| v % x == 0) {
+            -1
+        } else if a.iter().sum::<usize>() % x != 0 {
+            n as i64
+        } else {
+            let l: usize = (0..n).find(|&i| a[i] % x != 0).unwrap();
 
-                let r: usize =
-                    (0..n)
-                    .rev()
-                    .find(|&i| a[i] % x != 0)
-                    .unwrap();
+            let r: usize = (0..n).rev().find(|&i| a[i] % x != 0).unwrap();
 
-                (n-l-1).max(r) as i64
-            };
+            (n - l - 1).max(r) as i64
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
