@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -8,13 +8,9 @@ fn main() {
     for _ in 0..t {
         let n: usize = read();
 
-        let a: Vec<usize> =
-            (1..=n)
-            .map(|i| i % n + 1)
-            .collect();
+        let a: Vec<usize> = (1..=n).map(|i| i % n + 1).collect();
 
-        let res: String =
-            a
+        let res: String = a
             .iter()
             .fold(String::new(), |res, x| res + &x.to_string() + " ");
 
