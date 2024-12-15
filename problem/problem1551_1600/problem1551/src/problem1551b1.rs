@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,21 +10,18 @@ fn main() {
 
         let mut counts: Vec<i64> = vec![0; 26];
         for x in s.chars() {
-            counts[(x as usize)-('a' as usize)] += 1;
+            counts[(x as usize) - ('a' as usize)] += 1;
         }
 
-        let (a, b): (i64, i64) = counts.iter()
-                                        .fold((0, 0), |(a, b), &x| {
-                                            if x == 1 {
-                                                (a+1, b)
-                                            }
-                                            else if x > 1 {
-                                                (a, b+1)
-                                            }
-                                            else {
-                                                (a, b)
-                                            }
-                                        });
+        let (a, b): (i64, i64) = counts.iter().fold((0, 0), |(a, b), &x| {
+            if x == 1 {
+                (a + 1, b)
+            } else if x > 1 {
+                (a, b + 1)
+            } else {
+                (a, b)
+            }
+        });
 
         let res: i64 = b + a / 2;
 
