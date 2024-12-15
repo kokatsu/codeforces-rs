@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,18 +9,16 @@ fn main() {
         let mut a: Vec<i64> = read_vec();
 
         for i in 0..2 {
-            if a[i*2] < a[i*2+1] {
-                a.swap(i*2, i*2+1);
+            if a[i * 2] < a[i * 2 + 1] {
+                a.swap(i * 2, i * 2 + 1);
             }
         }
 
-        let res: &str =
-            if a[0] > a[3] && a[2] > a[1] {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if a[0] > a[3] && a[2] > a[1] {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
