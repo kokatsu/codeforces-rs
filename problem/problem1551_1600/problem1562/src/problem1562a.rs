@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,7 +10,7 @@ fn main() {
         let l: u64 = input[0];
         let r: u64 = input[1];
 
-        let res: u64 = r % l.max(r/2+1);
+        let res: u64 = r % l.max(r / 2 + 1);
 
         writeln!(out, "{}", res).unwrap();
     }
