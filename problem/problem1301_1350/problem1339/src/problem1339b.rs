@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -12,16 +12,14 @@ fn main() {
         a.sort();
 
         let mut d: Vec<i64> = vec![0; n];
-        for i in 0..(n+1)/2 {
-            d[n-i*2-1] = a[i];
+        for i in 0..(n + 1) / 2 {
+            d[n - i * 2 - 1] = a[i];
             if i != n - i - 1 {
-                d[n-i*2-2] = a[n-i-1];
+                d[n - i * 2 - 2] = a[n - i - 1];
             }
         }
 
-        let res: String =
-            (1..n)
-            .fold(d[0].to_string(), |res, i| res + " " + &d[i].to_string());
+        let res: String = (1..n).fold(d[0].to_string(), |res, i| res + " " + &d[i].to_string());
 
         writeln!(out, "{}", res).unwrap();
     }
