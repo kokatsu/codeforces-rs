@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -8,13 +8,7 @@ fn main() {
     for _ in 0..t {
         let n: u64 = read();
 
-        let res: u64 =
-            if n >= 6 {
-                (n + 1) / 2 * 5
-            }
-            else {
-                15
-            };
+        let res: u64 = if n >= 6 { (n + 1) / 2 * 5 } else { 15 };
 
         writeln!(out, "{}", res).unwrap();
     }
