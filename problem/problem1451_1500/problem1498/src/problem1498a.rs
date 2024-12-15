@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn digit_sum(mut x: u64) -> u64 {
     let mut ret: u64 = 0;
