@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,10 +9,9 @@ fn main() {
         let n: usize = read();
         let a: Vec<u64> = read_vec();
 
-        if a[0] + a[1] <= a[n-1] {
+        if a[0] + a[1] <= a[n - 1] {
             writeln!(out, "1 2 {}", n).unwrap();
-        }
-        else {
+        } else {
             writeln!(out, "-1").unwrap();
         }
     }
