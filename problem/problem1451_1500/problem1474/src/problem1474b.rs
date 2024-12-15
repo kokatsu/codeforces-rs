@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,18 +11,14 @@ fn main() {
     let mut d: usize = 2;
     while d * d < upper {
         if sieve[d] {
-            for i in (d*d..upper).step_by(d) {
+            for i in (d * d..upper).step_by(d) {
                 sieve[i] = false;
             }
         }
         d += 1;
     }
 
-    let primes: Vec<u64> =
-        (0..upper)
-        .filter(|&i| sieve[i])
-        .map(|i| i as u64)
-        .collect();
+    let primes: Vec<u64> = (0..upper).filter(|&i| sieve[i]).map(|i| i as u64).collect();
 
     let mut out = BufWriter::new(stdout().lock());
 
