@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -14,14 +14,7 @@ fn main() {
         let res: usize = a
             .iter()
             .enumerate()
-            .fold(1, |res, (i, &x)| {
-                if x <= i + 1 {
-                    i + 2
-                }
-                else {
-                    res
-                }
-            });
+            .fold(1, |res, (i, &x)| if x <= i + 1 { i + 2 } else { res });
 
         writeln!(out, "{}", res).unwrap();
     }
