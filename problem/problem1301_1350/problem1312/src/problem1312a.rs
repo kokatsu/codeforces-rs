@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,13 +10,7 @@ fn main() {
         let n: u64 = input[0];
         let m: u64 = input[1];
 
-        let res: &str =
-            if n % m == 0 {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if n % m == 0 { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }
