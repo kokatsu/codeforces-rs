@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn calc(x: u64, y: u64) -> u64 {
     let m: u64 = (x + y - 1) / y;
@@ -16,9 +16,7 @@ fn main() {
             (input[0], input[1], input[2], input[3])
         };
 
-        let res: u64 = calc(p, a)
-            .min(calc(p, b))
-            .min(calc(p, c));
+        let res: u64 = calc(p, a).min(calc(p, b)).min(calc(p, c));
 
         writeln!(out, "{}", res).unwrap();
     }
