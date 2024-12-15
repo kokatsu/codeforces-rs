@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,12 +11,12 @@ fn main() {
 
         let mut res: u32 = 0;
         for i in 1..n {
-            let d: i64 = a[i-1] - a[i];
+            let d: i64 = a[i - 1] - a[i];
             if d <= 0 {
                 continue;
             }
 
-            a[i] = a[i-1];
+            a[i] = a[i - 1];
             res = res.max(d.ilog2() + 1);
         }
 
