@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,30 +9,18 @@ fn main() {
         let n: usize = read();
         let a: Vec<u64> = read_vec();
 
-        let odd: Vec<u64> =
-            a
-            .iter()
-            .filter(|&x| x % 2 == 1)
-            .cloned()
-            .collect();
+        let odd: Vec<u64> = a.iter().filter(|&x| x % 2 == 1).cloned().collect();
 
-        let even: Vec<u64> =
-            a
-            .iter()
-            .filter(|&x| x % 2 == 0)
-            .cloned()
-            .collect();
+        let even: Vec<u64> = a.iter().filter(|&x| x % 2 == 0).cloned().collect();
 
         let l: usize = odd.len();
 
-        let res: String =
-            (0..n)
+        let res: String = (0..n)
             .fold(String::new(), |res, i| {
                 if i < l {
                     res + " " + &odd[i].to_string()
-                }
-                else {
-                    res + " " + &even[i-l].to_string()
+                } else {
+                    res + " " + &even[i - l].to_string()
                 }
             })
             .trim()
