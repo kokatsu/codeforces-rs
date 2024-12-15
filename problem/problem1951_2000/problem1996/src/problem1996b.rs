@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,25 +11,19 @@ fn main() {
             (input[0], input[1])
         };
 
-        let res: String = (0..n)
-            .fold(String::new(), |res, i| {
-                let s: String = read_string();
-                if i % k == 0 {
-                    let s: String = s
-                        .chars()
-                        .step_by(k)
-                        .collect::<String>();
-                    if i == 0 {
-                        s
-                    }
-                    else {
-                        res + "\n" + &s
-                    }
+        let res: String = (0..n).fold(String::new(), |res, i| {
+            let s: String = read_string();
+            if i % k == 0 {
+                let s: String = s.chars().step_by(k).collect::<String>();
+                if i == 0 {
+                    s
+                } else {
+                    res + "\n" + &s
                 }
-                else {
-                    res
-                }
-            });
+            } else {
+                res
+            }
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

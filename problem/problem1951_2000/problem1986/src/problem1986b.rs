@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -34,16 +34,14 @@ fn main() {
                 a[x][y] = a[x][y].min(max);
                 if y == 0 {
                     row = a[x][y].to_string();
-                }
-                else {
+                } else {
                     row += &(" ".to_owned() + &a[x][y].to_string());
                 }
             }
 
             if x == 0 {
                 res = row;
-            }
-            else {
+            } else {
                 res += &("\n".to_owned() + &row);
             }
         }

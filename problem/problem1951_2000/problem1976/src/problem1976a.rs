@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,14 +11,16 @@ fn main() {
 
         let res: &str = s
             .chars()
-            .fold(("YES", '0'), |(res, pre), x| {
-                if x >= pre {
-                    (res, x)
-                }
-                else {
-                    ("NO", x)
-                }
-            })
+            .fold(
+                ("YES", '0'),
+                |(res, pre), x| {
+                    if x >= pre {
+                        (res, x)
+                    } else {
+                        ("NO", x)
+                    }
+                },
+            )
             .0;
 
         writeln!(out, "{}", res).unwrap();

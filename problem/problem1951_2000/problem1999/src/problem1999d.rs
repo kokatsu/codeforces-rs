@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -17,8 +17,7 @@ fn main() {
             if *x == '?' {
                 *x = t[index];
                 index += 1;
-            }
-            else if *x == t[index] {
+            } else if *x == t[index] {
                 index += 1;
             }
 
@@ -28,13 +27,11 @@ fn main() {
             }
         }
 
-        let res: String =
-            if is_ok {
-                "YES\n".to_string() + &s.iter().collect::<String>()
-            }
-            else {
-                "NO".to_string()
-            };
+        let res: String = if is_ok {
+            "YES\n".to_string() + &s.iter().collect::<String>()
+        } else {
+            "NO".to_string()
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

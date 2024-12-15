@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,19 +11,17 @@ fn main() {
             (input[0], input[1], input[2])
         };
 
-        let f: String = (1..=k/2)
+        let f: String = (1..=k / 2)
             .map(|i| format!("{} {}\n{} {}", x - i, y, x + i, y))
             .collect::<Vec<String>>()
             .join("\n");
 
-        let b: String =
-            if k % 2 == 1 {
-                let z: &str = if f.is_empty() { "" } else { "\n" };
-                format!("{}{} {}", z, x, y)
-            }
-            else {
-                String::new()
-            };
+        let b: String = if k % 2 == 1 {
+            let z: &str = if f.is_empty() { "" } else { "\n" };
+            format!("{}{} {}", z, x, y)
+        } else {
+            String::new()
+        };
 
         let res: String = f + &b;
 

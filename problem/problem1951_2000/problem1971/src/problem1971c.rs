@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,20 +9,18 @@ fn main() {
         let (a, b, c, d): (u8, u8, u8, u8) = {
             let mut input: Vec<u8> = read_vec();
             for i in 0..2 {
-                if input[i*2] > input[i*2+1] {
+                if input[i * 2] > input[i * 2 + 1] {
                     input.swap(i * 2, i * 2 + 1);
                 }
             }
             (input[0], input[1], input[2], input[3])
         };
 
-        let res: &str =
-            if (a < c && c < b && b < d) || (c < a && a < d && d < b) {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if (a < c && c < b && b < d) || (c < a && a < d && d < b) {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

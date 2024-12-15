@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,21 +11,18 @@ fn main() {
             (input[0], input[1], input[2])
         };
 
-        let (x, y, z): (u32, u32, u32) = (0..5)
-            .fold((a, b, c), |(x, y, z), _| {
-                let u: u32 = (x + 1) * y * z;
-                let v: u32 = x * (y + 1) * z;
-                let w: u32 = x * y * (z + 1);
-                if u >= v && u >= w {
-                    (x + 1, y, z)
-                }
-                else if v >= u && v >= w {
-                    (x, y + 1, z)
-                }
-                else {
-                    (x, y, z + 1)
-                }
-            });
+        let (x, y, z): (u32, u32, u32) = (0..5).fold((a, b, c), |(x, y, z), _| {
+            let u: u32 = (x + 1) * y * z;
+            let v: u32 = x * (y + 1) * z;
+            let w: u32 = x * y * (z + 1);
+            if u >= v && u >= w {
+                (x + 1, y, z)
+            } else if v >= u && v >= w {
+                (x, y + 1, z)
+            } else {
+                (x, y, z + 1)
+            }
+        });
 
         let res: u32 = x * y * z;
 

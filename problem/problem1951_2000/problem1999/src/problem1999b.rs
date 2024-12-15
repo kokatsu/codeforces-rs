@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -12,13 +12,12 @@ fn main() {
         };
 
         let res: i8 = [
-                (a1 > b1 && a2 >= b2) || (a1 >= b1 && a2 > b2),
-                (a1 > b2 && a2 >= b1) || (a1 >= b2 && a2 > b1),
-            ]
-            .iter()
-            .map(|&x| if x { 2 } else { 0 })
-            .sum();
-
+            (a1 > b1 && a2 >= b2) || (a1 >= b1 && a2 > b2),
+            (a1 > b2 && a2 >= b1) || (a1 >= b2 && a2 > b1),
+        ]
+        .iter()
+        .map(|&x| if x { 2 } else { 0 })
+        .sum();
 
         writeln!(out, "{}", res).unwrap();
     }

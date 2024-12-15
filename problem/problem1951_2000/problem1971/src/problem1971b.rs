@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -13,12 +13,10 @@ fn main() {
         let res: String = match (0..l).find(|&i| s[i] != s[0]) {
             Some(i) => {
                 let mut u: Vec<char> = s.clone();
-                u.swap(i-1, i);
+                u.swap(i - 1, i);
                 "YES\n".to_owned() + &u.iter().collect::<String>()
-            },
-            None => {
-                "NO".to_owned()
             }
+            None => "NO".to_owned(),
         };
 
         writeln!(out, "{}", res).unwrap();

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -14,7 +14,7 @@ fn main() {
         let mut res: u32 = 0;
         while x > 0 || y > 0 {
             let v: u32 = y.min(2);
-            let u: u32 = x.min(15-v*4);
+            let u: u32 = x.min(15 - v * 4);
 
             x -= u;
             y -= v;

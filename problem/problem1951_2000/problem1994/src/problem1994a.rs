@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -18,17 +18,14 @@ fn main() {
 
         a.rotate_left(1);
 
-        let res: String =
-            if n * m == 1 {
-                (-1).to_string()
-            }
-            else {
-                a
-                    .chunks(m)
-                    .map(|x| x.join(" "))
-                    .collect::<Vec<String>>()
-                    .join("\n")
-            };
+        let res: String = if n * m == 1 {
+            (-1).to_string()
+        } else {
+            a.chunks(m)
+                .map(|x| x.join(" "))
+                .collect::<Vec<String>>()
+                .join("\n")
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

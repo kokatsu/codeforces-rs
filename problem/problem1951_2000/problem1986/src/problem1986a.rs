@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -8,8 +8,9 @@ fn main() {
     for _ in 0..t {
         let x: Vec<u8> = read_vec();
 
-        let res: u8 = (1..=10)
-            .fold(u8::MAX, |res, i| x.iter().map(|u| u.abs_diff(i)).sum::<u8>().min(res));
+        let res: u8 = (1..=10).fold(u8::MAX, |res, i| {
+            x.iter().map(|u| u.abs_diff(i)).sum::<u8>().min(res)
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

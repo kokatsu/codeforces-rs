@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,30 +11,27 @@ fn main() {
             (input[0], input[1])
         };
 
-        let (x, y, _num): (usize, usize, usize) = (1..=n)
-            .fold((0, 0, 0), |(x, y, num), i| {
-                let s: Vec<char> = read_string().chars().collect();
-                let g: Vec<(char, i64)> = run_length_encoding(s);
-                let mut v: usize = 0;
-                let mut cnt: usize = 0;
-                for (c, d) in g.into_iter() {
-                    let u: usize = d as usize;
-                    if c == '#' {
-                        v += (u + 1) / 2;
-                        cnt = u;
-                        break;
-                    }
-                    else {
-                        v += u;
-                    }
+        let (x, y, _num): (usize, usize, usize) = (1..=n).fold((0, 0, 0), |(x, y, num), i| {
+            let s: Vec<char> = read_string().chars().collect();
+            let g: Vec<(char, i64)> = run_length_encoding(s);
+            let mut v: usize = 0;
+            let mut cnt: usize = 0;
+            for (c, d) in g.into_iter() {
+                let u: usize = d as usize;
+                if c == '#' {
+                    v += (u + 1) / 2;
+                    cnt = u;
+                    break;
+                } else {
+                    v += u;
                 }
-                if cnt > num {
-                    (i, v, cnt)
-                }
-                else {
-                    (x, y, num)
-                }
-            });
+            }
+            if cnt > num {
+                (i, v, cnt)
+            } else {
+                (x, y, num)
+            }
+        });
 
         let res: String = format!("{} {}", x, y);
 
@@ -54,7 +51,7 @@ fn run_length_encoding<T: std::cmp::PartialEq + Copy>(x: Vec<T>) -> Vec<(T, i64)
             j += 1usize;
         }
 
-        ret.push((x[i], (j-i) as i64));
+        ret.push((x[i], (j - i) as i64));
         i = j;
     }
 

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -16,17 +16,14 @@ fn main() {
                     let num: u64 = sum + max;
                     if x == num {
                         (res + 1, x, num)
-                    }
-                    else {
+                    } else {
                         (res, x, num)
                     }
-                }
-                else {
+                } else {
                     let num: u64 = sum + x;
                     if max == num {
                         (res + 1, max, num)
-                    }
-                    else {
+                    } else {
                         (res, max, num)
                     }
                 }

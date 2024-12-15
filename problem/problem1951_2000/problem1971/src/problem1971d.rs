@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -12,13 +12,11 @@ fn main() {
 
         let l: usize = g.len();
 
-        let res: usize =
-            if (1..l).any(|i| g[i-1].0 == '0' && g[i].0 == '1') {
-                l - 1
-            }
-            else {
-                l
-            };
+        let res: usize = if (1..l).any(|i| g[i - 1].0 == '0' && g[i].0 == '1') {
+            l - 1
+        } else {
+            l
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
@@ -37,7 +35,7 @@ fn run_length_encoding<T: std::cmp::PartialEq + Copy>(x: Vec<T>) -> Vec<(T, i64)
             j += 1usize;
         }
 
-        ret.push((x[i], (j-i) as i64));
+        ret.push((x[i], (j - i) as i64));
         i = j;
     }
 

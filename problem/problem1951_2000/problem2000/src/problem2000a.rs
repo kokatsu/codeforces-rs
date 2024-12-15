@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,10 +11,9 @@ fn main() {
         let l: usize = a.len();
 
         let res: &str =
-            if l >= 3 && a[0] == '1' && a[1] == '0' && a[2] != '0' && (l != 3 || a[l-1] != '1') {
+            if l >= 3 && a[0] == '1' && a[1] == '0' && a[2] != '0' && (l != 3 || a[l - 1] != '1') {
                 "YES"
-            }
-            else {
+            } else {
                 "NO"
             };
 

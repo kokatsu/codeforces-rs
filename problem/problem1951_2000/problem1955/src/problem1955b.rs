@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -15,7 +15,7 @@ fn main() {
 
         b.sort();
 
-        let mut a: Vec<u64> = vec![0; n*n];
+        let mut a: Vec<u64> = vec![0; n * n];
         a[0] = b[0];
         for i in 0..n {
             for j in 0..n {
@@ -23,7 +23,7 @@ fn main() {
                     continue;
                 }
 
-                a[i*n+j] = a[0] + i as u64 * c + j as u64 * d;
+                a[i * n + j] = a[0] + i as u64 * c + j as u64 * d;
             }
         }
 

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -17,16 +17,13 @@ fn main() {
         let upper: usize = a.clone().into_iter().filter(|&x| x > fav).count();
         let equal: usize = a.into_iter().filter(|&x| x == fav).count();
 
-        let res: &str =
-            if k >= equal + upper {
-                "YES"
-            }
-            else if k <= upper {
-                "NO"
-            }
-            else {
-                "MAYBE"
-            };
+        let res: &str = if k >= equal + upper {
+            "YES"
+        } else if k <= upper {
+            "NO"
+        } else {
+            "MAYBE"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

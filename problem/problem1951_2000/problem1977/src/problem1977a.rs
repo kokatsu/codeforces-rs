@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,13 +11,11 @@ fn main() {
             (input[0], input[1])
         };
 
-        let res: &str =
-            if n >= m && (n - m) % 2 == 0 {
-                "Yes"
-            }
-            else {
-                "No"
-            };
+        let res: &str = if n >= m && (n - m) % 2 == 0 {
+            "Yes"
+        } else {
+            "No"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

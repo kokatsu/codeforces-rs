@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,7 +11,7 @@ fn main() {
             (input[0], input[1], input[2])
         };
 
-        let res: String = (m+1..=n)
+        let res: String = (m + 1..=n)
             .rev()
             .chain(1..=m)
             .map(|i| i.to_string())

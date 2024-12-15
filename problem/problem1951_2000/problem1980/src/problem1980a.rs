@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -13,11 +13,14 @@ fn main() {
 
         let a: Vec<char> = read_string().chars().collect();
 
-        let res: usize = ('A'..='G')
-            .fold(0, |res, c| {
-                let l: usize = a.clone().into_iter().filter(|&x| x == c).count();
-                if l >= m { res } else { res + m - l }
-            });
+        let res: usize = ('A'..='G').fold(0, |res, c| {
+            let l: usize = a.clone().into_iter().filter(|&x| x == c).count();
+            if l >= m {
+                res
+            } else {
+                res + m - l
+            }
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -12,12 +12,10 @@ fn main() {
         let mut seats: Vec<bool> = vec![false; n + 2];
         seats[a[0]] = true;
 
-        let is_ok: bool = a[1..n]
-            .iter()
-            .fold(true, |is_ok, &x| {
-                seats[x] = true;
-                is_ok && (seats[x-1] || seats[x+1])
-            });
+        let is_ok: bool = a[1..n].iter().fold(true, |is_ok, &x| {
+            seats[x] = true;
+            is_ok && (seats[x - 1] || seats[x + 1])
+        });
 
         let res: &str = if is_ok { "YES" } else { "NO" };
 

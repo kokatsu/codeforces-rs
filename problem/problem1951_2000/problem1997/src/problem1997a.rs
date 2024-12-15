@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -10,15 +10,13 @@ fn main() {
 
         let l: usize = s.len();
 
-        let res: String =
-            if let Some(p) = (1..l).filter(|&i| s[i-1] == s[i]).next() {
-                let c: String = (if s[p] == 'a' { 'z' } else { 'a' }).to_string();
-                s[0..p].iter().collect::<String>() + &c + &s[p..l].iter().collect::<String>()
-            }
-            else {
-                let c: String = (if s[l-1] == 'a' { 'z' } else { 'a' }).to_string();
-                s.iter().collect::<String>() + &c
-            };
+        let res: String = if let Some(p) = (1..l).filter(|&i| s[i - 1] == s[i]).next() {
+            let c: String = (if s[p] == 'a' { 'z' } else { 'a' }).to_string();
+            s[0..p].iter().collect::<String>() + &c + &s[p..l].iter().collect::<String>()
+        } else {
+            let c: String = (if s[l - 1] == 'a' { 'z' } else { 'a' }).to_string();
+            s.iter().collect::<String>() + &c
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

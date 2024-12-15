@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,13 +9,11 @@ fn main() {
         let n: usize = read();
         let p: Vec<usize> = read_vec();
 
-        let res: u8 =
-            if (0..n).any(|i| p[p[i]-1] == i + 1) {
-                2
-            }
-            else {
-                3
-            };
+        let res: u8 = if (0..n).any(|i| p[p[i] - 1] == i + 1) {
+            2
+        } else {
+            3
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

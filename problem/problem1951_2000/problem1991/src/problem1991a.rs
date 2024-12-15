@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,11 +9,7 @@ fn main() {
         let _n: usize = read();
         let a: Vec<u8> = read_vec();
 
-        let res: u8 = a
-            .into_iter()
-            .step_by(2)
-            .max()
-            .unwrap();
+        let res: u8 = a.into_iter().step_by(2).max().unwrap();
 
         writeln!(out, "{}", res).unwrap();
     }

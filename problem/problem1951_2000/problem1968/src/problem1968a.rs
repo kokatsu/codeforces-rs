@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -13,8 +13,7 @@ fn main() {
                 let n: u64 = gcd(x, y) + y;
                 if n > num {
                     (y, n)
-                }
-                else {
+                } else {
                     (res, num)
                 }
             })
