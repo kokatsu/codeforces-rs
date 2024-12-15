@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -8,13 +8,11 @@ fn main() {
     for _ in 0..t {
         let n: usize = read();
 
-        let res: String =
-            if n == 1 {
-                "-1".to_string()
-            }
-            else {
-                "8".to_string() + &"9".repeat(n-1)
-            };
+        let res: String = if n == 1 {
+            "-1".to_string()
+        } else {
+            "8".to_string() + &"9".repeat(n - 1)
+        };
 
         writeln!(out, "{}", &res).unwrap();
     }
