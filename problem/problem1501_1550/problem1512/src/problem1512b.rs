@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -21,34 +21,28 @@ fn main() {
 
         if pos[0].0 == pos[1].0 {
             if pos[0].0 > 0 {
-                table[pos[0].0-1][pos[0].1] = '*';
-                table[pos[1].0-1][pos[1].1] = '*';
+                table[pos[0].0 - 1][pos[0].1] = '*';
+                table[pos[1].0 - 1][pos[1].1] = '*';
+            } else {
+                table[pos[0].0 + 1][pos[0].1] = '*';
+                table[pos[1].0 + 1][pos[1].1] = '*';
             }
-            else {
-                table[pos[0].0+1][pos[0].1] = '*';
-                table[pos[1].0+1][pos[1].1] = '*';
-            }
-        }
-        else if pos[0].1 == pos[1].1 {
+        } else if pos[0].1 == pos[1].1 {
             if pos[0].1 > 0 {
-                table[pos[0].0][pos[0].1-1] = '*';
-                table[pos[1].0][pos[1].1-1] = '*';
+                table[pos[0].0][pos[0].1 - 1] = '*';
+                table[pos[1].0][pos[1].1 - 1] = '*';
+            } else {
+                table[pos[0].0][pos[0].1 + 1] = '*';
+                table[pos[1].0][pos[1].1 + 1] = '*';
             }
-            else {
-                table[pos[0].0][pos[0].1+1] = '*';
-                table[pos[1].0][pos[1].1+1] = '*';
-            }
-        }
-        else {
+        } else {
             table[pos[0].0][pos[1].1] = '*';
             table[pos[1].0][pos[0].1] = '*';
         }
 
-        let res: String =
-            (1..n)
-            .fold(table[0].iter().collect::<String>(), |res, i| {
-                res + "\n" + &table[i].iter().collect::<String>()
-            });
+        let res: String = (1..n).fold(table[0].iter().collect::<String>(), |res, i| {
+            res + "\n" + &table[i].iter().collect::<String>()
+        });
 
         writeln!(out, "{}", res).unwrap();
     }
