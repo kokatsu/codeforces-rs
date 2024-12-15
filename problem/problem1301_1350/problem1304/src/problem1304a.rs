@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,15 +9,9 @@ fn main() {
         let input: Vec<i64> = read_vec();
         let (x, y, a, b): (i64, i64, i64, i64) = (input[0], input[1], input[2], input[3]);
 
-        let (u, v): (i64, i64) = (y-x, a+b);
+        let (u, v): (i64, i64) = (y - x, a + b);
 
-        let res: i64 =
-            if u % v == 0 {
-                u / v
-            }
-            else {
-                -1
-            };
+        let res: i64 = if u % v == 0 { u / v } else { -1 };
 
         writeln!(out, "{}", res).unwrap();
     }
