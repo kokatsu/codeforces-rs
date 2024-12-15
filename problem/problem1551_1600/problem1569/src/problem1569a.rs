@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,17 +9,14 @@ fn main() {
         let n: usize = read();
         let s: Vec<char> = read_string().chars().collect();
 
-        let (l, r): (i64, i64) =
-            (0..n-1)
-            .fold((-1, -1), |(l, r), i| {
-                if s[i] != s[i+1] {
-                    let j: i64 = i as i64;
-                    (j+1, j+2)
-                }
-                else {
-                    (l, r)
-                }
-            });
+        let (l, r): (i64, i64) = (0..n - 1).fold((-1, -1), |(l, r), i| {
+            if s[i] != s[i + 1] {
+                let j: i64 = i as i64;
+                (j + 1, j + 2)
+            } else {
+                (l, r)
+            }
+        });
 
         writeln!(out, "{} {}", l, r).unwrap();
     }
