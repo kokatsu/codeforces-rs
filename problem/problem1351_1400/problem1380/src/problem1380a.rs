@@ -1,18 +1,16 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn solve(n: usize, p: &[usize]) -> String {
-    for j in 1..n-1 {
-        if let Some(i) = (0..j)
-            .find(|&i| p[i] < p[j]) {
-            if let Some(k) = (j+1..n)
-                .find(|&k| p[j] > p[k]) {
-                    let three: String = [i, j, k]
-                        .iter()
-                        .map(|x| (x + 1).to_string())
-                        .collect::<Vec<String>>()
-                        .join(" ");
-                    return "YES\n".to_string() + &three;
-                }
+    for j in 1..n - 1 {
+        if let Some(i) = (0..j).find(|&i| p[i] < p[j]) {
+            if let Some(k) = (j + 1..n).find(|&k| p[j] > p[k]) {
+                let three: String = [i, j, k]
+                    .iter()
+                    .map(|x| (x + 1).to_string())
+                    .collect::<Vec<String>>()
+                    .join(" ");
+                return "YES\n".to_string() + &three;
+            }
         }
     }
 
