@@ -1,10 +1,9 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
 
-    let a: Vec<u64> =
-        (1..=5000)
+    let a: Vec<u64> = (1..=5000)
         .step_by(2)
         .scan(0, |cum, i| {
             *cum += i;
