@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -16,18 +16,15 @@ fn main() {
             if seen1 {
                 a += "0";
                 b += &c.to_string();
-            }
-            else {
+            } else {
                 if c == '0' {
                     a += "0";
                     b += "0";
-                }
-                else if c == '1' {
+                } else if c == '1' {
                     seen1 = true;
                     a += "1";
                     b += "0";
-                }
-                else {
+                } else {
                     a += "1";
                     b += "1";
                 }

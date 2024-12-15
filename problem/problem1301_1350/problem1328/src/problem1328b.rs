@@ -1,12 +1,9 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
 
-    let a: Vec<u64> =
-        (0..=10u64.pow(5))
-        .map(|i| i * (i + 1) / 2)
-        .collect();
+    let a: Vec<u64> = (0..=10u64.pow(5)).map(|i| i * (i + 1) / 2).collect();
 
     let mut out = BufWriter::new(stdout().lock());
 
@@ -17,16 +14,13 @@ fn main() {
 
         let p: u64 = a.partition_point(|&x| x < k) as u64;
 
-        let res: String =
-            (0..n)
-            .fold(String::new(), |res, i| {
-                if i == n - p - 1 || i == n + a[p as usize] - p - k {
-                    res + "b"
-                }
-                else {
-                    res + "a"
-                }
-            });
+        let res: String = (0..n).fold(String::new(), |res, i| {
+            if i == n - p - 1 || i == n + a[p as usize] - p - k {
+                res + "b"
+            } else {
+                res + "a"
+            }
+        });
 
         writeln!(out, "{}", res).unwrap();
     }
