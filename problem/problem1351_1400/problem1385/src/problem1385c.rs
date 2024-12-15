@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,14 +9,14 @@ fn main() {
         let n: usize = read();
         let a: Vec<usize> = read_vec();
 
-        let p: usize = match (0..n-1).filter(|&i| a[i] < a[i+1]).last() {
+        let p: usize = match (0..n - 1).filter(|&i| a[i] < a[i + 1]).last() {
             Some(x) => x + 1,
-            None => 0
+            None => 0,
         };
 
-        let res: usize = match (0..p).filter(|&i| a[i] > a[i+1]).last() {
+        let res: usize = match (0..p).filter(|&i| a[i] > a[i + 1]).last() {
             Some(x) => x + 1,
-            None => 0
+            None => 0,
         };
 
         writeln!(out, "{}", res).unwrap();
