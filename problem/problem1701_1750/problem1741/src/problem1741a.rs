@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn compare(x: String, y: String) -> String {
     if x == y {
@@ -11,29 +11,24 @@ fn compare(x: String, y: String) -> String {
     let s: usize = u.len();
     let t: usize = v.len();
 
-    if u[s-1] == v[t-1] {
-        if u[s-1] == 'S' {
+    if u[s - 1] == v[t - 1] {
+        if u[s - 1] == 'S' {
             if s < t {
                 ">".to_string()
-            }
-            else {
+            } else {
                 "<".to_string()
             }
-        }
-        else {
+        } else {
             if s < t {
                 "<".to_string()
-            }
-            else {
+            } else {
                 ">".to_string()
             }
         }
-    }
-    else {
-        if (u[s-1] as u64) < (v[t-1] as u64) {
+    } else {
+        if (u[s - 1] as u64) < (v[t - 1] as u64) {
             ">".to_string()
-        }
-        else {
+        } else {
             "<".to_string()
         }
     }

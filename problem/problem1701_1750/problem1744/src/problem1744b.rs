@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -29,8 +29,7 @@ fn main() {
                 if x % 2 == 1 {
                     (evens, odds) = (0, n)
                 }
-            }
-            else {
+            } else {
                 res += x * odds;
                 if x % 2 == 1 {
                     (evens, odds) = (n, 0)

@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashMap;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,32 +10,26 @@ fn main() {
         let n: usize = read();
         let s: Vec<Vec<String>> = (0..3).map(|_| read_vec::<String>()).collect();
 
-        let map: HashMap<&String, i64> = (0..n*3).fold(HashMap::new(), |mut map, i| {
-            *map.entry(&s[i/n][i%n]).or_insert(0) += 1;
+        let map: HashMap<&String, i64> = (0..n * 3).fold(HashMap::new(), |mut map, i| {
+            *map.entry(&s[i / n][i % n]).or_insert(0) += 1;
             map
         });
 
-        let points: Vec<i64> =
-            (0..3)
+        let points: Vec<i64> = (0..3)
             .map(|i| {
-                s[i]
-                .iter()
-                .fold(0, |point, x| {
+                s[i].iter().fold(0, |point, x| {
                     if *map.get(&x).unwrap() == 1 {
                         point + 3
-                    }
-                    else if *map.get(&x).unwrap() == 2 {
+                    } else if *map.get(&x).unwrap() == 2 {
                         point + 1
-                    }
-                    else {
+                    } else {
                         point
                     }
                 })
             })
             .collect();
 
-        let res: String =
-            points
+        let res: String = points
             .iter()
             .fold(String::new(), |res, x| res + &x.to_string() + " ");
 

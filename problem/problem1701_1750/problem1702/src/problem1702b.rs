@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashSet;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -16,8 +16,7 @@ fn main() {
                 set.clear();
                 set.insert(x);
                 res += 1;
-            }
-            else {
+            } else {
                 set.insert(x);
             }
         }

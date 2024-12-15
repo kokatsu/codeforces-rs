@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -7,16 +7,13 @@ fn main() {
 
     for _ in 0..t {
         let (_n, k): (usize, usize) = {
-            let input:Vec<usize> = read_vec();
+            let input: Vec<usize> = read_vec();
             (input[0], input[1])
         };
 
         let p: Vec<usize> = read_vec();
 
-        let res: usize = p[0..k]
-            .iter()
-            .filter(|&x| x > &k)
-            .count();
+        let res: usize = p[0..k].iter().filter(|&x| x > &k).count();
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -13,8 +13,10 @@ fn main() {
 
         h.sort();
 
-        let res: &str = (0..n)
-            .fold("YES", |res, i| if h[n+i] - h[i] >= x { res } else { "NO" });
+        let res: &str = (0..n).fold(
+            "YES",
+            |res, i| if h[n + i] - h[i] >= x { res } else { "NO" },
+        );
 
         writeln!(out, "{}", res).unwrap();
     }

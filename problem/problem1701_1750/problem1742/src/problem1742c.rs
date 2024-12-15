@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -7,8 +7,7 @@ fn main() {
 
     for _ in 0..t {
         let _: String = read_string();
-        let field: Vec<Vec<char>> =
-            (0..8)
+        let field: Vec<Vec<char>> = (0..8)
             .map(|_| read_string().chars().collect::<Vec<char>>())
             .collect::<Vec<Vec<char>>>();
 

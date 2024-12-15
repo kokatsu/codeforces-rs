@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,15 +9,9 @@ fn main() {
         let _n: usize = read();
         let cnt: Vec<u64> = read_vec();
 
-        let max: u64 = *cnt
-            .iter()
-            .max()
-            .unwrap();
+        let max: u64 = *cnt.iter().max().unwrap();
 
-        let res: usize = cnt
-            .iter()
-            .position(|&x| x == max)
-            .unwrap() + 1;
+        let res: usize = cnt.iter().position(|&x| x == max).unwrap() + 1;
 
         writeln!(out, "{}", res).unwrap();
     }

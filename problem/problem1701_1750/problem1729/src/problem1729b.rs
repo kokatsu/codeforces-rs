@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -7,17 +7,22 @@ fn main() {
 
     for _ in 0..t {
         let n: usize = read();
-        let s: Vec<u32> = read_string().chars().map(|c| c as u32 - '0' as u32).collect();
+        let s: Vec<u32> = read_string()
+            .chars()
+            .map(|c| c as u32 - '0' as u32)
+            .collect();
 
         let mut i: isize = n as isize - 1;
         let mut v: Vec<char> = Vec::new();
         while i >= 0 {
             if s[i as usize] == 0 {
-                v.push(char::from_u32(s[i as usize - 2]*10+s[i as usize - 1]+'a' as u32-1).unwrap());
+                v.push(
+                    char::from_u32(s[i as usize - 2] * 10 + s[i as usize - 1] + 'a' as u32 - 1)
+                        .unwrap(),
+                );
                 i -= 3;
-            }
-            else {
-                v.push(char::from_u32(s[i as usize]+'a' as u32-1).unwrap());
+            } else {
+                v.push(char::from_u32(s[i as usize] + 'a' as u32 - 1).unwrap());
                 i -= 1;
             }
         }

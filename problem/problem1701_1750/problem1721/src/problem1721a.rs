@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashSet;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();

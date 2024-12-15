@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashSet;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -12,30 +12,24 @@ fn main() {
         let s: Vec<char> = read_string().chars().collect();
 
         let mut set: HashSet<usize> = HashSet::new();
-        let res: &str =
-            a
-            .iter()
-            .fold("YES", |res, &x| {
-                if set.contains(&x) {
+        let res: &str = a.iter().fold("YES", |res, &x| {
+            if set.contains(&x) {
+                res
+            } else {
+                set.insert(x);
+                let pos: Vec<usize> = a
+                    .iter()
+                    .enumerate()
+                    .filter(|(_, &b)| b == x)
+                    .map(|(j, _)| j)
+                    .collect();
+                if pos.iter().all(|&p| s[p] == s[pos[0]]) {
                     res
+                } else {
+                    "NO"
                 }
-                else {
-                    set.insert(x);
-                    let pos: Vec<usize> =
-                        a
-                        .iter()
-                        .enumerate()
-                        .filter(|(_, &b)| b == x)
-                        .map(|(j, _)| j)
-                        .collect();
-                    if pos.iter().all(|&p| s[p] == s[pos[0]]) {
-                        res
-                    }
-                    else {
-                        "NO"
-                    }
-                }
-            });
+            }
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

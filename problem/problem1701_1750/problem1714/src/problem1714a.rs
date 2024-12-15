@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 const H: usize = 24;
 const M: usize = 60;
@@ -14,12 +14,10 @@ fn main() {
         let n: usize = input[0];
         let t: usize = input[1] * M + input[2];
 
-        let time: usize =
-            (0..n)
-            .fold(L, |time, _| {
-                let alarm: Vec<usize> = read_vec();
-                time.min((alarm[0]*M+alarm[1]+L-t)%L)
-            });
+        let time: usize = (0..n).fold(L, |time, _| {
+            let alarm: Vec<usize> = read_vec();
+            time.min((alarm[0] * M + alarm[1] + L - t) % L)
+        });
 
         let h: usize = time / M;
         let m: usize = time % M;

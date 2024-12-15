@@ -1,16 +1,13 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashMap;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
 
-    let map: HashMap<char, i64> =
-        "Timur"
-        .chars()
-        .fold(HashMap::new(), |mut map, x| {
-            *map.entry(x).or_insert(0) += 1;
-            map
-        });
+    let map: HashMap<char, i64> = "Timur".chars().fold(HashMap::new(), |mut map, x| {
+        *map.entry(x).or_insert(0) += 1;
+        map
+    });
 
     let mut out = BufWriter::new(stdout().lock());
 
@@ -18,21 +15,12 @@ fn main() {
         let _n: usize = read();
         let s: String = read_string();
 
-        let m: HashMap<char, i64> =
-            s
-            .chars()
-            .fold(HashMap::new(), |mut map, x| {
-                *map.entry(x).or_insert(0) += 1;
-                map
-            });
+        let m: HashMap<char, i64> = s.chars().fold(HashMap::new(), |mut map, x| {
+            *map.entry(x).or_insert(0) += 1;
+            map
+        });
 
-        let res: &str =
-            if m == map {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if m == map { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }

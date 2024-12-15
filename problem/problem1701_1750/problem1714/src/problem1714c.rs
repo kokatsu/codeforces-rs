@@ -1,11 +1,10 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn dfs(x: i64, y: i64, z: &String) -> String {
     if x <= y {
         x.to_string() + z
-    }
-    else {
-        dfs(x-y, y-1, &(y.to_string()+z))
+    } else {
+        dfs(x - y, y - 1, &(y.to_string() + z))
     }
 }
 

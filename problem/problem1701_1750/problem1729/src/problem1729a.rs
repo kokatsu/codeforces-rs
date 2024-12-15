@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::cmp::Ordering;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -13,7 +13,7 @@ fn main() {
         let c: i64 = input[2];
 
         let x: i64 = a - 1;
-        let y: i64 = (b-c).abs() + c - 1;
+        let y: i64 = (b - c).abs() + c - 1;
 
         let res: i64 = match x.cmp(&y) {
             Ordering::Less => 1,

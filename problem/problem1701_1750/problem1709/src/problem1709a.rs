@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,18 +10,12 @@ fn main() {
         let a: Vec<usize> = read_vec();
 
         let mut count: usize = 0;
-        while x > 0 && x != a[x-1] {
-            x = a[x-1];
+        while x > 0 && x != a[x - 1] {
+            x = a[x - 1];
             count += 1;
         }
 
-        let res: &str =
-            if count == 3 {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if count == 3 { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }

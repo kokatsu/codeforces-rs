@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,18 +10,13 @@ fn main() {
         let x: String = read_string();
         let y: String = read_string();
 
-        let res: &str =
-            x
-            .chars()
-            .zip(y.chars())
-            .fold("YES", |res, (u, v)| {
-                if (u == 'R' || v == 'R') && u != v {
-                    "NO"
-                }
-                else {
-                    res
-                }
-            });
+        let res: &str = x.chars().zip(y.chars()).fold("YES", |res, (u, v)| {
+            if (u == 'R' || v == 'R') && u != v {
+                "NO"
+            } else {
+                res
+            }
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

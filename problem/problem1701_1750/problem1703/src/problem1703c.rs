@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,30 +9,24 @@ fn main() {
         let n: usize = read();
         let a: Vec<i64> = read_vec();
 
-        let b: Vec<i64> =
-            (0..n)
+        let b: Vec<i64> = (0..n)
             .map(|_| {
                 let input: Vec<String> = read_vec();
-                input[1]
-                .chars()
-                .fold(0, |num, x| {
+                input[1].chars().fold(0, |num, x| {
                     if x == 'U' {
                         if num == 0 {
                             9
-                        }
-                        else {
+                        } else {
                             num - 1
                         }
-                    }
-                    else {
+                    } else {
                         num + 1
                     }
                 })
             })
             .collect();
 
-        let res: String =
-            a
+        let res: String = a
             .iter()
             .zip(b.iter())
             .map(|(x, y)| (x + y) % 10)

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -15,13 +15,11 @@ fn main() {
 
         let u: String = "2 1".to_string();
 
-        let res: String =
-            if n == 2 {
-                u
-            }
-            else {
-                (4..=n).fold(3.to_string(), |s, i| s + " " + &i.to_string()) + " " + &u
-            };
+        let res: String = if n == 2 {
+            u
+        } else {
+            (4..=n).fold(3.to_string(), |s, i| s + " " + &i.to_string()) + " " + &u
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
