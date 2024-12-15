@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -12,17 +12,15 @@ fn main() {
         for _ in 0..n {
             let s: String = read_string();
             for c in s.chars() {
-                counts[(c as usize)-('a' as usize)] += 1;
+                counts[(c as usize) - ('a' as usize)] += 1;
             }
         }
 
-        let res: &str =
-            if counts.iter().all(|&x| x % n == 0) {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if counts.iter().all(|&x| x % n == 0) {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
