@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -15,15 +15,15 @@ fn main() {
         for i in 0..n {
             for j in 0..m {
                 if i + 1 < n {
-                    dp[i+1][j] = dp[i][j] + j + 1;
+                    dp[i + 1][j] = dp[i][j] + j + 1;
                 }
                 if j + 1 < m {
-                    dp[i][j+1] = dp[i][j] + i + 1;
+                    dp[i][j + 1] = dp[i][j] + i + 1;
                 }
             }
         }
 
-        let res: &str = if dp[n-1][m-1] == k {"YES"} else {"NO"};
+        let res: &str = if dp[n - 1][m - 1] == k { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }

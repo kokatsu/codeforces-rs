@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,26 +11,21 @@ fn main() {
         let b: i64 = input[1];
         let d: i64 = input[2];
 
-        let res: &str =
-            if r < b {
-                if b <= r * (d + 1) {
-                    "YES"
-                }
-                else {
-                    "NO"
-                }
-            }
-            else if r > b {
-                if r <= b * (d + 1) {
-                    "YES"
-                }
-                else {
-                    "NO"
-                }
-            }
-            else {
+        let res: &str = if r < b {
+            if b <= r * (d + 1) {
                 "YES"
-            };
+            } else {
+                "NO"
+            }
+        } else if r > b {
+            if r <= b * (d + 1) {
+                "YES"
+            } else {
+                "NO"
+            }
+        } else {
+            "YES"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
