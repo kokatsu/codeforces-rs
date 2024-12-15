@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 const D: usize = 3;
 
@@ -13,7 +13,7 @@ fn main() {
 
         let mut counts: Vec<usize> = vec![0; D];
         for x in a {
-            counts[x%D] += 1;
+            counts[x % D] += 1;
         }
 
         let m: usize = n / 3;
@@ -23,7 +23,7 @@ fn main() {
                 if counts[i] > m {
                     let diff: usize = counts[i] - m;
                     res += diff;
-                    counts[(i+1)%D] += diff;
+                    counts[(i + 1) % D] += diff;
                     counts[i] = m;
                 }
             }

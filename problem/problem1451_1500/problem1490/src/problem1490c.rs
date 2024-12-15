@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashSet;
+use std::io::{stdout, BufWriter, Write};
 
 const N: i64 = 10000i64;
 
@@ -8,7 +8,7 @@ fn main() {
 
     let mut set: HashSet<i64> = HashSet::new();
     for i in 1..=N {
-        set.insert(i*i*i);
+        set.insert(i * i * i);
     }
 
     let mut out = BufWriter::new(stdout().lock());
@@ -24,13 +24,13 @@ fn main() {
                 break;
             }
 
-            if set.contains(&(x-a)) {
+            if set.contains(&(x - a)) {
                 is_ok = true;
                 break;
             }
         }
 
-        let res: &str = if is_ok {"YES"} else {"NO"};
+        let res: &str = if is_ok { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }

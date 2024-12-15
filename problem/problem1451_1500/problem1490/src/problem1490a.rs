@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,8 +11,8 @@ fn main() {
 
         let mut res: i64 = 0;
         for i in 1..n {
-            let mut x: i64 = a[i].min(a[i-1]);
-            let y: i64 = a[i].max(a[i-1]);
+            let mut x: i64 = a[i].min(a[i - 1]);
+            let y: i64 = a[i].max(a[i - 1]);
             while x * 2 < y {
                 res += 1;
                 x *= 2;
