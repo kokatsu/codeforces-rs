@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,14 +11,12 @@ fn main() {
         let m: i64 = input[1];
         let k: i64 = input[2];
 
-        let x: i64 = m.min(n/k);
-        let y: i64 =
-            if (m - x) % (k - 1) > 0 {
-                (m - x) / (k - 1) + 1
-            }
-            else {
-                (m - x) / (k - 1)
-            };
+        let x: i64 = m.min(n / k);
+        let y: i64 = if (m - x) % (k - 1) > 0 {
+            (m - x) / (k - 1) + 1
+        } else {
+            (m - x) / (k - 1)
+        };
 
         let res: i64 = x - y;
 

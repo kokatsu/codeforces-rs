@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -12,28 +12,21 @@ fn main() {
         let x: i64 = input[2];
         let y: i64 = input[3];
 
-        let res: i64 =
-            (0..n)
-            .fold(0, |res, _| {
-                let a: Vec<char> = read_string().chars().collect();
-                let g: Vec<(char, i64)> = run_length_encoding(a);
-                let num: i64 =
-                    g
-                    .iter()
-                    .fold(0, |num, (u, v)| {
-                        if *u == '.' {
-                            num + v / 2 * y.min(x*2) + v % 2 * x
-                        }
-                        else {
-                            num
-                        }
-                    });
-                res + num
+        let res: i64 = (0..n).fold(0, |res, _| {
+            let a: Vec<char> = read_string().chars().collect();
+            let g: Vec<(char, i64)> = run_length_encoding(a);
+            let num: i64 = g.iter().fold(0, |num, (u, v)| {
+                if *u == '.' {
+                    num + v / 2 * y.min(x * 2) + v % 2 * x
+                } else {
+                    num
+                }
             });
+            res + num
+        });
 
         writeln!(out, "{}", res).unwrap();
     }
-    
 }
 
 #[allow(dead_code)]
@@ -49,7 +42,7 @@ fn run_length_encoding<T: std::cmp::PartialEq + Copy>(x: Vec<T>) -> Vec<(T, i64)
             j += 1usize;
         }
 
-        ret.push((x[i], (j-i) as i64));
+        ret.push((x[i], (j - i) as i64));
         i = j;
     }
 
