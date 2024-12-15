@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,13 +11,11 @@ fn main() {
 
         let s: usize = a.iter().sum();
 
-        let res: &str =
-            if a.iter().any(|x| x * n == s) {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if a.iter().any(|x| x * n == s) {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

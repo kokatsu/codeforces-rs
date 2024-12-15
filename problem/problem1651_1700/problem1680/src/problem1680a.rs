@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,16 +11,13 @@ fn main() {
             (input[0], input[1], input[2], input[3])
         };
 
-        let res: u8 =
-            if l1 <= l2 && l2 <= r1 {
-                l2
-            }
-            else if l2 <= l1 && l1 <= r2 {
-                l1
-            }
-            else {
-                l1 + l2
-            };
+        let res: u8 = if l1 <= l2 && l2 <= r1 {
+            l2
+        } else if l2 <= l1 && l1 <= r2 {
+            l1
+        } else {
+            l1 + l2
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

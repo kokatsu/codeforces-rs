@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let input: Vec<usize> = read_vec();
@@ -23,7 +23,7 @@ fn main() {
         let input: Vec<usize> = read_vec();
         let (x, y): (usize, usize) = (input[0], input[1]);
 
-        let res: u64 = cum[x] - cum[x-y];
+        let res: u64 = cum[x] - cum[x - y];
 
         writeln!(out, "{}", res).unwrap();
     }

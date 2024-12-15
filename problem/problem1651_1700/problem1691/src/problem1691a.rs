@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,13 +9,14 @@ fn main() {
         let n: usize = read();
         let a: Vec<i64> = read_vec();
 
-        let even: usize = a.iter()
-                            .filter(|&x| x % 2 == 0)
-                            .cloned()
-                            .collect::<Vec<i64>>()
-                            .len();
+        let even: usize = a
+            .iter()
+            .filter(|&x| x % 2 == 0)
+            .cloned()
+            .collect::<Vec<i64>>()
+            .len();
 
-        let res: usize = even.min(n-even);
+        let res: usize = even.min(n - even);
 
         writeln!(out, "{}", res).unwrap();
     }

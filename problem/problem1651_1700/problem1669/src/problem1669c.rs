@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -19,8 +19,7 @@ fn main() {
                 if x % 2 == 0 {
                     odd_count += 1;
                 }
-            }
-            else {
+            } else {
                 if x % 2 == 0 {
                     even_count += 1;
                 }
@@ -30,8 +29,7 @@ fn main() {
         let res: &str =
             if (odd_count == 0 || odd_count == m) && (even_count == 0 || even_count == h) {
                 "YES"
-            }
-            else {
+            } else {
                 "NO"
             };
 

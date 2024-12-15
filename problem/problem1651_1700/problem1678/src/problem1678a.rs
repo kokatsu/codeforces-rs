@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -13,16 +13,13 @@ fn main() {
 
         let g: Vec<(u8, usize)> = run_length_encoding(a);
 
-        let res: usize =
-            if g[0].0 == 0 {
-                n - g[0].1
-            }
-            else if g.len() == n {
-                n + 1
-            }
-            else {
-                n
-            };
+        let res: usize = if g[0].0 == 0 {
+            n - g[0].1
+        } else if g.len() == n {
+            n + 1
+        } else {
+            n
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

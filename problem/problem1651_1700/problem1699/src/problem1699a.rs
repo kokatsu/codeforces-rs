@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -8,13 +8,11 @@ fn main() {
     for _ in 0..t {
         let n: i64 = read();
 
-        let res: String =
-            if n % 2 == 0 {
-                format!("{} 0 0", n / 2)
-            }
-            else {
-                (-1).to_string()
-            };
+        let res: String = if n % 2 == 0 {
+            format!("{} 0 0", n / 2)
+        } else {
+            (-1).to_string()
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

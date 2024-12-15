@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,23 +11,19 @@ fn main() {
 
         a.sort_by(|x, y| x.cmp(y).reverse());
 
-        let res: &str =
-            if n == 1 {
-                if a[0] == 1 {
-                    "YES"
-                }
-                else {
-                    "NO"
-                }
+        let res: &str = if n == 1 {
+            if a[0] == 1 {
+                "YES"
+            } else {
+                "NO"
             }
-            else {
-                if a[0] - a[1] <= 1 {
-                    "YES"
-                }
-                else {
-                    "NO"
-                }
-            };
+        } else {
+            if a[0] - a[1] <= 1 {
+                "YES"
+            } else {
+                "NO"
+            }
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

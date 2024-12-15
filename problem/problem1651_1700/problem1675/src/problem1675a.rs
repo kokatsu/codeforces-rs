@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -13,13 +13,11 @@ fn main() {
         let x: i64 = input[3];
         let y: i64 = input[4];
 
-        let res: &str =
-            if (x-a).max(0) + (y-b).max(0) <= c {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if (x - a).max(0) + (y - b).max(0) <= c {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

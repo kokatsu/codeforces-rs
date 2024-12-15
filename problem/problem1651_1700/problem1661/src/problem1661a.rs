@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -14,13 +14,12 @@ fn main() {
             (a[0], b[0]) = (b[0], a[0]);
         }
 
-        let res: u64 = (1..n)
-            .fold(0, |res, i| {
-                if a[i] > b[i] {
-                    (a[i], b[i]) = (b[i], a[i])
-                }
-                res + a[i-1].abs_diff(a[i]) + b[i-1].abs_diff(b[i])
-            });
+        let res: u64 = (1..n).fold(0, |res, i| {
+            if a[i] > b[i] {
+                (a[i], b[i]) = (b[i], a[i])
+            }
+            res + a[i - 1].abs_diff(a[i]) + b[i - 1].abs_diff(b[i])
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

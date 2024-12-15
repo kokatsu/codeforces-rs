@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -14,10 +14,9 @@ fn main() {
         let res: i64 = (0..n)
             .fold((0, 0), |(res, a), _| {
                 if a + x <= b {
-                    (res+a+x, a+x)
-                }
-                else {
-                    (res+a-y, a-y)
+                    (res + a + x, a + x)
+                } else {
+                    (res + a - y, a - y)
                 }
             })
             .0;

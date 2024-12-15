@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -6,20 +6,17 @@ fn main() {
     let mut out = BufWriter::new(stdout().lock());
 
     for _ in 0..t {
-        let s: Vec<u64> =
-            read_string()
+        let s: Vec<u64> = read_string()
             .chars()
             .into_iter()
             .map(|c| (c as u8 - 97_u8) as u64)
             .collect();
 
-        let res: u64 =
-            if s[0] > s[1] {
-                s[0] * 25 + s[1] + 1
-            }
-            else {
-                s[0] * 25+ s[1]
-            };
+        let res: u64 = if s[0] > s[1] {
+            s[0] * 25 + s[1] + 1
+        } else {
+            s[0] * 25 + s[1]
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

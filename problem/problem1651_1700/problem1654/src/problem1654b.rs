@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashMap;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,12 +9,10 @@ fn main() {
     for _ in 0..t {
         let s: Vec<char> = read_string().chars().collect();
 
-        let mut map: HashMap<char, usize> = s
-            .iter()
-            .fold(HashMap::new(), |mut map, &c| {
-                *map.entry(c).or_insert(0) += 1;
-                map
-            });
+        let mut map: HashMap<char, usize> = s.iter().fold(HashMap::new(), |mut map, &c| {
+            *map.entry(c).or_insert(0) += 1;
+            map
+        });
 
         let mut index: usize = 0;
         for x in s.iter() {

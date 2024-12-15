@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,22 +9,11 @@ fn main() {
         let _n: usize = read();
         let a: Vec<usize> = read_vec();
 
-        let xor: usize =
-            a
-            .iter()
-            .fold(0, |xor, x| xor ^ x);
+        let xor: usize = a.iter().fold(0, |xor, x| xor ^ x);
 
-        let res: usize =
-            a
+        let res: usize = a
             .iter()
-            .fold(0, |res, x| {
-                if xor ^ x == *x {
-                    *x
-                }
-                else {
-                    res
-                }
-            });
+            .fold(0, |res, x| if xor ^ x == *x { *x } else { res });
 
         writeln!(out, "{}", res).unwrap();
     }

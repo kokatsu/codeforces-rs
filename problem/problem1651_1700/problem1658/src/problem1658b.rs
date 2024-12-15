@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 const MOD: u64 = 998_244_353;
 
@@ -14,13 +14,11 @@ fn main() {
     for _ in 0..t {
         let n: u64 = read();
 
-        let res: u64 =
-            if n % 2 == 0 {
-                factorial_mod(n/2).pow(2) % MOD
-            }
-            else {
-                0
-            };
+        let res: u64 = if n % 2 == 0 {
+            factorial_mod(n / 2).pow(2) % MOD
+        } else {
+            0
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

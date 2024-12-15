@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -13,8 +13,7 @@ fn main() {
 
         a.sort_by(|x, y| x.cmp(y).reverse());
 
-        let cumsum: Vec<u64> =
-            a
+        let cumsum: Vec<u64> = a
             .iter()
             .scan(0, |cumsum, x| {
                 *cumsum += x;
@@ -25,7 +24,7 @@ fn main() {
         for _ in 0..q {
             let x: u64 = read();
 
-            if x > cumsum[n-1] {
+            if x > cumsum[n - 1] {
                 writeln!(out, "-1").unwrap();
                 continue;
             }

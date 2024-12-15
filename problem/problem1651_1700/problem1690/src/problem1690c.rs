@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,9 +10,9 @@ fn main() {
         let s: Vec<u64> = read_vec();
         let f: Vec<u64> = read_vec();
 
-        let res: String =
-            (1..n)
-            .fold((f[0]-s[0]).to_string(), |res, i| res + " " + &(f[i]-s[i].max(f[i-1])).to_string());
+        let res: String = (1..n).fold((f[0] - s[0]).to_string(), |res, i| {
+            res + " " + &(f[i] - s[i].max(f[i - 1])).to_string()
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

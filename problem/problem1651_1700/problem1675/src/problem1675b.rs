@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -10,13 +10,13 @@ fn main() {
         let mut a: Vec<u64> = read_vec();
 
         let mut res: i64 = 0;
-        for i in (0..n-1).rev() {
-            while a[i] > 0 && a[i] >= a[i+1] {
+        for i in (0..n - 1).rev() {
+            while a[i] > 0 && a[i] >= a[i + 1] {
                 a[i] /= 2;
                 res += 1;
             }
 
-            if a[i] >= a[i+1] {
+            if a[i] >= a[i + 1] {
                 res = -1;
                 break;
             }

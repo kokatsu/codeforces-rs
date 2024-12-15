@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -13,13 +13,11 @@ fn main() {
         let u: i32 = n.min(m);
         let v: i32 = n.max(m);
 
-        let res: i32 =
-            if u == 1 && v >= 3 {
-                -1
-            }
-            else {
-                v * 2 - (u + v) % 2 - 2
-            };
+        let res: i32 = if u == 1 && v >= 3 {
+            -1
+        } else {
+            v * 2 - (u + v) % 2 - 2
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

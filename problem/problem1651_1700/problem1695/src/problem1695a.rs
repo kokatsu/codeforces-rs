@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -23,7 +23,7 @@ fn main() {
             }
         }
 
-        let res: usize = (u+1).max(n-u) * (v+1).max(m-v);
+        let res: usize = (u + 1).max(n - u) * (v + 1).max(m - v);
 
         writeln!(out, "{}", res).unwrap();
     }

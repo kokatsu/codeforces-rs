@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 const N: usize = 8;
 
@@ -12,18 +12,19 @@ fn main() {
 
         let board: Vec<Vec<char>> = (0..N).map(|_| read_string().chars().collect()).collect();
 
-        for i in 1..N-1 {
-            for j in 1..N-1 {
+        for i in 1..N - 1 {
+            for j in 1..N - 1 {
                 if board[i][j] != '#' {
                     continue;
                 }
 
-                if board[i-1][j+1] == '#'
-                    && board[i+1][j+1] == '#'
-                    && board[i+1][j-1] == '#'
-                    && board[i-1][j-1] == '#' {
-                        writeln!(out, "{} {}", i+1, j+1).unwrap();
-                    }
+                if board[i - 1][j + 1] == '#'
+                    && board[i + 1][j + 1] == '#'
+                    && board[i + 1][j - 1] == '#'
+                    && board[i - 1][j - 1] == '#'
+                {
+                    writeln!(out, "{} {}", i + 1, j + 1).unwrap();
+                }
             }
         }
     }

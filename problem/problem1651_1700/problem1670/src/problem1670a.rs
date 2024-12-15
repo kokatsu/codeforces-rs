@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -16,8 +16,7 @@ fn main() {
                     a[i] *= -1;
                 }
                 neg -= 1;
-            }
-            else if neg == 0 && a[i] < 0 {
+            } else if neg == 0 && a[i] < 0 {
                 a[i] *= -1;
             }
         }
