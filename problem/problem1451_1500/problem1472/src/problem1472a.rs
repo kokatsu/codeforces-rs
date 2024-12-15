@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -14,13 +14,11 @@ fn main() {
         let x: u32 = w.trailing_zeros();
         let y: u32 = h.trailing_zeros();
 
-        let res: &str =
-            if (1 << x) * (1 << y) >= n {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if (1 << x) * (1 << y) >= n {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

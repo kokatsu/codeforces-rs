@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,13 +9,12 @@ fn main() {
         let n: usize = read();
         let a: Vec<i64> = read_vec();
 
-        let mut dp: Vec<i64> = vec![0; n+1];
+        let mut dp: Vec<i64> = vec![0; n + 1];
         for (i, x) in a.iter().enumerate() {
             if (i as i64) + x >= (n as i64) {
-                dp[n] = dp[n].max(dp[i]+x);
-            }
-            else {
-                dp[i+(*x as usize)] = dp[i+(*x as usize)].max(dp[i]+x);
+                dp[n] = dp[n].max(dp[i] + x);
+            } else {
+                dp[i + (*x as usize)] = dp[i + (*x as usize)].max(dp[i] + x);
             }
         }
 

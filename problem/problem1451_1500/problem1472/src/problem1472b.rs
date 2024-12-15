@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,14 +10,11 @@ fn main() {
         let a: Vec<i64> = read_vec();
 
         let (total, one, two): (i64, i64, i64) =
-            a
-            .iter()
-            .fold((0, 0, 0), |(total, one, two), x| {
+            a.iter().fold((0, 0, 0), |(total, one, two), x| {
                 if *x == 1 {
-                    (total+x, one+1, two)
-                }
-                else {
-                    (total+x, one, two+1)
+                    (total + x, one + 1, two)
+                } else {
+                    (total + x, one, two + 1)
                 }
             });
 
@@ -35,13 +32,7 @@ fn main() {
         }
         is_ok &= r == 0;
 
-        let res: &str =
-            if is_ok {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if is_ok { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }

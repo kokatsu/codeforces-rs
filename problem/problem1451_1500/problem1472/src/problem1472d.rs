@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,30 +11,23 @@ fn main() {
 
         a.sort_by(|x, y| x.cmp(y).reverse());
 
-        let diff =
-            (0..n)
-            .fold(0, |diff, i| {
-                if i % 2 == 0 && a[i] % 2 == 0 {
-                    diff + a[i]
-                }
-                else if i % 2 == 1 && a[i] % 2 == 1 {
-                    diff - a[i]
-                }
-                else {
-                    diff
-                }
-            });
+        let diff = (0..n).fold(0, |diff, i| {
+            if i % 2 == 0 && a[i] % 2 == 0 {
+                diff + a[i]
+            } else if i % 2 == 1 && a[i] % 2 == 1 {
+                diff - a[i]
+            } else {
+                diff
+            }
+        });
 
-        let res: &str =
-            if diff > 0 {
-                "Alice"
-            }
-            else if diff < 0 {
-                "Bob"
-            }
-            else {
-                "Tie"
-            };
+        let res: &str = if diff > 0 {
+            "Alice"
+        } else if diff < 0 {
+            "Bob"
+        } else {
+            "Tie"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
