@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -13,11 +13,10 @@ fn main() {
         let a_min = *a.iter().min().unwrap();
         let b_min = *b.iter().min().unwrap();
 
-        let res: u64 =
-            a
+        let res: u64 = a
             .iter()
             .zip(b.iter())
-            .fold(0, |res, (x, y)| res + (x-a_min).max(y-b_min));
+            .fold(0, |res, (x, y)| res + (x - a_min).max(y - b_min));
 
         writeln!(out, "{}", res).unwrap();
     }

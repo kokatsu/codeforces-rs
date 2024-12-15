@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,16 +11,7 @@ fn main() {
 
         a.sort();
 
-        let res: &str =
-            (1..n)
-            .fold("YES", |res, i| {
-                if a[i] < a[i-1] + 2 {
-                    res
-                }
-                else {
-                    "NO"
-                }
-            });
+        let res: &str = (1..n).fold("YES", |res, i| if a[i] < a[i - 1] + 2 { res } else { "NO" });
 
         writeln!(out, "{}", res).unwrap();
     }
