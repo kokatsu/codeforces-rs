@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -20,16 +20,19 @@ fn main() {
         let x_f: i64 = f[0];
         let y_f: i64 = f[1];
 
-        let res: i64 =
-            if x_a == x_b && x_a == x_f && ((y_a <= y_f && y_f <= y_b) || (y_b <= y_f && y_f <= y_a)) {
-                (y_a-y_b).abs() + 2
-            }
-            else if y_a == y_b && y_a == y_f && ((x_a <= x_f && x_f <= x_b) || (x_b <= x_f && x_f <= x_a)) {
-                (x_a-x_b).abs() + 2
-            }
-            else {
-                (x_a-x_b).abs() + (y_a-y_b).abs()
-            };
+        let res: i64 = if x_a == x_b
+            && x_a == x_f
+            && ((y_a <= y_f && y_f <= y_b) || (y_b <= y_f && y_f <= y_a))
+        {
+            (y_a - y_b).abs() + 2
+        } else if y_a == y_b
+            && y_a == y_f
+            && ((x_a <= x_f && x_f <= x_b) || (x_b <= x_f && x_f <= x_a))
+        {
+            (x_a - x_b).abs() + 2
+        } else {
+            (x_a - x_b).abs() + (y_a - y_b).abs()
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

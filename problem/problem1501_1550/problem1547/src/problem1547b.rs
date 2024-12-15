@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -19,12 +19,10 @@ fn main() {
             if v[l] == now {
                 l += 1;
                 now -= 1;
-            }
-            else if v[r] == now {
+            } else if v[r] == now {
                 r -= 1;
                 now -= 1;
-            }
-            else {
+            } else {
                 res = "NO";
                 break;
             }
