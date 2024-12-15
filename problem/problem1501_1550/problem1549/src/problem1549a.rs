@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -8,7 +8,7 @@ fn main() {
     for _ in 0..t {
         let p: i64 = read();
 
-        writeln!(out, "2 {}", p-1).unwrap();
+        writeln!(out, "2 {}", p - 1).unwrap();
     }
 }
 
