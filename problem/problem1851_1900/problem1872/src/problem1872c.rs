@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn solve(x: u64, y: u64) -> String {
     if y <= 3 {

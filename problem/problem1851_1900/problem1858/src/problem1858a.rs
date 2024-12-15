@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -14,13 +14,7 @@ fn main() {
         let x: u64 = a + c - c / 2;
         let y: u64 = b + c / 2;
 
-        let res: &str =
-            if x > y {
-                "First"
-            }
-            else {
-                "Second"
-            };
+        let res: &str = if x > y { "First" } else { "Second" };
 
         writeln!(out, "{}", res).unwrap();
     }

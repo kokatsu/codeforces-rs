@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -16,14 +16,10 @@ fn main() {
         let (mut ok, mut ng): (u64, u64) = (0, 10_u64.pow(12));
         while ng - ok > 1 {
             let mid: u64 = (ok + ng) / 2;
-            let num: u64 = a
-                .iter()
-                .map(|u| if u < &mid { mid - u } else { 0 })
-                .sum();
+            let num: u64 = a.iter().map(|u| if u < &mid { mid - u } else { 0 }).sum();
             if num <= x {
                 ok = mid;
-            }
-            else {
+            } else {
                 ng = mid;
             }
         }

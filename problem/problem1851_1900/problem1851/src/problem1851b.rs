@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -12,18 +12,11 @@ fn main() {
         let mut b: Vec<u64> = a.to_vec();
         b.sort();
 
-        let c: usize =
-            (0..n)
+        let c: usize = (0..n)
             .filter(|&i| a[i] != b[i] && a[i] % 2 != b[i] % 2)
             .count();
 
-        let res: &str =
-            if c == 0 {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if c == 0 { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }

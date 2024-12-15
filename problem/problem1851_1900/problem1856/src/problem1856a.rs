@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,16 +9,16 @@ fn main() {
         let n: usize = read();
         let a: Vec<u64> = read_vec();
 
-        let res: u64 =
-            (0..n-1)
-            .fold(0, |res, i| {
-                if a[i] > a[i+1] {
+        let res: u64 = (0..n - 1).fold(
+            0,
+            |res, i| {
+                if a[i] > a[i + 1] {
                     res.max(a[i])
-                }
-                else {
+                } else {
                     res
                 }
-            });
+            },
+        );
 
         writeln!(out, "{}", res).unwrap();
     }

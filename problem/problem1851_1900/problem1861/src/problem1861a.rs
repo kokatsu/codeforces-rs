@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -8,10 +8,7 @@ fn main() {
     for _ in 0..t {
         let s: Vec<char> = read_string().chars().collect();
 
-        let res: String = s
-            .into_iter()
-            .filter(|&c| c == '1' || c == '3')
-            .collect();
+        let res: String = s.into_iter().filter(|&c| c == '1' || c == '3').collect();
 
         writeln!(out, "{}", res).unwrap();
     }

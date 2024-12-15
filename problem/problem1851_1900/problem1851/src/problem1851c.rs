@@ -1,16 +1,12 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn solve(n: usize, k: usize, c: &[usize]) -> &str {
-    let a: Vec<usize> = (0..n)
-        .filter(|&i| c[i] == c[0])
-        .collect();
+    let a: Vec<usize> = (0..n).filter(|&i| c[i] == c[0]).collect();
 
     if a.len() >= k {
-        let b: Vec<usize> = (a[k-1]..n)
-            .filter(|&i| c[i] == c[n-1])
-            .collect();
+        let b: Vec<usize> = (a[k - 1]..n).filter(|&i| c[i] == c[n - 1]).collect();
 
-        if c[0] == c[n-1] || b.len() >= k {
+        if c[0] == c[n - 1] || b.len() >= k {
             return "YES";
         }
     }

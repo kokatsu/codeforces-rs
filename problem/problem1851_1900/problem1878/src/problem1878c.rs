@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -10,7 +10,7 @@ fn main() {
         let (n, k, x): (u64, u64, u64) = (input[0], input[1], input[2]);
 
         let low: u64 = triangular_number(k);
-        let high: u64 = triangular_number(n) - triangular_number(n-k);
+        let high: u64 = triangular_number(n) - triangular_number(n - k);
 
         let res: &str = if low <= x && x <= high { "YES" } else { "NO" };
 

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -22,25 +22,17 @@ fn main() {
 
         let res: u8 = match k {
             4 => {
-                let evens: Vec<u8> = a
-                    .into_iter()
-                    .filter(|x| x % 2 == 0)
-                    .collect();
-                let f: u8 =
-                    if evens.iter().any(|x| x % 4 == 0) || evens.len() >= 2 {
-                        0
-                    }
-                    else if !evens.is_empty() {
-                        1
-                    }
-                    else {
-                        2
-                    };
+                let evens: Vec<u8> = a.into_iter().filter(|x| x % 2 == 0).collect();
+                let f: u8 = if evens.iter().any(|x| x % 4 == 0) || evens.len() >= 2 {
+                    0
+                } else if !evens.is_empty() {
+                    1
+                } else {
+                    2
+                };
                 f.min(num)
-            },
-            _ => {
-                num
-            },
+            }
+            _ => num,
         };
 
         writeln!(out, "{}", res).unwrap();

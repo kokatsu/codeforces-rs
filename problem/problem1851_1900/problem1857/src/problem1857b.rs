@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,28 +9,24 @@ fn main() {
         let x: Vec<char> = read_string().chars().collect();
 
         let l: usize = x.len();
-        let res: String =
-            if let Some(i) = x.iter().position(|x| x.to_digit(10).unwrap() >= 5) {
-                let mut j: usize = i;
-                    for &c in x[0..i].iter().rev() {
-                        if c != '4' {
-                            break;
-                        }
-                        j -= 1;
-                    }
-                let d: String =
-                    if j == 0 {
-                        "1".to_string()
-                    }
-                    else {
-                        let p: String = x[0..j-1].iter().collect();
-                        p + &(x[j-1].to_digit(10).unwrap() + 1).to_string()
-                    };
-                d + &"0".to_string().repeat(l-j)
+        let res: String = if let Some(i) = x.iter().position(|x| x.to_digit(10).unwrap() >= 5) {
+            let mut j: usize = i;
+            for &c in x[0..i].iter().rev() {
+                if c != '4' {
+                    break;
+                }
+                j -= 1;
             }
-            else {
-                x.iter().collect()
+            let d: String = if j == 0 {
+                "1".to_string()
+            } else {
+                let p: String = x[0..j - 1].iter().collect();
+                p + &(x[j - 1].to_digit(10).unwrap() + 1).to_string()
             };
+            d + &"0".to_string().repeat(l - j)
+        } else {
+            x.iter().collect()
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

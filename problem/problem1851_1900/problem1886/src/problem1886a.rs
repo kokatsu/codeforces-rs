@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -16,10 +16,9 @@ fn main() {
         writeln!(out, "YES").unwrap();
 
         if n % 3 == 0 {
-            writeln!(out, "1 4 {}", n-5).unwrap();
-        }
-        else {
-            writeln!(out, "1 2 {}", n-3).unwrap();
+            writeln!(out, "1 4 {}", n - 5).unwrap();
+        } else {
+            writeln!(out, "1 2 {}", n - 3).unwrap();
         }
     }
 }

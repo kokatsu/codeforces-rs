@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn threadlets(a: &[u64]) -> &str {
     let s: u64 = a.iter().sum();

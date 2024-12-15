@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -16,8 +16,7 @@ fn main() {
             .fold((String::new(), 0), |(res, index), i| {
                 if res.is_empty() {
                     (res + &b[index].to_string(), index + n - i)
-                }
-                else {
+                } else {
                     (res + " " + &b[index.min(m)].to_string(), index + n - i)
                 }
             })

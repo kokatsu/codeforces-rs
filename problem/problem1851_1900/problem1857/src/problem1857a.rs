@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,19 +9,9 @@ fn main() {
         let _n: usize = read();
         let a: Vec<usize> = read_vec();
 
-        let odds: usize =
-            a
-            .iter()
-            .filter(|x| *x % 2 == 1)
-            .count();
+        let odds: usize = a.iter().filter(|x| *x % 2 == 1).count();
 
-        let res: &str =
-            if odds % 2 == 0 {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if odds % 2 == 0 { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -13,29 +13,23 @@ fn main() {
 
         let s: String = read_string();
 
-        let (plus, high, _current): (i32, i32, i32) = s
-            .chars()
-            .fold((0, a, a), |(plus, high, current), x| {
-                let (p, c): (i32, i32) =
-                    if x == '+' {
-                        (plus + 1, current + 1)
-                    }
-                    else {
-                        (plus, current - 1)
-                    };
+        let (plus, high, _current): (i32, i32, i32) =
+            s.chars().fold((0, a, a), |(plus, high, current), x| {
+                let (p, c): (i32, i32) = if x == '+' {
+                    (plus + 1, current + 1)
+                } else {
+                    (plus, current - 1)
+                };
                 (p, high.max(c), c)
             });
 
-        let res: &str =
-            if a + plus < n {
-                "NO"
-            }
-            else if n - high <= 0 {
-                "YES"
-            }
-            else {
-                "MAYBE"
-            };
+        let res: &str = if a + plus < n {
+            "NO"
+        } else if n - high <= 0 {
+            "YES"
+        } else {
+            "MAYBE"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

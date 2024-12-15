@@ -1,13 +1,9 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn make_result(v: &[u64], m: usize, n: usize) -> String {
-    let counts: String = m.to_string() + " " + &(n-m).to_string();
-    let b: String =
-        (1..m)
-        .fold(v[0].to_string(), |b, i| b + " " + &v[i].to_string());
-    let c: String =
-        (m+1..n)
-        .fold(v[m].to_string(), |c, i| c + " " + &v[i].to_string());
+    let counts: String = m.to_string() + " " + &(n - m).to_string();
+    let b: String = (1..m).fold(v[0].to_string(), |b, i| b + " " + &v[i].to_string());
+    let c: String = (m + 1..n).fold(v[m].to_string(), |c, i| c + " " + &v[i].to_string());
     counts + "\n" + &b + "\n" + &c
 }
 
@@ -22,10 +18,7 @@ fn main() {
 
         a.sort();
 
-        let index: Option<usize> =
-            a
-            .iter()
-            .position(|&x| x != a[0]);
+        let index: Option<usize> = a.iter().position(|&x| x != a[0]);
 
         let res: String = match index {
             Some(index) => make_result(&a, index, n),

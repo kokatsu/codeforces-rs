@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -12,8 +12,7 @@ fn main() {
         let n: usize = input[0];
         let m: usize = input[1];
 
-        let carpet: Vec<Vec<char>> =
-            (0..n)
+        let carpet: Vec<Vec<char>> = (0..n)
             .map(|_| read_string().chars().collect::<Vec<char>>())
             .collect();
 
@@ -31,13 +30,7 @@ fn main() {
             }
         }
 
-        let res: &str =
-            if p >= 4 {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if p >= 4 { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }

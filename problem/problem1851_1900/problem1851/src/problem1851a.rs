@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -14,18 +14,14 @@ fn main() {
 
         let a: Vec<i64> = read_vec();
 
-        let res: i64 =
-            a
-            .iter()
-            .fold(0, |res, x| {
-                let d: i64 = (h-x).abs();
-                if d > 0 && d % k == 0 && d / k < m {
-                    res + 1
-                }
-                else {
-                    res
-                }
-            });
+        let res: i64 = a.iter().fold(0, |res, x| {
+            let d: i64 = (h - x).abs();
+            if d > 0 && d % k == 0 && d / k < m {
+                res + 1
+            } else {
+                res
+            }
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -6,17 +6,14 @@ fn main() {
     let t: usize = read();
 
     for _ in 0..t {
-        let s: Vec<u8> = read_string()
-            .chars()
-            .map(|x| x as u8 - '0' as u8)
-            .collect();
+        let s: Vec<u8> = read_string().chars().map(|x| x as u8 - '0' as u8).collect();
 
         let res: u8 = s
             .into_iter()
             .fold((0, 1), |(res, pos), x| {
                 let p: u8 = if pos == 0 { 10 } else { pos };
                 let q: u8 = if x == 0 { 10 } else { x };
-                (res+p.abs_diff(q)+1, x)
+                (res + p.abs_diff(q) + 1, x)
             })
             .0;
 

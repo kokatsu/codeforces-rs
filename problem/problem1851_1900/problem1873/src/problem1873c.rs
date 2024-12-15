@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -6,38 +6,19 @@ fn main() {
     let mut out = BufWriter::new(stdout().lock());
 
     for _ in 0..t {
-        let res: usize =
-            (0..10)
-            .fold(0, |res, i| {
-                let row: String = read_string();
-                let x: usize =
-                    if i < 5 {
-                        i + 1
-                    }
-                    else {
-                        10 - i
-                    };
-                let num: usize =
-                    row
-                    .chars()
-                    .enumerate()
-                    .fold(0, |num, (j, c)| {
-                        let y: usize =
-                            if j < 5 {
-                                j + 1
-                            }
-                            else {
-                                10 - j
-                            };
-                        if c == 'X' {
-                            num + x.min(y)
-                        }
-                        else {
-                            num
-                        }
-                    });
-                res + num
+        let res: usize = (0..10).fold(0, |res, i| {
+            let row: String = read_string();
+            let x: usize = if i < 5 { i + 1 } else { 10 - i };
+            let num: usize = row.chars().enumerate().fold(0, |num, (j, c)| {
+                let y: usize = if j < 5 { j + 1 } else { 10 - j };
+                if c == 'X' {
+                    num + x.min(y)
+                } else {
+                    num
+                }
             });
+            res + num
+        });
 
         writeln!(out, "{}", res).unwrap();
     }

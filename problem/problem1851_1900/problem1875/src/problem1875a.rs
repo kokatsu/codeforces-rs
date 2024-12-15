@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -13,9 +13,7 @@ fn main() {
 
         let x: Vec<u64> = read_vec();
 
-        let res: u64 = x
-            .into_iter()
-            .fold(b, |res, u| res + u.min(a - 1));
+        let res: u64 = x.into_iter().fold(b, |res, u| res + u.min(a - 1));
 
         writeln!(out, "{}", res).unwrap();
     }

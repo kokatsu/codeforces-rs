@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashMap;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -12,12 +12,10 @@ fn main() {
 
         let s: Vec<char> = read_string().chars().collect();
 
-        let map: HashMap<char, usize> = s
-            .iter()
-            .fold(HashMap::new(), |mut map, &c| {
-                *map.entry(c).or_insert(0) += 1;
-                map
-            });
+        let map: HashMap<char, usize> = s.iter().fold(HashMap::new(), |mut map, &c| {
+            *map.entry(c).or_insert(0) += 1;
+            map
+        });
 
         let r: usize = (n - k) / 2;
         let num: usize = map
@@ -25,13 +23,7 @@ fn main() {
             .map(|(_, &value)| value as usize / 2)
             .sum::<usize>();
 
-        let res: &str =
-            if num >= r {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if num >= r { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }
@@ -50,7 +42,7 @@ fn run_length_encoding<T: std::cmp::PartialEq + Copy>(x: Vec<T>) -> Vec<(T, i64)
             j += 1usize;
         }
 
-        ret.push((x[i], (j-i) as i64));
+        ret.push((x[i], (j - i) as i64));
         i = j;
     }
 

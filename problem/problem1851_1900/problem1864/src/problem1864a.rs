@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -14,23 +14,21 @@ fn main() {
         let z: i32 = y - x;
         let h: i32 = n * (n - 1) / 2;
 
-        let res: String =
-            if z >= h {
-                let mut r: Vec<i32> = vec![y];
-                for i in 1..n-1 {
-                    let j: usize = i as usize;
-                    r.push(r[j-1] - i);
-                }
-                r.push(x);
-                r.reverse();
-                r.iter()
-                    .map(|e| e.to_string())
-                    .collect::<Vec<String>>()
-                    .join(" ")
+        let res: String = if z >= h {
+            let mut r: Vec<i32> = vec![y];
+            for i in 1..n - 1 {
+                let j: usize = i as usize;
+                r.push(r[j - 1] - i);
             }
-            else {
-                (-1).to_string()
-            };
+            r.push(x);
+            r.reverse();
+            r.iter()
+                .map(|e| e.to_string())
+                .collect::<Vec<String>>()
+                .join(" ")
+        } else {
+            (-1).to_string()
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,12 +11,10 @@ fn main() {
             (input[0], input[1], input[2])
         };
 
-        let res: i32 =
-        if x > y {
+        let res: i32 = if x > y {
             x
-        }
-        else {
-            let z: i32 = y.min(x+k);
+        } else {
+            let z: i32 = y.min(x + k);
             let d: i32 = y - z;
             z + d * 2
         };

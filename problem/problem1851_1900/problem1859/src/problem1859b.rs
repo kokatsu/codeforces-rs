@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -8,14 +8,14 @@ fn main() {
     for _ in 0..t {
         let n: usize = read();
 
-        let (total, first, second): (u64, u64, u64) = (0..n)
-            .fold((0, u64::MAX, u64::MAX), |(total, first, second), _| {
+        let (total, first, second): (u64, u64, u64) =
+            (0..n).fold((0, u64::MAX, u64::MAX), |(total, first, second), _| {
                 let _m: usize = read();
                 let mut a: Vec<u64> = read_vec();
 
                 a.sort();
 
-                (total+a[1], first.min(a[0]), second.min(a[1]))
+                (total + a[1], first.min(a[0]), second.min(a[1]))
             });
 
         let res: u64 = total + first - second;

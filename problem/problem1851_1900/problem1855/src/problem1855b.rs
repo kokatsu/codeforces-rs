@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn solve(n: u64, d: u64) -> u64 {
     if n % d == 0 {

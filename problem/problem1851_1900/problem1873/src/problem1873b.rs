@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -13,10 +13,7 @@ fn main() {
 
         a[0] += 1;
 
-        let res: u64 =
-            a
-            .iter()
-            .fold(1, |res, x| res * x);
+        let res: u64 = a.iter().fold(1, |res, x| res * x);
 
         writeln!(out, "{}", res).unwrap();
     }

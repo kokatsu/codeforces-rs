@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -12,25 +12,23 @@ fn main() {
 
         let s: String = read_string();
 
-        let pos: Vec<usize> =
-            s
+        let pos: Vec<usize> = s
             .chars()
             .enumerate()
             .filter(|(_, x)| x == &'B')
             .map(|(i, _)| i)
             .collect();
 
-        let res: usize =
-            pos
+        let res: usize = pos
             .iter()
             .fold((0, usize::MAX), |(res, start), &p| {
                 if p.abs_diff(start) < k {
                     (res, start)
+                } else {
+                    (res + 1, p)
                 }
-                else {
-                    (res+1, p)
-                }
-            }).0;
+            })
+            .0;
 
         writeln!(out, "{}", res).unwrap();
     }

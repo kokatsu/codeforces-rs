@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,12 +9,7 @@ fn main() {
         let _n: usize = read();
         let p: Vec<usize> = read_vec();
 
-        let count: usize =
-            p
-            .iter()
-            .enumerate()
-            .filter(|(i, &x)| i + 1 == x)
-            .count();
+        let count: usize = p.iter().enumerate().filter(|(i, &x)| i + 1 == x).count();
 
         let res: usize = (count + 1) / 2;
 
