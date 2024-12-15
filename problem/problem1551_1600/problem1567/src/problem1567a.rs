@@ -1,10 +1,9 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn domino(x: char) -> String {
     if x == 'U' {
         return "D".to_string();
-    }
-    else if x == 'D' {
+    } else if x == 'D' {
         return "U".to_string();
     }
     x.to_string()
@@ -21,10 +20,7 @@ fn main() {
 
         let v: Vec<char> = s.chars().collect();
 
-        let res: String = v.into_iter()
-                            .map(domino)
-                            .collect::<Vec<String>>()
-                            .join("");
+        let res: String = v.into_iter().map(domino).collect::<Vec<String>>().join("");
 
         writeln!(out, "{}", &res).unwrap();
     }
