@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -23,8 +23,7 @@ fn main() {
             if rem <= pre {
                 if is_alice {
                     alice += rem;
-                }
-                else {
+                } else {
                     bob += rem;
                 }
                 break;
@@ -37,15 +36,13 @@ fn main() {
                     num += a[l];
                     rem -= a[l];
                     l += 1;
-                }
-                else {
+                } else {
                     bob += a[r];
                     num += a[r];
                     rem -= a[r];
                     if r > 0 {
                         r -= 1;
-                    }
-                    else {
+                    } else {
                         num = u64::MAX;
                         break;
                     }

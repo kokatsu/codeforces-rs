@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -8,8 +8,7 @@ fn main() {
     for _ in 0..t {
         let n: String = read_string();
 
-        let numbers: Vec<usize> =
-            n
+        let numbers: Vec<usize> = n
             .chars()
             .rev()
             .enumerate()
@@ -18,7 +17,14 @@ fn main() {
             .collect();
 
         writeln!(out, "{}", numbers.len()).unwrap();
-        writeln!(out, "{}", numbers.iter().fold(String::new(), |res, x| res + &x.to_string() + " ")).unwrap();
+        writeln!(
+            out,
+            "{}",
+            numbers
+                .iter()
+                .fold(String::new(), |res, x| res + &x.to_string() + " ")
+        )
+        .unwrap();
     }
 }
 

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -12,13 +12,23 @@ fn main() {
 
         if n - k + 1 > 0 && (n - k + 1) % 2 == 1 {
             writeln!(out, "YES").unwrap();
-            writeln!(out, "{} {}", n - k + 1, (0..k-1).fold(String::new(), |x, _| x + &1.to_string() + " ")).unwrap();
-        }
-        else if n - (k - 1) * 2 > 0 && (n - (k - 1) * 2) % 2 == 0 {
+            writeln!(
+                out,
+                "{} {}",
+                n - k + 1,
+                (0..k - 1).fold(String::new(), |x, _| x + &1.to_string() + " ")
+            )
+            .unwrap();
+        } else if n - (k - 1) * 2 > 0 && (n - (k - 1) * 2) % 2 == 0 {
             writeln!(out, "YES").unwrap();
-            writeln!(out, "{} {}", n - (k - 1) * 2, (0..k-1).fold(String::new(), |x, _| x + &2.to_string() + " ")).unwrap();
-        }
-        else {
+            writeln!(
+                out,
+                "{} {}",
+                n - (k - 1) * 2,
+                (0..k - 1).fold(String::new(), |x, _| x + &2.to_string() + " ")
+            )
+            .unwrap();
+        } else {
             writeln!(out, "NO").unwrap();
         }
     }

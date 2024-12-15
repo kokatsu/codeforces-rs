@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -13,19 +13,17 @@ fn main() {
         let mut ok: i64 = 0;
         let mut ng: i64 = std::i64::MAX / 2;
 
-        let res: i64 =
-            loop {
-                if ng - ok <= 1 {
-                    break ok + 1;
-                }
-                let mid: i64 = (ok + ng) / 2;
-                if mid - mid / n < k {
-                    ok = mid;
-                }
-                else {
-                    ng = mid;
-                }
-            };
+        let res: i64 = loop {
+            if ng - ok <= 1 {
+                break ok + 1;
+            }
+            let mid: i64 = (ok + ng) / 2;
+            if mid - mid / n < k {
+                ok = mid;
+            } else {
+                ng = mid;
+            }
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
