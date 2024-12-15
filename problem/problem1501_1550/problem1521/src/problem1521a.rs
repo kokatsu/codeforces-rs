@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -12,9 +12,8 @@ fn main() {
 
         if b > 1 {
             writeln!(out, "YES").unwrap();
-            writeln!(out, "{} {} {}", a, a*b, a*(b+1)).unwrap();
-        }
-        else {
+            writeln!(out, "{} {} {}", a, a * b, a * (b + 1)).unwrap();
+        } else {
             writeln!(out, "NO").unwrap();
         }
     }
