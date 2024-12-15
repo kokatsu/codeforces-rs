@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashMap;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,9 +11,9 @@ fn main() {
         let a: Vec<i64> = read_vec();
 
         let map: HashMap<i64, i64> = (0..n).fold(HashMap::new(), |mut map, i| {
-                                                *map.entry(a[i]-(i as i64)).or_insert(0) += 1;
-                                                map
-                                            });
+            *map.entry(a[i] - (i as i64)).or_insert(0) += 1;
+            map
+        });
 
         let res: i64 = map.values().fold(0, |res, val| res + val * (val - 1) / 2);
 

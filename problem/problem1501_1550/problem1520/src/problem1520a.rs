@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -17,13 +17,11 @@ fn main() {
 
         let h = run_length_encoding(t);
 
-        let res: &str =
-            if h.iter().all(|&x| x.1 == 1) {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if h.iter().all(|&x| x.1 == 1) {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
@@ -42,7 +40,7 @@ fn run_length_encoding<T: std::cmp::PartialEq + Copy>(x: Vec<T>) -> Vec<(T, i64)
             j += 1usize;
         }
 
-        ret.push((x[i], (j-i) as i64));
+        ret.push((x[i], (j - i) as i64));
         i = j;
     }
 
