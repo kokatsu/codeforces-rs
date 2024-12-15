@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,22 +10,11 @@ fn main() {
         let a: Vec<usize> = read_vec();
         let b: Vec<usize> = read_vec();
 
-        let is_sorted: bool =
-            (0..n-1)
-            .all(|i| a[i] <= a[i+1]);
+        let is_sorted: bool = (0..n - 1).all(|i| a[i] <= a[i + 1]);
 
-        let can_swap: bool =
-            b
-            .iter()
-            .any(|&x| x != b[0]);
+        let can_swap: bool = b.iter().any(|&x| x != b[0]);
 
-        let res: &str =
-            if is_sorted || can_swap {
-                "Yes"
-            }
-            else {
-                "No"
-            };
+        let res: &str = if is_sorted || can_swap { "Yes" } else { "No" };
 
         writeln!(out, "{}", res).unwrap();
     }
