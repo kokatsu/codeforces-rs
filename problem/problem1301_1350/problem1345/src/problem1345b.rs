@@ -1,12 +1,9 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
 
-    let pyramid: Vec<u64> =
-        (1..100_000)
-        .map(|i| i * (i * 3 + 1) / 2)
-        .collect();
+    let pyramid: Vec<u64> = (1..100_000).map(|i| i * (i * 3 + 1) / 2).collect();
 
     let mut out = BufWriter::new(stdout().lock());
 
@@ -17,7 +14,7 @@ fn main() {
         while n > 1 {
             let p: usize = pyramid.partition_point(|&v| v <= n);
             res += 1;
-            n -= pyramid[p-1];
+            n -= pyramid[p - 1];
         }
 
         writeln!(out, "{}", res).unwrap();

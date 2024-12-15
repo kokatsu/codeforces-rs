@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,13 +9,11 @@ fn main() {
         let input: Vec<u64> = read_vec();
         let (n, m): (u64, u64) = (input[0], input[1]);
 
-        let res: &str =
-            if n.min(m) == 1 || n + m == 4 {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if n.min(m) == 1 || n + m == 4 {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
