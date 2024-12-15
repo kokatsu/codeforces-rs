@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -16,7 +16,7 @@ fn main() {
             if n % i == 0 {
                 d = d.max(i);
                 if n / i <= k {
-                    d = d.max(n/i);
+                    d = d.max(n / i);
                 }
             }
             i += 1;

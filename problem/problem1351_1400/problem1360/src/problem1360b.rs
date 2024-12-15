@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,7 +11,12 @@ fn main() {
 
         s.sort();
 
-        let res: i64 = *(1..n).map(|i| s[i] - s[i-1]).collect::<Vec<i64>>().iter().min().unwrap();
+        let res: i64 = *(1..n)
+            .map(|i| s[i] - s[i - 1])
+            .collect::<Vec<i64>>()
+            .iter()
+            .min()
+            .unwrap();
 
         writeln!(out, "{}", res).unwrap();
     }

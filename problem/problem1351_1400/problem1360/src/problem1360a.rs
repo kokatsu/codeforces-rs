@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -14,7 +14,7 @@ fn main() {
             std::mem::swap(&mut a, &mut b);
         }
 
-        let res: i64 = a.max(b*2).pow(2);
+        let res: i64 = a.max(b * 2).pow(2);
 
         writeln!(out, "{}", res).unwrap();
     }

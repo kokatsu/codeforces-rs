@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: i64 = read();
@@ -17,17 +17,16 @@ fn main() {
         for i in 0..n {
             if a[i] % 2 == 0 {
                 even += 1;
-            }
-            else {
+            } else {
                 odd += 1;
             }
 
-            if i > 0 && a[i] - a[i-1] == 1 {
+            if i > 0 && a[i] - a[i - 1] == 1 {
                 diff += 1;
             }
         }
 
-        let res: &str = match (even%2, odd%2, diff>=1) {
+        let res: &str = match (even % 2, odd % 2, diff >= 1) {
             (0, 0, _) => "Yes",
             (1, 1, true) => "Yes",
             (1, 1, false) => "No",
