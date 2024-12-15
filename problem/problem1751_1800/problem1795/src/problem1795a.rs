@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -14,9 +14,9 @@ fn main() {
         let s: Vec<char> = read_string().chars().collect();
         let t: Vec<char> = read_string().chars().collect();
 
-        let u: usize = (1..n).filter(|&i| s[i] == s[i-1]).count();
-        let v: usize = (1..m).filter(|&i| t[i] == t[i-1]).count();
-        let w: usize = if s[n-1] == t[m-1] { 1 } else { 0 };
+        let u: usize = (1..n).filter(|&i| s[i] == s[i - 1]).count();
+        let v: usize = (1..m).filter(|&i| t[i] == t[i - 1]).count();
+        let w: usize = if s[n - 1] == t[m - 1] { 1 } else { 0 };
 
         let res = if u + v + w < 2 { "YES" } else { "NO" };
 

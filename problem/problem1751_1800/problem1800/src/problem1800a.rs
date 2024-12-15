@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -7,19 +7,14 @@ fn main() {
 
     for _ in 0..t {
         let _n: usize = read();
-        let s: Vec<char> =
-            read_string()
-            .to_lowercase()
-            .chars()
-            .collect();
+        let s: Vec<char> = read_string().to_lowercase().chars().collect();
 
         let g: Vec<(char, i64)> = run_length_encoding(s);
 
         let res: &str =
             if g.len() == 4 && g[0].0 == 'm' && g[1].0 == 'e' && g[2].0 == 'o' && g[3].0 == 'w' {
                 "YES"
-            }
-            else {
+            } else {
                 "NO"
             };
 
@@ -40,7 +35,7 @@ fn run_length_encoding<T: std::cmp::PartialEq + Copy>(x: Vec<T>) -> Vec<(T, i64)
             j += 1usize;
         }
 
-        ret.push((x[i], (j-i) as i64));
+        ret.push((x[i], (j - i) as i64));
         i = j;
     }
 

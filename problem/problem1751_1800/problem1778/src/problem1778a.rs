@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,10 +11,7 @@ fn main() {
 
         let s: i64 = a.iter().sum();
 
-        let res: i64 = (0..n-1)
-            .fold(i64::MIN, |res, i| {
-                res.max(s-(a[i]+a[i+1])*2)
-            });
+        let res: i64 = (0..n - 1).fold(i64::MIN, |res, i| res.max(s - (a[i] + a[i + 1]) * 2));
 
         writeln!(out, "{}", res).unwrap();
     }

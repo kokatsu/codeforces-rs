@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -13,12 +13,12 @@ fn main() {
 
         let max: u64 = s - r;
 
-        let res: String =
-            (1..n)
+        let res: String = (1..n)
             .fold((max.to_string(), r), |(res, rem), i| {
-                let num = max.min(rem+i+1-n);
-                (res+" "+&num.to_string(), rem-num)
-            }).0;
+                let num = max.min(rem + i + 1 - n);
+                (res + " " + &num.to_string(), rem - num)
+            })
+            .0;
 
         writeln!(out, "{}", res).unwrap();
     }

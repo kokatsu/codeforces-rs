@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,13 +10,7 @@ fn main() {
     for _ in 0..t {
         let s: String = read_string();
 
-        let res: &str =
-            if yes.contains(&s) {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if yes.contains(&s) { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }

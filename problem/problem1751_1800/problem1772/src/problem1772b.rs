@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,13 +9,11 @@ fn main() {
         let a: Vec<usize> = read_vec();
         let b: Vec<usize> = read_vec();
 
-        let res: &str =
-            if ((a[0] < a[1]) == (b[0] < b[1])) && ((a[0] < b[0]) == (a[1] < b[1])) {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if ((a[0] < a[1]) == (b[0] < b[1])) && ((a[0] < b[0]) == (a[1] < b[1])) {
+            "YES"
+        } else {
+            "NO"
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

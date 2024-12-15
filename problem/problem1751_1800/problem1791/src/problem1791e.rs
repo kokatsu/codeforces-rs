@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,21 +9,25 @@ fn main() {
         let _n: usize = read();
         let a: Vec<i64> = read_vec();
 
-        let (sum, min, negative_counts, exsits_zero): (i64, i64, usize, bool) = a
-            .iter()
-            .fold((0, i64::MAX, 0, false), |(sum, min, negative_counts, exsits_zero), &x| {
+        let (sum, min, negative_counts, exsits_zero): (i64, i64, usize, bool) = a.iter().fold(
+            (0, i64::MAX, 0, false),
+            |(sum, min, negative_counts, exsits_zero), &x| {
                 let count: usize = if x < 0 { 1 } else { 0 };
                 let is_zero: bool = x == 0;
-                (sum+x.abs(), min.min(x.abs()), negative_counts+count, exsits_zero|is_zero)
-            });
+                (
+                    sum + x.abs(),
+                    min.min(x.abs()),
+                    negative_counts + count,
+                    exsits_zero | is_zero,
+                )
+            },
+        );
 
-        let res: i64 =
-            if negative_counts % 2 == 1 && !exsits_zero {
-                sum - min * 2
-            }
-            else {
-                sum
-            };
+        let res: i64 = if negative_counts % 2 == 1 && !exsits_zero {
+            sum - min * 2
+        } else {
+            sum
+        };
 
         writeln!(out, "{}", res).unwrap();
     }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -16,16 +16,14 @@ fn main() {
             let res: i64 = {
                 if i == x[0].1 {
                     a - x[1].0
-                }
-                else {
+                } else {
                     a - x[0].0
                 }
             };
 
             if i < n - 1 {
                 write!(out, "{} ", res).unwrap();
-            }
-            else {
+            } else {
                 writeln!(out, "{}", res).unwrap();
             }
         }

@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -9,8 +9,7 @@ fn main() {
         let n: usize = read();
         let a: Vec<u64> = read_vec();
 
-        let cumsum: Vec<u64> =
-            a
+        let cumsum: Vec<u64> = a
             .iter()
             .scan(0, |cumsum, x| {
                 *cumsum += x / 2;
@@ -18,9 +17,7 @@ fn main() {
             })
             .collect();
 
-        let index: Option<usize> =
-            (0..n-1)
-            .find(|&i| cumsum[i] * 2 == cumsum[n-1]);
+        let index: Option<usize> = (0..n - 1).find(|&i| cumsum[i] * 2 == cumsum[n - 1]);
 
         let res: i64 = match index {
             Some(index) => index as i64 + 1,

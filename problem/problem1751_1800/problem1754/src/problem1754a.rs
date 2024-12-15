@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,22 +9,17 @@ fn main() {
         let _n: usize = read();
         let s: String = read_string();
 
-        let (is_ok, num): (bool, i32) = s
-            .chars()
-            .rev()
-            .fold((true, 0), |(is_ok, num), c| {
-                if c == 'Q' {
-                    if num <= 0 {
-                        (false, num)
-                    }
-                    else {
-                        (is_ok, num - 1)
-                    }
+        let (is_ok, num): (bool, i32) = s.chars().rev().fold((true, 0), |(is_ok, num), c| {
+            if c == 'Q' {
+                if num <= 0 {
+                    (false, num)
+                } else {
+                    (is_ok, num - 1)
                 }
-                else {
-                    (is_ok, num + 1)
-                }
-            });
+            } else {
+                (is_ok, num + 1)
+            }
+        });
 
         let res: &str = if is_ok && num >= 0 { "Yes" } else { "No" };
 
