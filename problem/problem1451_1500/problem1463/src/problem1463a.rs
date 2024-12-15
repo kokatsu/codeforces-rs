@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -14,13 +14,7 @@ fn main() {
         let div: u64 = sum / 9;
         let rem: u64 = sum % 9;
 
-        let res: &str =
-            if rem == 0 && min >= div {
-                "YES"
-            }
-            else {
-                "NO"
-            };
+        let res: &str = if rem == 0 && min >= div { "YES" } else { "NO" };
 
         writeln!(out, "{}", res).unwrap();
     }
