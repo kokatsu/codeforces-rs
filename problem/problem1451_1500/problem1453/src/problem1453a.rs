@@ -1,5 +1,5 @@
-use std::io::{stdout, Write, BufWriter};
 use std::collections::HashSet;
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -15,15 +15,9 @@ fn main() {
         let bottom: Vec<u8> = read_vec();
         let left: Vec<u8> = read_vec();
 
-        let set: HashSet<u8> = bottom
-            .iter()
-            .cloned()
-            .collect();
+        let set: HashSet<u8> = bottom.iter().cloned().collect();
 
-        let res: usize = left
-            .iter()
-            .filter(|x| set.contains(x))
-            .count();
+        let res: usize = left.iter().filter(|x| set.contains(x)).count();
 
         writeln!(out, "{}", res).unwrap();
     }
