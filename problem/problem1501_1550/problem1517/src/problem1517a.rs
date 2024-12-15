@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut list: Vec<u64> = Vec::new();
@@ -17,12 +17,9 @@ fn main() {
     for _ in 0..t {
         let n: u64 = read();
 
-        let (cnt, rem): (u64, u64) =
-            list
+        let (cnt, rem): (u64, u64) = list
             .iter()
-            .fold((0, n), |(cnt, rem), x| {
-                (cnt+rem/x, rem%x)
-            });
+            .fold((0, n), |(cnt, rem), x| (cnt + rem / x, rem % x));
 
         let res: i64 = if rem == 0 { cnt as i64 } else { -1 };
 
