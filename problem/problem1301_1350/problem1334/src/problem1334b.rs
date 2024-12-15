@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -19,7 +19,7 @@ fn main() {
                 break;
             }
 
-            (res, sum) = (res+1, sum+y);
+            (res, sum) = (res + 1, sum + y);
         }
 
         writeln!(out, "{}", res).unwrap();
