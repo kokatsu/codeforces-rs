@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -10,20 +10,17 @@ fn main() {
 
         let s: u64 = (k as f64).sqrt().floor() as u64;
 
-        let (r, c): (u64, u64) =
-            if s * s == k {
-                (s, 1)
+        let (r, c): (u64, u64) = if s * s == k {
+            (s, 1)
+        } else {
+            let m: u64 = k - s * s;
+            let n: u64 = s + 1;
+            if m <= s {
+                (m, n)
+            } else {
+                (n, n * 2 - m)
             }
-            else {
-                let m: u64 = k - s * s;
-                let n: u64 = s + 1;
-                if m <= s {
-                    (m, n)
-                }
-                else {
-                    (n, n*2-m)
-                }
-            };
+        };
 
         writeln!(out, "{} {}", r, c).unwrap();
     }
