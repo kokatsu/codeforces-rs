@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -11,7 +11,7 @@ fn main() {
         let n: usize = s.len();
 
         let mut res: usize = n * 3;
-        let mut pos: Vec<usize> = vec![n*3; 3];
+        let mut pos: Vec<usize> = vec![n * 3; 3];
         for (i, x) in s.chars().enumerate() {
             let p: usize = x as usize - '1' as usize;
             pos[p] = i;
@@ -19,7 +19,7 @@ fn main() {
             let min: usize = *pos.iter().min().unwrap();
             let max: usize = *pos.iter().max().unwrap();
 
-            res = res.min(max-min+1);
+            res = res.min(max - min + 1);
         }
 
         if res > n {

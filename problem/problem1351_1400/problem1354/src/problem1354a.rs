@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -11,17 +11,14 @@ fn main() {
             (input[0], input[1], input[2], input[3])
         };
 
-        let res: i64 =
-            if a <= b {
-                b
-            }
-            else if c > d {
-                let s: i64 = c - d;
-                b + (a - b + s - 1) / s * c
-            }
-            else {
-                -1
-            };
+        let res: i64 = if a <= b {
+            b
+        } else if c > d {
+            let s: i64 = c - d;
+            b + (a - b + s - 1) / s * c
+        } else {
+            -1
+        };
 
         writeln!(out, "{}", res).unwrap();
     }
