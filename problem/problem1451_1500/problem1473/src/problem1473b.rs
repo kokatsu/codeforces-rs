@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let q: usize = read();
@@ -13,16 +13,10 @@ fn main() {
         let v: usize = t.len();
         let g: usize = gcd(u, v);
 
-        let x: String = s.repeat(v/g);
-        let y: String = t.repeat(u/g);
+        let x: String = s.repeat(v / g);
+        let y: String = t.repeat(u / g);
 
-        let res: String =
-            if x == y {
-                x
-            }
-            else {
-                (-1).to_string()
-            };
+        let res: String = if x == y { x } else { (-1).to_string() };
 
         writeln!(out, "{}", res).unwrap();
     }
