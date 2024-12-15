@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 use std::iter::repeat;
 
 fn main() {
@@ -23,17 +23,16 @@ fn main() {
         let r: String = g
             .iter()
             .filter(|x| x.1 > 1)
-            .map(|x| repeat(x.0.to_string()).take(x.1 as usize - 1).collect::<Vec<String>>().join(" "))
+            .map(|x| {
+                repeat(x.0.to_string())
+                    .take(x.1 as usize - 1)
+                    .collect::<Vec<String>>()
+                    .join(" ")
+            })
             .collect::<Vec<String>>()
             .join(" ");
 
-        let res: String =
-            if r.is_empty() {
-                l
-            }
-            else {
-                l + " " + &r
-            };
+        let res: String = if r.is_empty() { l } else { l + " " + &r };
 
         writeln!(out, "{}", res).unwrap();
     }
@@ -52,7 +51,7 @@ fn run_length_encoding<T: std::cmp::PartialEq + Copy>(x: Vec<T>) -> Vec<(T, i64)
             j += 1usize;
         }
 
-        ret.push((x[i], (j-i) as i64));
+        ret.push((x[i], (j - i) as i64));
         i = j;
     }
 
