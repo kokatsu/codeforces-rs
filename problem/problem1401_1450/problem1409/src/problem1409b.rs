@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -13,13 +13,13 @@ fn main() {
         let y: i64 = input[3];
         let n: i64 = input[4];
 
-        let ma: i64 = x.max(a-n);
+        let ma: i64 = x.max(a - n);
         let na: i64 = n - a + ma;
-        let u: i64 = ma * y.max(b-na);
+        let u: i64 = ma * y.max(b - na);
 
-        let mb: i64 = y.max(b-n);
+        let mb: i64 = y.max(b - n);
         let nb: i64 = n - b + mb;
-        let v: i64 = mb * x.max(a-nb);
+        let v: i64 = mb * x.max(a - nb);
 
         let res: i64 = u.min(v);
 
