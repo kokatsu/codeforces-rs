@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let t: usize = read();
@@ -18,13 +18,11 @@ fn main() {
 
         writeln!(out, "YES").unwrap();
 
-        let (x, y): (u64, u64) =
-            if a.contains(&n) {
-                (15, n-m-1)
-            }
-            else {
-                (14, n-m)
-            };
+        let (x, y): (u64, u64) = if a.contains(&n) {
+            (15, n - m - 1)
+        } else {
+            (14, n - m)
+        };
 
         writeln!(out, "6 10 {} {}", x, y).unwrap();
     }
