@@ -10,11 +10,9 @@ fn main() {
 
     let t: Vec<u32> = read_vec();
 
-    let res: usize = (1..n).fold(1, |res, i| {
-        match t[i] - t[i-1] <= c {
-            true => res + 1,
-            false => 1,
-        }
+    let res: usize = (1..n).fold(1, |res, i| match t[i] - t[i - 1] <= c {
+        true => res + 1,
+        false => 1,
     });
 
     writeln!(out, "{}", res).unwrap();

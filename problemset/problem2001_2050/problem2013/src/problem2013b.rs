@@ -1,4 +1,4 @@
-use std::io::{stdout, Write, BufWriter};
+use std::io::{stdout, BufWriter, Write};
 
 fn main() {
     let mut out = BufWriter::new(stdout().lock());
@@ -9,7 +9,7 @@ fn main() {
         let n: usize = read();
         let a: Vec<i64> = read_vec();
 
-        let res: i64 = a.iter().sum::<i64>() - a[n-2] * 2;
+        let res: i64 = a.iter().sum::<i64>() - a[n - 2] * 2;
 
         writeln!(out, "{}", res).unwrap();
     }

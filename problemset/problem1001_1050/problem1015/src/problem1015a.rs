@@ -28,7 +28,11 @@ fn main() {
         }
     }
 
-    let s: String = list.iter().map(|x| x.to_string()).collect::<Vec<String>>().join(" ");
+    let s: String = list
+        .iter()
+        .map(|x| x.to_string())
+        .collect::<Vec<String>>()
+        .join(" ");
 
     let res: String = list.len().to_string() + "\n" + &s;
 
