@@ -1,0 +1,10 @@
+[package]
+name = "problem1440"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name = "p1440a"
+path = "src/problem1440a.rs"
