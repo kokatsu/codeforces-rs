@@ -1,0 +1,10 @@
+[package]
+name = "problem1080"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name = "p1080a"
+path = "src/problem1080a.rs"
