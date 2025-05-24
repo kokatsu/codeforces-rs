@@ -12,3 +12,7 @@ path = "src/problem2091a.rs"
 [[bin]]
 name = "p2091b"
 path = "src/problem2091b.rs"
+
+[[bin]]
+name = "p2091c"
+path = "src/problem2091c.rs"
