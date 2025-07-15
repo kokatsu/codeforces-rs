@@ -3,8 +3,6 @@ name = "problem1881"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 
 [[bin]]
@@ -14,3 +12,7 @@ path = "src/problem1881a.rs"
 [[bin]]
 name = "p1881b"
 path = "src/problem1881b.rs"
+
+[[bin]]
+name = "p1881d"
+path = "src/problem1881d.rs"
