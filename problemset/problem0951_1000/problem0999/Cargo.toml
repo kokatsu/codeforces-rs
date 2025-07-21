@@ -10,5 +10,9 @@ name = "p0999a"
 path = "src/problem0999a.rs"
 
 [[bin]]
+name = "p0999b"
+path = "src/problem0999b.rs"
+
+[[bin]]
 name = "p0999c"
 path = "src/problem0999c.rs"
