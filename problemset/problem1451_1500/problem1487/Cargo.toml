@@ -3,10 +3,12 @@ name = "problem1487"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 
 [[bin]]
 name = "p1487a"
 path = "src/problem1487a.rs"
+
+[[bin]]
+name = "p1487b"
+path = "src/problem1487b.rs"
