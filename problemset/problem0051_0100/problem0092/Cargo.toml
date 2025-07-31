@@ -1,0 +1,10 @@
+[package]
+name = "problem0092"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name = "p0092a"
+path = "src/problem0092a.rs"
