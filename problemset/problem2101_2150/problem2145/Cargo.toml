@@ -1,0 +1,10 @@
+[package]
+name = "problem2145"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name = "p2145a"
+path = "src/problem2145a.rs"
