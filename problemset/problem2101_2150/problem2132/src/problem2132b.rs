@@ -11,7 +11,7 @@ fn main() {
         let mut v: Vec<u64> = Vec::new();
         let mut d: u64 = 10;
         while d < n {
-            if n % (d + 1) == 0 {
+            if n.is_multiple_of(d + 1) {
                 v.push(n / (d + 1));
             }
             d *= 10;
