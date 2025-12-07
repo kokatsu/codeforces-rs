@@ -10,7 +10,7 @@ fn main() {
         let letters: String = read_string();
 
         let mut counts: Vec<i64> = (1..=26).collect();
-        for l in letters.chars().map(|c| c as u8 - 'A' as u8) {
+        for l in letters.chars().map(|c| c as u8 - b'A') {
             counts[l as usize] -= 1;
         }
 
