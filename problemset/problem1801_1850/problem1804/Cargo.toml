@@ -8,3 +8,7 @@ edition = "2021"
 [[bin]]
 name = "p1804a"
 path = "src/problem1804a.rs"
+
+[[bin]]
+name = "p1804b"
+path = "src/problem1804b.rs"
