@@ -10,7 +10,7 @@ fn main() {
 
         let s: u32 = (n as f64).sqrt().floor() as u32;
 
-        let r: u32 = (2..=s).find(|&i| n % i == 0).unwrap_or(n);
+        let r: u32 = (2..=s).find(|&i| n.is_multiple_of(i)).unwrap_or(n);
 
         let a: u32 = n / r;
         let b: u32 = n - a;
