@@ -6,5 +6,9 @@ edition = "2021"
 [dependencies]
 
 [[bin]]
+name = "p1765e"
+path = "src/problem1765e.rs"
+
+[[bin]]
 name = "p1765m"
 path = "src/problem1765m.rs"
